@@ -44,6 +44,10 @@ public class OI {
 	public Joystick leftJoy = new Joystick(1);
 	public Joystick rightJoy = new Joystick(2);
 	
+	public OI(){
+		Button pneumatic = new JoystickButton(rightJoy,11);
+		pneumatic.whenPressed(new SolenoidCommand());
+	}
 	public double filter (double raw) //used to cut interference
 	{	
 		if(Math.abs(raw) < .15)
@@ -55,5 +59,6 @@ public class OI {
 			return 0.7 * (0.5 * Math.pow(raw, 3) + ((1-.5)*raw)) / 1.7;
 		}	
 	}
+	
 }
 
