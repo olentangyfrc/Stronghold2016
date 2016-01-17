@@ -48,7 +48,7 @@ public class OI {
         Button wheelReverse = new JoystickButton(this.leftJoy, 2);
 
         pneumatic.whenPressed(new SolenoidCommand());
-        wheelShoot.whileHeld(new WheelShoot());
+        wheelShoot.whenPressed(new WheelShoot());
         wheelReverse.whileHeld(new WheelReverse());
     }
 
