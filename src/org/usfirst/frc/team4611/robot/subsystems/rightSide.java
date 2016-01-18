@@ -13,8 +13,8 @@ public class rightSide extends Subsystem {
 	private Victor backR;
 	public rightSide()
 	{
-		frontR = new Victor(2);
-		backR = new Victor(3);
+		frontR = new Victor(RobotMap.frontRightWheel);
+		backR = new Victor(RobotMap.backRightWheel);
 	}
     
     // Put methods for controlling this subsystem
