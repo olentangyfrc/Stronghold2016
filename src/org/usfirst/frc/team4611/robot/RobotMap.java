@@ -12,7 +12,7 @@ public class RobotMap {
     public static final int frontRightWheel = 1;
     public static final int backRightWheel = 0;
 
-    // Joystick  ports 
+    // Joystick  ports
     public static final int leftJS = 1;
     public static final int rightJS = 2;
 
@@ -31,6 +31,8 @@ public class RobotMap {
 
     public static final int solePort1 = 0;
     public static final int solePort2 = 1;
+
+    public static final double soleTime = 5.0;
 
     public static final int ascendant = 4;
     public static final int winchMotor = 1;
