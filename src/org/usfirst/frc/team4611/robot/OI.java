@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4611.robot;
 
-import org.usfirst.frc.team4611.robot.commands.SolenoidCommand;
-import org.usfirst.frc.team4611.robot.commands.WheelReverse;
+import org.usfirst.frc.team4611.robot.commands.FeederCommand;
+import org.usfirst.frc.team4611.robot.commands.WheelStop;
 import org.usfirst.frc.team4611.robot.commands.WheelShoot;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -47,9 +47,9 @@ public class OI {
         Button wheelShoot = new JoystickButton(this.leftJoy, 1);
         Button wheelReverse = new JoystickButton(this.leftJoy, 2);
 
-        pneumatic.whenPressed(new SolenoidCommand());
+        pneumatic.whenPressed(new FeederCommand());
         wheelShoot.whenPressed(new WheelShoot());
-        wheelReverse.whileHeld(new WheelReverse());
+        wheelReverse.whileHeld(new WheelStop());
     }
 
     public double filter(double raw) //used to cut interference
