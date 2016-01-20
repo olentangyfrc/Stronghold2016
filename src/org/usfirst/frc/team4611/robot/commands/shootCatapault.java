@@ -6,11 +6,9 @@ public class shootCatapault extends Command{
 	public shootCatapault() {
 		requires(Robot.shooter);
 	}
-
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
