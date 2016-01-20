@@ -6,6 +6,7 @@ import org.usfirst.frc.team4611.robot.subsystems.WheelShooter;
 //import org.usfirst.frc.team4611.robot.commands.ExampleCommand;
 //import org.usfirst.frc.team4611.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
+import org.usfirst.frc.team4611.robot.subsystems.pneumaticSubsystem;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -29,6 +30,7 @@ public class Robot extends IterativeRobot {
     public static rightSide rightS = new rightSide();
     Command autonomousCommand;
     SendableChooser chooser;
+    public static pneumaticSubsystem shooter = new pneumaticSubsystem();
     public static SolenoidSubsystem solenoidSubsystem = new SolenoidSubsystem();
     public static WheelShooter wheelShooter = new WheelShooter();
 

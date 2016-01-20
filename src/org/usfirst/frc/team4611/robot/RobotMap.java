@@ -26,4 +26,6 @@ public class RobotMap {
     public static final int rightWheelShooter = 6;
     public static final double wheelForwardSpeed = 1.0;
     public static final double wheelReverseSpeed = -0.5;
+    
+    public static final int PORT = 0;
 }
