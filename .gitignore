@@ -1,2 +1,13 @@
 /bin/
 /build/*
+src/org/usfirst/frc/team4611/robot/subsystems/.classpath
+src/org/usfirst/frc/team4611/robot/subsystems/.project
+src/org/usfirst/frc/team4611/robot/subsystems/bin/
+src/org/usfirst/frc/team4611/robot/subsystems/build*
+src/org/usfirst/frc/team4611/robot/subsystems/build/
+src/org/usfirst/frc/team4611/robot/subsystems/dist/
+src/org/usfirst/frc/team4611/robot/subsystems/sysProps.xml
+
+
+
+
