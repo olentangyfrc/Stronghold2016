@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4611.robot;
 
-import org.usfirst.frc.team4611.robot.commands.SolenoidCommand;
+import org.usfirst.frc.team4611.robot.commands.FlipShooter;
 ///import org.usfirst.frc.team4611.robot.commands.WheelReverse;
 //import org.usfirst.frc.team4611.robot.commands.WheelShoot;
 
@@ -47,7 +47,7 @@ public class OI {
         //Button wheelShoot = new JoystickButton(this.leftJoy, 1);
         //Button wheelReverse = new JoystickButton(this.leftJoy, 2);
 
-        this.pneumatic.whenPressed(new SolenoidCommand());
+        this.pneumatic.whenPressed(new FlipShooter());
         //wheelShoot.whenPressed(new WheelShoot());
         //wheelReverse.whileHeld(new WheelReverse());
     }
