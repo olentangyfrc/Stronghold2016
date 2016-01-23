@@ -1,7 +1,8 @@
 
 package org.usfirst.frc.team4611.robot;
 
-import org.usfirst.frc.team4611.robot.subsystems.SolenoidSubsystem;
+import org.usfirst.frc.team4611.robot.subsystems.FeedSolenoid;
+import org.usfirst.frc.team4611.robot.subsystems.FlipSolenoid;
 //import org.usfirst.frc.team4611.robot.subsystems.WheelShooter;
 //import org.usfirst.frc.team4611.robot.commands.ExampleCommand;
 //import org.usfirst.frc.team4611.robot.subsystems.ExampleSubsystem;
@@ -32,7 +33,8 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     SendableChooser chooser;
     //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
-    public static SolenoidSubsystem solenoidSubsystem = new SolenoidSubsystem();
+    public static FlipSolenoid flipSolenoid = new FlipSolenoid();
+    public static FeedSolenoid feedSolenoid = new FeedSolenoid();
 
     /**
      * This function is run when the robot is first started up and should be

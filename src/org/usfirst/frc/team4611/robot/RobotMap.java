@@ -19,6 +19,8 @@ public class RobotMap {
 
     public static final int solePort1 = 0;
     public static final int solePort2 = 1;
+    public static final int solePort3 = 2;
+    public static final int solePort4 = 3;
 
     public static final double soleTime = 2.0;
 
