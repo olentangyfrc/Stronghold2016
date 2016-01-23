@@ -21,7 +21,7 @@ public class FeedSolenoid extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public void flip(Value v) {
+    public void feed(Value v) {
         this.s2.set(v);
     }
 

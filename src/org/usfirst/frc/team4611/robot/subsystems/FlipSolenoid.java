@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4611.robot.subsystems;
 
 import org.usfirst.frc.team4611.robot.RobotMap;
-import org.usfirst.frc.team4611.robot.commands.FlipClose;
+import org.usfirst.frc.team4611.robot.commands.ShootingPosition;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -29,7 +29,7 @@ public class FlipSolenoid extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        this.setDefaultCommand(new FlipClose());
+        this.setDefaultCommand(new ShootingPosition());
     }
 
 }
