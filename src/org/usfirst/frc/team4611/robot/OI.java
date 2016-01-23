@@ -43,7 +43,7 @@ public class OI {
     public Joystick rightJoy = new Joystick(2);
 
     public OI() {
-        Button pneumatic = new JoystickButton(this.rightJoy, 11);
+        Button pneumatic = new JoystickButton(this.rightJoy, 5);
         Button wheelShoot = new JoystickButton(this.leftJoy, 1);
         Button wheelReverse = new JoystickButton(this.leftJoy, 2);
 
