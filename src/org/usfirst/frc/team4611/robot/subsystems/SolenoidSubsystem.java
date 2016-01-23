@@ -1,9 +1,8 @@
 package org.usfirst.frc.team4611.robot.subsystems;
 
 import org.usfirst.frc.team4611.robot.RobotMap;
+import org.usfirst.frc.team4611.robot.commands.SolenoidClose;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -11,19 +10,25 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class SolenoidSubsystem extends Subsystem {
-	DoubleSolenoid s1 = new DoubleSolenoid(RobotMap.solePort1, RobotMap.solePort2);
+    Solenoid s1;
+
+    public SolenoidSubsystem() {
+        super("Solenoid Subsystem");
+        this.s1 = new Solenoid(RobotMap.solePort1);
+    }
+
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
+    public void extend(boolean on) {
+        this.s1.set(on);
+    }
+
+    @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+        this.setDefaultCommand(new SolenoidClose());
     }
-    public void extend(){
-    	s1.set(Value.kForward);
-    }
-    public void retract(){
-    	s1.set(Value.kReverse);
-    }
-}
 
+}

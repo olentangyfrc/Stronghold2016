@@ -1,23 +1,18 @@
 package org.usfirst.frc.team4611.robot.commands;
 
 import org.usfirst.frc.team4611.robot.Robot;
-import org.usfirst.frc.team4611.robot.RobotMap;
-import org.usfirst.frc.team4611.robot.subsystems.WheelShooter;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class WheelReverse extends Command {
+public class SolenoidClose extends Command {
 
-    private WheelShooter wheels;
-
-    public WheelReverse() {
+    public SolenoidClose() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        this.requires(Robot.wheelShooter);
-        this.wheels = new WheelShooter();
+        this.requires(Robot.solenoidSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -28,7 +23,7 @@ public class WheelReverse extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        this.wheels.spin(RobotMap.wheelReverseSpeed);
+        Robot.solenoidSubsystem.extend(false);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -46,6 +41,5 @@ public class WheelReverse extends Command {
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
-        this.wheels.spin(0);
     }
 }

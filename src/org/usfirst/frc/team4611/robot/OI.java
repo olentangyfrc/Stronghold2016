@@ -1,8 +1,8 @@
 package org.usfirst.frc.team4611.robot;
 
 import org.usfirst.frc.team4611.robot.commands.SolenoidCommand;
-import org.usfirst.frc.team4611.robot.commands.WheelReverse;
-import org.usfirst.frc.team4611.robot.commands.WheelShoot;
+///import org.usfirst.frc.team4611.robot.commands.WheelReverse;
+//import org.usfirst.frc.team4611.robot.commands.WheelShoot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -41,15 +41,15 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
     public Joystick leftJoy = new Joystick(1);
     public Joystick rightJoy = new Joystick(2);
+    public Button pneumatic = new JoystickButton(this.rightJoy, 5);
 
     public OI() {
-        Button pneumatic = new JoystickButton(this.rightJoy, 11);
-        Button wheelShoot = new JoystickButton(this.leftJoy, 1);
-        Button wheelReverse = new JoystickButton(this.leftJoy, 2);
+        //Button wheelShoot = new JoystickButton(this.leftJoy, 1);
+        //Button wheelReverse = new JoystickButton(this.leftJoy, 2);
 
-        pneumatic.whenPressed(new SolenoidCommand());
-        wheelShoot.whenPressed(new WheelShoot());
-        wheelReverse.whileHeld(new WheelReverse());
+        this.pneumatic.whenPressed(new SolenoidCommand());
+        //wheelShoot.whenPressed(new WheelShoot());
+        //wheelReverse.whileHeld(new WheelReverse());
     }
 
     public double filter(double raw) //used to cut interference

@@ -2,10 +2,11 @@
 package org.usfirst.frc.team4611.robot;
 
 import org.usfirst.frc.team4611.robot.subsystems.SolenoidSubsystem;
-import org.usfirst.frc.team4611.robot.subsystems.WheelShooter;
+//import org.usfirst.frc.team4611.robot.subsystems.WheelShooter;
 //import org.usfirst.frc.team4611.robot.commands.ExampleCommand;
 //import org.usfirst.frc.team4611.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
+//import org.usfirst.frc.team4611.robot.subsystems.pneumaticSubsystem;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -13,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,8 +31,8 @@ public class Robot extends IterativeRobot {
     public static rightSide rightS = new rightSide();
     Command autonomousCommand;
     SendableChooser chooser;
+    //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
     public static SolenoidSubsystem solenoidSubsystem = new SolenoidSubsystem();
-    public static WheelShooter wheelShooter = new WheelShooter();
 
     /**
      * This function is run when the robot is first started up and should be
@@ -39,10 +41,8 @@ public class Robot extends IterativeRobot {
     @Override
     public void robotInit() {
         oi = new OI();
-        //chooser = new SendableChooser();
-        //chooser.addDefault("Default Auto", new ExampleCommand());
-//        chooser.addObject("My Auto", new MyAutoCommand());
-        //SmartDashboard.putData("Auto mode", chooser);
+        this.chooser = new SendableChooser();
+        SmartDashboard.putData("Auto mode", this.chooser);
     }
 
     /**

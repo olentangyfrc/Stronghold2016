@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class SolenoidCommand extends Command {
 
-    private Timer timer;
-    private double initialTime = 0.0;
+    public Timer timer;
+    public double initialTime;
 
     public SolenoidCommand() {
         this.requires(Robot.solenoidSubsystem);
@@ -28,7 +28,7 @@ public class SolenoidCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.solenoidSubsystem.extend();
+        Robot.solenoidSubsystem.extend(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -39,14 +39,15 @@ public class SolenoidCommand extends Command {
     }
 
     // Called once after isFinished returns true
-    @Override
-    protected void end() {
-        Robot.solenoidSubsystem.retract();
-    }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+    }
+
+    @Override
+    protected void end() {
+        // TODO Auto-generated method stub
     }
 }
