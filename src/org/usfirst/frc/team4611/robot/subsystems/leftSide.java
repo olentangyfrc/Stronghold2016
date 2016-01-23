@@ -1,14 +1,8 @@
 package org.usfirst.frc.team4611.robot.subsystems;
 
+import org.usfirst.frc.team4611.robot.RobotMap;
 //import org.usfirst.frc.team4611.robot.commands.leftTank;
 import org.usfirst.frc.team4611.robot.commands.leftTank;
-import org.usfirst.frc.team4611.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.command.Subsystem;
-
 
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -22,7 +16,7 @@ public class leftSide extends Subsystem {
 
     public leftSide() {
         this.frontL = new Victor(RobotMap.frontLeftWheel);
-        this.backL = new Victor(RobotMap.backRightWheel);
+        this.backL = new Victor(RobotMap.backLeftWheel);
     }
 
     // Put methods for controlling this subsystem

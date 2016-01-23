@@ -13,6 +13,7 @@ public class SolenoidSubsystem extends Subsystem {
     Solenoid s1;
 
     public SolenoidSubsystem() {
+        super("Solenoid Subsystem");
         this.s1 = new Solenoid(RobotMap.solePort1);
     }
 

@@ -41,13 +41,13 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
     public Joystick leftJoy = new Joystick(1);
     public Joystick rightJoy = new Joystick(2);
+    public Button pneumatic = new JoystickButton(this.rightJoy, 5);
 
     public OI() {
-        Button pneumatic = new JoystickButton(this.rightJoy, 5);
         //Button wheelShoot = new JoystickButton(this.leftJoy, 1);
         //Button wheelReverse = new JoystickButton(this.leftJoy, 2);
 
-        pneumatic.whenPressed(new SolenoidCommand());
+        this.pneumatic.whenPressed(new SolenoidCommand());
         //wheelShoot.whenPressed(new WheelShoot());
         //wheelReverse.whileHeld(new WheelReverse());
     }
