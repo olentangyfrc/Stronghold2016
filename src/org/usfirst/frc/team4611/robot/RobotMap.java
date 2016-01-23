@@ -18,14 +18,10 @@ public class RobotMap {
     public static final int LAcSpeed = 1;
 
     public static final int solePort1 = 0;
-    public static final int solePort2 = 1;
 
     public static final double soleTime = 5.0;
 
-    public static final int leftWheelShooter = 5;
-    public static final int rightWheelShooter = 6;
-    public static final double wheelForwardSpeed = 1.0;
-    public static final double wheelReverseSpeed = -0.5;
+
     
     public static final int PORT = 0;
 }
