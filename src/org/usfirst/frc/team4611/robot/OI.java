@@ -4,6 +4,7 @@ import org.usfirst.frc.team4611.robot.commands.SolenoidCommand;
 ///import org.usfirst.frc.team4611.robot.commands.WheelReverse;
 //import org.usfirst.frc.team4611.robot.commands.WheelShoot;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -42,6 +43,7 @@ public class OI {
     public Joystick leftJoy = new Joystick(1);
     public Joystick rightJoy = new Joystick(2);
     public Button pneumatic = new JoystickButton(this.rightJoy, 5);
+    public AnalogInput ai = new AnalogInput(0);
 
     public OI() {
         //Button wheelShoot = new JoystickButton(this.leftJoy, 1);
