@@ -11,23 +11,22 @@ public class RobotMap {
     public static final int backLeftWheel = 1;
     public static final int frontRightWheel = 2;
     public static final int backRightWheel = 3;
-    
+
     public static final int leftShooterWheel = 4;
     public static final int rightShooterWheel = 5;
 
     public static final double feedingWheelShooterSpeed = -0.5;
     public static final double launchingWheelShooterSpeed = 1.0;
     // Joystick  ports
-    public static final int leftJS = 1;
-    public static final int rightJS = 2;
-    public static final int LAcSpeed = 1;
+    public static final int leftJS = 0;
+    public static final int rightJS = 1;
 
     public static final int solePort1 = 0;
     public static final int solePort2 = 1;
     public static final int solePort3 = 2;
     public static final int solePort4 = 3;
 
-    public static final double soleTime = 2.0;
+    public static final double soleTime = 1.0;
 
     public static final int PORT = 0;
 }

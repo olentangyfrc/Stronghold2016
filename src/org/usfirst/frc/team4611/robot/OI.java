@@ -1,11 +1,11 @@
 package org.usfirst.frc.team4611.robot;
 
 import org.usfirst.frc.team4611.robot.commands.FeedingPosition;
-import org.usfirst.frc.team4611.robot.commands.ShootingPosition;
 ///import org.usfirst.frc.team4611.robot.commands.WheelReverse;
 //import org.usfirst.frc.team4611.robot.commands.WheelShoot;
 //import org.usfirst.frc.team4611.robot.commands.WheelsFeed;
 import org.usfirst.frc.team4611.robot.commands.ShooterWheelsMove;
+import org.usfirst.frc.team4611.robot.commands.ShootingPosition;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -44,21 +44,24 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
     public Joystick leftJoy = new Joystick(1);
     public Joystick rightJoy = new Joystick(2);
-    public Button feedingPneumatic = new JoystickButton(this.rightJoy, 5); //just lowers the pneumatic
-    public Button loadWheels = new JoystickButton(this.rightJoy, 2); //just puts the wheels on reverse
-    public Button shootWheels = new JoystickButton(this.rightJoy, 3); //just puts the wheels on full forward
-    public Button combineLoading = new JoystickButton(this.rightJoy, 6); //executing both wheels and pnuematics to load
+    public Button feedingPneumatic = new JoystickButton(this.rightJoy, 5); // lowers the pneumatic
+    public Button loadWheels = new JoystickButton(this.rightJoy, 2); // puts the wheels on reverse
+    public Button shootWheels = new JoystickButton(this.rightJoy, 3); // puts the wheels on full forward
+    public Button combineLoading = new JoystickButton(this.rightJoy, 6); // executing both wheels and pnuematics to load
     public Button shootingPneumatic = new JoystickButton(this.rightJoy, 4);
-    
+
     public OI() {
         //Button wheelShoot = new JoystickButton(this.leftJoy, 1);
         //Button wheelReverse = new JoystickButton(this.leftJoy, 2);
 
-        this.feedingPneumatic.whenPressed(new FeedingPosition());
+        this.feedingPneumatic.whileHeld(new FeedingPosition());
         this.shootingPneumatic.whenPressed(new ShootingPosition());
-        this.loadWheels.whileHeld(new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
-        this.shootWheels.whileHeld(new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
-        this.combineLoading.whileHeld(new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
+        this.loadWheels.whileHeld(
+                new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
+        this.shootWheels.whileHeld(
+                new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
+        this.combineLoading.whileHeld(
+                new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
         this.combineLoading.whenPressed(new FeedingPosition()); //not sure if this will work
         //wheelShoot.whenPressed(new WheelShoot());
         //wheelReverse.whileHeld(new WheelReverse());

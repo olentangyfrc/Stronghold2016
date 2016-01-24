@@ -29,14 +29,19 @@ public class FeedingPosition extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.flipSolenoid.flip(Value.kForward);
+        if (this.timer.getFPGATimestamp()
+                - this.initialTime < RobotMap.soleTime) {
+            Robot.flipSolenoid.flip(Value.kForward);
+        } else {
+            Robot.flipSolenoid.flip(Value.kOff);
+        }
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return this.timer.getFPGATimestamp()
-                - this.initialTime > RobotMap.soleTime;
+        return false;
     }
 
     // Called once after isFinished returns true
@@ -49,6 +54,5 @@ public class FeedingPosition extends Command {
 
     @Override
     protected void end() {
-        Robot.flipSolenoid.flip(Value.kOff);
     }
 }

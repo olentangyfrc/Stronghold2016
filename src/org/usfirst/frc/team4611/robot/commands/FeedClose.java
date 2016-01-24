@@ -1,8 +1,10 @@
 package org.usfirst.frc.team4611.robot.commands;
 
 import org.usfirst.frc.team4611.robot.Robot;
+import org.usfirst.frc.team4611.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -10,22 +12,32 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class FeedClose extends Command {
 
+    public Timer timer;
+    public double initialTime;
+
     public FeedClose() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         // NOTE: Assumes both pneumatics
         this.requires(Robot.feedSolenoid);
+        this.timer = new Timer();
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        this.initialTime = this.timer.getFPGATimestamp();
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.feedSolenoid.feed(Value.kOff);
+        if (this.timer.getFPGATimestamp()
+                - this.initialTime < RobotMap.soleTime) {
+            Robot.feedSolenoid.feed(Value.kReverse);
+        } else {
+            Robot.feedSolenoid.feed(Value.kOff);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
