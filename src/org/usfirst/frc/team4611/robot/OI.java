@@ -3,6 +3,8 @@ package org.usfirst.frc.team4611.robot;
 import org.usfirst.frc.team4611.robot.commands.FeedingPosition;
 ///import org.usfirst.frc.team4611.robot.commands.WheelReverse;
 //import org.usfirst.frc.team4611.robot.commands.WheelShoot;
+import org.usfirst.frc.team4611.robot.commands.WheelsFeed;
+import org.usfirst.frc.team4611.robot.commands.WheelsLaunch;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -41,13 +43,20 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
     public Joystick leftJoy = new Joystick(1);
     public Joystick rightJoy = new Joystick(2);
-    public Button pneumatic = new JoystickButton(this.rightJoy, 5);
+    public Button pneumatic = new JoystickButton(this.rightJoy, 5); //just lowers the pneumatic
+    public Button loadWheels = new JoystickButton(this.rightJoy, 2); //just puts the wheels on reverse
+    public Button shootWheels = new JoystickButton(this.rightJoy, 3); //just puts the wheels on full forward
+    public Button combineLoading = new JoystickButton(this.rightJoy, 6); //executing both wheels and pnuematics to load
 
     public OI() {
         //Button wheelShoot = new JoystickButton(this.leftJoy, 1);
         //Button wheelReverse = new JoystickButton(this.leftJoy, 2);
 
         this.pneumatic.whenPressed(new FeedingPosition());
+        this.loadWheels.whileHeld(new WheelsFeed());
+        this.shootWheels.whileHeld(new WheelsLaunch());
+        this.combineLoading.whileHeld(new WheelsFeed());        //not sure if this will work
+        this.combineLoading.whenPressed(new FeedingPosition()); //not sure if this will work
         //wheelShoot.whenPressed(new WheelShoot());
         //wheelReverse.whileHeld(new WheelReverse());
     }
