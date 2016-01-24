@@ -5,7 +5,7 @@ import org.usfirst.frc.team4611.robot.commands.ShootingPosition;
 ///import org.usfirst.frc.team4611.robot.commands.WheelReverse;
 //import org.usfirst.frc.team4611.robot.commands.WheelShoot;
 import org.usfirst.frc.team4611.robot.commands.WheelsFeed;
-import org.usfirst.frc.team4611.robot.commands.WheelsLaunch;
+import org.usfirst.frc.team4611.robot.commands.ShooterWheelsMove;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -56,9 +56,9 @@ public class OI {
 
         this.feedingPneumatic.whenPressed(new FeedingPosition());
         this.shootingPneumatic.whenPressed(new ShootingPosition());
-        this.loadWheels.whileHeld(new WheelsFeed());
-        this.shootWheels.whileHeld(new WheelsLaunch());
-        this.combineLoading.whileHeld(new WheelsFeed());        //not sure if this will work
+        this.loadWheels.whileHeld(new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
+        this.shootWheels.whileHeld(new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
+        this.combineLoading.whileHeld(new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
         this.combineLoading.whenPressed(new FeedingPosition()); //not sure if this will work
         //wheelShoot.whenPressed(new WheelShoot());
         //wheelReverse.whileHeld(new WheelReverse());

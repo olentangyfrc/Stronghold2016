@@ -8,21 +8,23 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class WheelsLaunch extends Command {
-
-    public WheelsLaunch() {
+public class ShooterWheelsMove extends Command {
+	double speed;
+    public ShooterWheelsMove(double inputSpeed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	speed = inputSpeed;
     	this.requires(Robot.shooterWheels);
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
+    protected void initialize() { //should stop already running wheels too
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooterWheels.shoot(RobotMap.launchingWheelShooterSpeed);
+    	Robot.shooterWheels.shoot(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
