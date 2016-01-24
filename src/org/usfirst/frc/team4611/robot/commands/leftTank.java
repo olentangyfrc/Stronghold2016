@@ -38,7 +38,7 @@ public class leftTank extends Command {
         this.joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
         Robot.leftS.move(this.joyVal);
         double value = Robot.oi.ai.getAverageValue();
-        double distance = value * 0.49;
+        double distance = (value * 0.49)/100;
         SmartDashboard.putNumber("Range Finder Average Voltage", value);
         SmartDashboard.putNumber("Calculated Distance", distance);
     }
