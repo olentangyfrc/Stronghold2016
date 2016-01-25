@@ -19,19 +19,17 @@ public class leftTankAuto extends Command {
     double joyVal;
     public Timer timer;
     public double initialTime;
-    FileOutputStream out;
 
     public leftTankAuto() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         this.requires(Robot.leftS);
-        this.initialTime = this.timer.getFPGATimestamp();
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	
+        this.initialTime = this.timer.getFPGATimestamp();
     }
 
     // Called repeatedly when this Command is scheduled to run

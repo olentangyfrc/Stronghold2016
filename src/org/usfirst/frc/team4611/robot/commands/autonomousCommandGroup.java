@@ -20,8 +20,7 @@ public class autonomousCommandGroup extends CommandGroup {
         // Command1 and Command2 will run in parallel
     	
     	//The following two lines are examples
-    	addSequential(new leftTankAuto());
-    	addParallel(new rightTankAuto());
+    	addSequential(new DriveAuto());
     	// A command group will require all of the subsystems that each member
         // would require.
         // e.g. if Command1 requires chassis, and Command2 requires arm,

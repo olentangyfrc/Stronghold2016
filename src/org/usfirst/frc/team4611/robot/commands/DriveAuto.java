@@ -14,22 +14,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class rightTankAuto extends Command {
+public class DriveAuto extends Command {
 
     public Timer timer;
     public double initialTime;
-    FileOutputStream out;
 
-    public rightTankAuto() {
+    public DriveAuto() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         this.requires(Robot.leftS);
-        this.initialTime = this.timer.getFPGATimestamp();
+        this.requires(Robot.rightS);
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        this.initialTime = Timer.getFPGATimestamp();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -43,6 +43,7 @@ public class rightTankAuto extends Command {
         //{
         //joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
         //}
+        Robot.leftS.move(1.0);
         Robot.rightS.move(1.0);
         //double value = Robot.oi.ai.getAverageValue();
         //double distance = (value * 0.49) / 100;

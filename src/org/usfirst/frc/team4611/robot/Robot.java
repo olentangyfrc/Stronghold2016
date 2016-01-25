@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4611.robot;
 
+import org.usfirst.frc.team4611.robot.commands.DriveAuto;
 import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup;
 import org.usfirst.frc.team4611.robot.subsystems.SolenoidSubsystem;
 //import org.usfirst.frc.team4611.robot.subsystems.WheelShooter;
@@ -30,7 +31,7 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
-    Command autonomousCommand = new autonomousCommandGroup();
+    Command autonomousCommand = new DriveAuto();
     SendableChooser chooser;
     //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
     public static SolenoidSubsystem solenoidSubsystem = new SolenoidSubsystem();
