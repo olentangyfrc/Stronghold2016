@@ -31,7 +31,7 @@ public class leftTankAuto extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        this.joyVal = 0;
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -45,8 +45,7 @@ public class leftTankAuto extends Command {
         //{
         //joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
         //}
-        this.joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
-        Robot.leftS.move(this.joyVal);
+        Robot.leftS.move(1.0);
         //double value = Robot.oi.ai.getAverageValue();
         //double distance = (value * 0.49) / 100;
         //SmartDashboard.putNumber("Range Finder Average Voltage", value);

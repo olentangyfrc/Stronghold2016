@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class rightTankAuto extends Command {
 
-    double joyVal;
     public Timer timer;
     public double initialTime;
     FileOutputStream out;
@@ -31,7 +30,6 @@ public class rightTankAuto extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        this.joyVal = 0;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -45,8 +43,7 @@ public class rightTankAuto extends Command {
         //{
         //joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
         //}
-        this.joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
-        Robot.rightS.move(this.joyVal);
+        Robot.rightS.move(1.0);
         //double value = Robot.oi.ai.getAverageValue();
         //double distance = (value * 0.49) / 100;
         //SmartDashboard.putNumber("Range Finder Average Voltage", value);
@@ -57,7 +54,7 @@ public class rightTankAuto extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-    	return timer.getFPGATimestamp() - initialTime > RobotMap.autoTime;    
+    	return Timer.getFPGATimestamp() - initialTime > RobotMap.autoTime;    
     }
     
 
