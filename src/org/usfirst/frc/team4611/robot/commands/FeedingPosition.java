@@ -31,7 +31,7 @@ public class FeedingPosition extends Command {
     protected void execute() {
         if (this.timer.getFPGATimestamp()
                 - this.initialTime < RobotMap.soleTime) {
-            Robot.flipSolenoid.flip(Value.kForward);
+            Robot.flipSolenoid.flip(Value.kReverse);
         } else {
             Robot.flipSolenoid.flip(Value.kOff);
         }

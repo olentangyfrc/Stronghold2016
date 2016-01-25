@@ -14,7 +14,7 @@ public class ShootingPosition extends Command {
 
     public double initialTime;
     public Timer timer;
-
+    
     public ShootingPosition() {
         this.requires(Robot.flipSolenoid);
         this.timer = new Timer();
@@ -31,7 +31,7 @@ public class ShootingPosition extends Command {
     protected void execute() {
         if (this.timer.getFPGATimestamp()
                 - this.initialTime < RobotMap.soleTime) {
-            Robot.flipSolenoid.flip(Value.kReverse);
+            Robot.flipSolenoid.flip(Value.kForward);
         } else {
             Robot.flipSolenoid.flip(Value.kOff);
         }
