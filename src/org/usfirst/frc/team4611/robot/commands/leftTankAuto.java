@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.usfirst.frc.team4611.robot.Robot;
+import org.usfirst.frc.team4611.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -13,14 +14,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class leftTank extends Command {
+public class leftTankAuto extends Command {
 
     double joyVal;
     public Timer timer;
     public double initialTime;
     FileOutputStream out;
 
-    public leftTank() {
+    public leftTankAuto() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         this.requires(Robot.leftS);
@@ -46,28 +47,19 @@ public class leftTank extends Command {
         //}
         this.joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
         Robot.leftS.move(this.joyVal);
-        double value = Robot.oi.ai.getAverageValue();
-        double distance = (value * 0.49) / 100;
-        SmartDashboard.putNumber("Range Finder Average Voltage", value);
-        SmartDashboard.putNumber("Calculated Distance", distance);
-        File data = new File(
-                "C:/Users/Ankit Deogharia/workspace/Stronghold2016/src/DataFile.txt");
-        double elapsedTime = this.timer.getFPGATimestamp() - this.initialTime;
-        try {
-            this.out = new FileOutputStream(data);
-            String content = "" + elapsedTime + "," + distance + "\n";
-            byte[] values = content.getBytes();
-            this.out.write(values);
-        } catch (IOException e) {
-            System.out.println("File not found");
-        }
+        //double value = Robot.oi.ai.getAverageValue();
+        //double distance = (value * 0.49) / 100;
+        //SmartDashboard.putNumber("Range Finder Average Voltage", value);
+        //SmartDashboard.putNumber("Calculated Distance", distance);
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return false;
+    	return timer.getFPGATimestamp() - initialTime > RobotMap.autoTime;    
     }
+    
 
     // Called once after isFinished returns true
     @Override
@@ -78,11 +70,5 @@ public class leftTank extends Command {
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
-    	try {
-			this.out.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     }
 }

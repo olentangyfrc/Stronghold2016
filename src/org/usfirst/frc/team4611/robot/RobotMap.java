@@ -20,6 +20,7 @@ public class RobotMap {
     public static final int solePort1 = 0;
 
     public static final double soleTime = 2.0;
+    public static final double autoTime = 3.0;
 
     public static final int PORT = 0;
 }
