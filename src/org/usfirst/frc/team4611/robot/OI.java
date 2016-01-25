@@ -56,10 +56,11 @@ public class OI {
         //Button wheelShoot = new JoystickButton(this.leftJoy, 1);
         //Button wheelReverse = new JoystickButton(this.leftJoy, 2);
 
-        this.feedingPneumatic.whileHeld(new FeedingPosition());
+        //this.feedingPneumatic.whileHeld(new FeedingPosition());
         //this.shootingPneumatic.whenPressed(new ShootingPosition());
         this.loadWheels.whileHeld(
                 new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
+        this.loadWheels.whileHeld(new FeedingPosition());
         this.shootWheels.whileHeld(
                 new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
         this.feedBall.whenPressed(new FeedPush());

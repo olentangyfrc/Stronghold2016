@@ -32,12 +32,7 @@ public class FeedClose extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        if (this.timer.getFPGATimestamp()
-                - this.initialTime < RobotMap.soleTime) {
-            Robot.feedSolenoid.feed(Value.kReverse);
-        } else {
-            Robot.feedSolenoid.feed(Value.kOff);
-        }
+    	Robot.feedSolenoid.feed(Value.kReverse);
     }
 
     // Make this return true when this Command no longer needs to run execute()

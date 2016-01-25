@@ -29,7 +29,12 @@ public class FeedPush extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.feedSolenoid.feed(Value.kForward);
+    	if (this.timer.getFPGATimestamp()
+                - this.initialTime < RobotMap.soleTime) {
+            Robot.feedSolenoid.feed(Value.kForward);
+        } else {
+            Robot.feedSolenoid.feed(Value.kOff);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
