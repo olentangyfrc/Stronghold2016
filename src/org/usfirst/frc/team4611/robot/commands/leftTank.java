@@ -46,21 +46,11 @@ public class leftTank extends Command {
         //}
         this.joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
         Robot.leftS.move(this.joyVal);
-        double value = Robot.oi.ai.getAverageValue();
-        double distance = (value * 0.49) / 100;
-        SmartDashboard.putNumber("Range Finder Average Voltage", value);
-        SmartDashboard.putNumber("Calculated Distance", distance);
-        File data = new File(
-                "C:/Users/Ankit Deogharia/workspace/Stronghold2016/src/DataFile.txt");
-        double elapsedTime = this.timer.getFPGATimestamp() - this.initialTime;
-        try {
-            this.out = new FileOutputStream(data);
-            String content = "" + elapsedTime + "," + distance + "\n";
-            byte[] values = content.getBytes();
-            this.out.write(values);
-        } catch (IOException e) {
-            System.out.println("File not found");
-        }
+        //double value = Robot.oi.ai.getAverageValue();
+        //double distance = (value * 0.49) / 100;
+        //SmartDashboard.putNumber("Range Finder Average Voltage", value);
+        //SmartDashboard.putNumber("Calculated Distance", distance);
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -78,11 +68,6 @@ public class leftTank extends Command {
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
-    	try {
-			this.out.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	
     }
 }
