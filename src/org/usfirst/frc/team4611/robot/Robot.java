@@ -31,7 +31,7 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
-    Command autonomousCommand = new DriveAuto();
+    Command autonomousCommand;
     SendableChooser chooser;
     //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
     public static SolenoidSubsystem solenoidSubsystem = new SolenoidSubsystem();
@@ -45,6 +45,7 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         this.chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", this.chooser);
+        autonomousCommand = new DriveAuto();
     }
 
     /**
@@ -75,7 +76,7 @@ public class Robot extends IterativeRobot {
      */
     @Override
     public void autonomousInit() {
-        this.autonomousCommand = (Command) this.chooser.getSelected();
+        //this.autonomousCommand = (Command) this.chooser.getSelected(); --------------------------CHANGED
 
         /*
          * String autoSelected = SmartDashboard.getString("Auto Selector",
