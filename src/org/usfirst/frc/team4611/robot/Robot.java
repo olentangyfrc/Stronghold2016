@@ -3,6 +3,7 @@ package org.usfirst.frc.team4611.robot;
 
 import org.usfirst.frc.team4611.robot.commands.DriveAuto;
 import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup;
+import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup2;
 import org.usfirst.frc.team4611.robot.subsystems.SolenoidSubsystem;
 //import org.usfirst.frc.team4611.robot.subsystems.WheelShooter;
 //import org.usfirst.frc.team4611.robot.commands.ExampleCommand;
@@ -45,7 +46,7 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         this.chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", this.chooser);
-        autonomousCommand = new DriveAuto();
+        autonomousCommand = new autonomousCommandGroup();
     }
 
     /**

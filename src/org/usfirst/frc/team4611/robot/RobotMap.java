@@ -23,4 +23,6 @@ public class RobotMap {
     public static final double autoTime = 30;
 
     public static final int PORT = 0;
+    
+    public static final double autoSpeed = .5;
 }

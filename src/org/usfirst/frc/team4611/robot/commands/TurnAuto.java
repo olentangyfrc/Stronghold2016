@@ -14,18 +14,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class DriveAuto extends Command {
+public class TurnAuto extends Command {
 
     public Timer timer;
     public double initialTime;
     public double actualTime;
+    public int turningOrientation;
 
-    public DriveAuto(double time) { //now we can call how long we want it to run
+    public TurnAuto(double time, int turning) { //now we can call how long we want it to turn, and in what direction
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         this.requires(Robot.leftS);
         this.requires(Robot.rightS);
         this.actualTime = time;
+        this.turningOrientation = turning; //this should only be 1 or -1; if it's 0,  the robot won't move.
     }
 
     // Called just before this Command runs the first time
@@ -45,8 +47,8 @@ public class DriveAuto extends Command {
         //{
         //joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
         //}
-        Robot.leftS.move(-RobotMap.autoSpeed);
-        Robot.rightS.move(-RobotMap.autoSpeed);
+        Robot.leftS.move(turningOrientation*RobotMap.autoSpeed);
+        Robot.rightS.move(-turningOrientation*RobotMap.autoSpeed);
         //double value = Robot.oi.ai.getAverageValue();
         //double distance = (value * 0.49) / 100;
         //SmartDashboard.putNumber("Range Finder Average Voltage", value);
