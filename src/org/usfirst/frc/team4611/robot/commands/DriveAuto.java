@@ -43,8 +43,8 @@ public class DriveAuto extends Command {
         //{
         //joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
         //}
-        Robot.leftS.move(1.0);
-        Robot.rightS.move(1.0);
+        Robot.leftS.move(-1.0);
+        Robot.rightS.move(-1.0);
         //double value = Robot.oi.ai.getAverageValue();
         //double distance = (value * 0.49) / 100;
         //SmartDashboard.putNumber("Range Finder Average Voltage", value);
