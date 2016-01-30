@@ -19,6 +19,12 @@ public class autonomousCommandGroup2 extends CommandGroup {
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
 
+    	addSequential (new DriveAuto(2));
+    	addSequential (new TurnAuto(.2, -1)); //turns one way
+    	addSequential (new DriveAuto(1));
+    	addSequential (new TurnAuto(.2, 1)); //turns the other way
+    	addSequential (new SolenoidCommand());
+    	
         // A command group will require all of the subsystems that each member
         // would require.
         // e.g. if Command1 requires chassis, and Command2 requires arm,
