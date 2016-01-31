@@ -51,6 +51,7 @@ public class OI {
     //public Button combineLoading = new JoystickButton(this.rightJoy, 6); // executing both wheels and pnuematics to load
     //public Button shootingPneumatic = new JoystickButton(this.rightJoy, 4);
     public Button feedBall = new JoystickButton(this.rightJoy, 4); //moves the small pneumatic pusher
+    public Button lowBar = new JoystickButton (this.rightJoy, 7);
 
     public OI() {
         //Button wheelShoot = new JoystickButton(this.leftJoy, 1);
@@ -61,6 +62,8 @@ public class OI {
         this.loadWheels.whileHeld(
                 new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
         this.loadWheels.whileHeld(new FeedingPosition());
+        this.lowBar.whileHeld(new ShooterWheelsMove(.5*RobotMap.feedingWheelShooterSpeed));
+        this.lowBar.whileHeld(new FeedingPosition());
         this.shootWheels.whileHeld(
                 new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
         this.feedBall.whenPressed(new FeedPush());

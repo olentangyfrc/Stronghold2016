@@ -15,8 +15,8 @@ public class RobotMap {
     public static final int leftShooterWheel = 4;
     public static final int rightShooterWheel = 5;
 
-    public static final double feedingWheelShooterSpeed = -0.5;
-    public static final double launchingWheelShooterSpeed = 1.0;
+    public static final double feedingWheelShooterSpeed = -0.1;
+    public static final double launchingWheelShooterSpeed = .50;
     // Joystick  ports
     public static final int leftJS = 0;
     public static final int rightJS = 1;
