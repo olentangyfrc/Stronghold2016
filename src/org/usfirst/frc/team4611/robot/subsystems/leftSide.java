@@ -23,8 +23,8 @@ public class leftSide extends Subsystem {
     // here. Call these from Commands.
     public void move(double speed) {
         //speed = Math.signum(speed) * (Math.abs(speed) - .1);
-        this.frontL.set(speed);
-        this.backL.set(speed);
+        this.frontL.set(speed*RobotMap.dirFacing);
+        this.backL.set(speed*RobotMap.dirFacing);
     }
 
     @Override

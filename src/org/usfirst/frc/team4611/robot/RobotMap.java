@@ -29,4 +29,6 @@ public class RobotMap {
     public static final double soleTime = 1.0;
 
     public static final int PORT = 0;
+    
+    public static int dirFacing = 1;
 }

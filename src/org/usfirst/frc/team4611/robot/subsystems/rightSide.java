@@ -22,8 +22,8 @@ public class rightSide extends Subsystem {
 	public void move(double speed)
 	{
 		//speed = Math.signum(speed) * (Math.abs(speed) - .1);
-		frontR.set(-speed);
-		backR.set(-speed);
+		frontR.set(-speed*RobotMap.dirFacing);
+		backR.set(-speed*RobotMap.dirFacing);
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
