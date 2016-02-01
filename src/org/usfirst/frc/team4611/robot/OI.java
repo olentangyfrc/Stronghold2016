@@ -51,7 +51,7 @@ public class OI {
     public Button shootWheels = new JoystickButton(this.rightJoy, 1); // puts the wheels on full forward
     //public Button combineLoading = new JoystickButton(this.rightJoy, 6); // executing both wheels and pnuematics to load
     //public Button shootingPneumatic = new JoystickButton(this.rightJoy, 4);
-    public Button feedBall = new JoystickButton(this.rightJoy, 4); //moves the small pneumatic pusher
+    public Button feedBall = new JoystickButton(this.leftJoy, 1); //moves the small pneumatic pusher
     public Button lowBar = new JoystickButton (this.rightJoy, 7);
     public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation 
     
