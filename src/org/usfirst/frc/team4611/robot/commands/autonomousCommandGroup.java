@@ -20,12 +20,12 @@ public class autonomousCommandGroup extends CommandGroup {
         // Command1 and Command2 will run in parallel
     	
     	//The following two lines are examples
-    	addSequential (new DriveAuto(.7));
-    	addSequential (new TurnAuto(.2, 1)); //turns one way
+    	addSequential (new DriveAuto(.7)); //1.2066 seconds for 10 ft.
+    	addSequential (new TurnAuto(.2, 1)); //turns right
     	addSequential (new DriveAuto(.2));
-    	addSequential (new TurnAuto(.2, -1)); //turns the other way
+    	addSequential (new TurnAuto(.2, -1)); //turns left
     	addSequential (new DriveAuto (.7));
-    	addSequential (new SolenoidCommand()); //check to see if this works. It might work, it might not.
+    	addSequential (new SolenoidCommand()); //Don't know if this works yet 
     	
     	// A command group will require all of the subsystems that each member
         // would require.
