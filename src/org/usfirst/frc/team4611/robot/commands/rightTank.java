@@ -25,15 +25,20 @@ public class rightTank extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//if(RobotMap.DirFaced)
-    	//{
-    		//joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY()) * -1;
-    	//}
-    	//else
-    	//{
-    		//joyVal = Robot.oi.filter(Robot.oi.RightJoy.getY());
-    	//}
-    	joyVal = Robot.oi.filter(Robot.oi.rightJoy.getY());
+    	if (RobotMap.dirFacing == 1) {
+    		joyVal = Robot.oi.filter(Robot.oi.rightJoy.getY());
+    		//RobotMap.frontLeftWheel = 2;
+    		//RobotMap.backLeftWheel = 7;
+    		//RobotMap.frontRightWheel = 8;
+    		//RobotMap.backRightWheel = 9;
+    	} else if (RobotMap.dirFacing == -1) {
+    		joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
+    		//RobotMap.frontLeftWheel = 8;
+    		//RobotMap.backLeftWheel = 9;
+    		//RobotMap.frontRightWheel = 2;
+    		//RobotMap.backRightWheel = 7;
+    	}
+    	
     	Robot.rightS.move(joyVal);
     }
 

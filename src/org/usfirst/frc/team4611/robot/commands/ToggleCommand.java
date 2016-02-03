@@ -22,16 +22,16 @@ public class ToggleCommand extends Command {
     protected void execute() {
     	if (RobotMap.dirFacing == 1) {
     		RobotMap.dirFacing = -1;
-    		RobotMap.frontLeftWheel = 2;
-    		RobotMap.backLeftWheel = 7;
-    		RobotMap.frontRightWheel = 8;
-    		RobotMap.backRightWheel = 9;
+    		//RobotMap.frontLeftWheel = 2;
+    		//RobotMap.backLeftWheel = 7;
+    		//RobotMap.frontRightWheel = 8;
+    		//RobotMap.backRightWheel = 9;
     	} else if (RobotMap.dirFacing == -1) {
     		RobotMap.dirFacing = 1;
-    		RobotMap.frontLeftWheel = 8;
-    		RobotMap.backLeftWheel = 9;
-    		RobotMap.frontRightWheel = 2;
-    		RobotMap.backRightWheel = 7;
+    		//RobotMap.frontLeftWheel = 8;
+    		//RobotMap.backLeftWheel = 9;
+    		//RobotMap.frontRightWheel = 2;
+    		//RobotMap.backRightWheel = 7;
     	} else {
     		
     	}
