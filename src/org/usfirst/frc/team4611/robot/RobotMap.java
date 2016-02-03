@@ -18,6 +18,10 @@ public class RobotMap {
     public static final int LAcSpeed = 1;
 
     public static final int solePort1 = 0;
+    
+    
+    public static final int potPort = 1;
+    public static final int clawMotorPort = 7;
 
     public static final double soleTime = 2.0;
     public static final double autoTime = 30;

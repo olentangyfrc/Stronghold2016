@@ -12,6 +12,7 @@ import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 //import org.usfirst.frc.team4611.robot.subsystems.pneumaticSubsystem;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -32,6 +33,7 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
+    
     Command autonomousCommand;
     SendableChooser chooser;
     //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
