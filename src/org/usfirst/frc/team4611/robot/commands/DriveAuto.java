@@ -19,13 +19,21 @@ public class DriveAuto extends Command {
     public Timer timer;
     public double initialTime;
     public double actualTime;
-
+    public double speed2;
     public DriveAuto(double time) { //now we can call how long we want it to run
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         this.requires(Robot.leftS);
         this.requires(Robot.rightS);
         this.actualTime = time;
+        speed2 = RobotMap.autoSpeed;
+    }
+    
+    public DriveAuto(double time, double speed){
+    	this.requires(Robot.leftS);
+    	this.requires(Robot.rightS);
+        this.actualTime = time;
+        this.speed2 = speed;
     }
 
     // Called just before this Command runs the first time
@@ -45,8 +53,8 @@ public class DriveAuto extends Command {
         //{
         //joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
         //}
-        Robot.leftS.move(-RobotMap.autoSpeed);
-        Robot.rightS.move(-RobotMap.autoSpeed);
+        Robot.leftS.move(-speed2);
+        Robot.rightS.move(-speed2);
         //double value = Robot.oi.ai.getAverageValue();
         //double distance = (value * 0.49) / 100;
         //SmartDashboard.putNumber("Range Finder Average Voltage", value);
