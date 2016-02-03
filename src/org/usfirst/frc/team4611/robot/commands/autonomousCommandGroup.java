@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4611.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-
+//Low Bar start- go on front ramp, shoot boulder
 /**
  *
  */
@@ -22,8 +22,8 @@ public class autonomousCommandGroup extends CommandGroup {
     	//The following two lines are examples
     	addSequential (new DriveAuto(.7)); //1.2066 seconds for 10 ft.
     	addSequential (new TurnAuto(.2, 1)); //turns right
-    	addSequential (new DriveAuto(.2));
-    	addSequential (new TurnAuto(.2, -1)); //turns left
+    	addSequential (new DriveAuto(.2, 0.5));
+    	addSequential (new TurnAuto(.2, -1, 0.5)); //turns left
     	addSequential (new DriveAuto (.7));
     	addSequential (new SolenoidCommand()); //Untested
     	

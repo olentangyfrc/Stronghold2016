@@ -29,8 +29,9 @@ public class TurnAuto extends Command {
         this.requires(Robot.rightS);
         this.actualTime = time;
         this.turningOrientation = turning; //this should only be 1 or -1; if it's 0,  the robot won't move.
+        this.speed2 = RobotMap.autoSpeed;
     }
-    public TurnAuto(double time, int turning, int speed)
+    public TurnAuto(double time, int turning, double speed)
     {
     	this.requires(Robot.leftS);
     	this.requires(Robot.rightS);
