@@ -11,7 +11,6 @@ import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -44,6 +43,7 @@ public class Robot extends IterativeRobot {
      */
 
     public Robot() {
+        NetworkTable.setClientMode();
         visionTable = NetworkTable.getTable("GRIP/testContoursReport");
     }
 
@@ -53,17 +53,6 @@ public class Robot extends IterativeRobot {
         this.chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", this.chooser);
         this.autonomousCommand = new autonomousCommandGroup();
-        double[] defaultValue = new double[0];
-        while (true) {
-            double[] centerX = visionTable.getNumberArray("centerX",
-                    defaultValue);
-            System.out.print("centerX's: ");
-            for (double x : centerX) {
-                System.out.print(x + " ");
-            }
-            System.out.println();
-            Timer.delay(1);
-        }
     }
 
     /**

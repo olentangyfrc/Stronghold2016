@@ -6,6 +6,7 @@ import org.usfirst.frc.team4611.robot.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -43,6 +44,14 @@ public class leftTank extends Command {
         //}
         this.joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
         Robot.leftS.move(this.joyVal);
+
+        double[] defaultValue = new double[0];
+        for (String key : Robot.visionTable.getKeys()) {
+            double[] data = Robot.visionTable.getNumberArray(key, defaultValue);
+            for (int i = 0; i < data.length; i++) {
+                SmartDashboard.putNumber(key + " #" + i, data[i]);
+            }
+        }
         //double value = Robot.oi.ai.getAverageValue();
         //double distance = (value * 0.49) / 100;
         //SmartDashboard.putNumber("Range Finder Average Voltage", value);
