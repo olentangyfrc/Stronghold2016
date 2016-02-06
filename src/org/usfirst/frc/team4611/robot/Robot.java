@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -37,6 +38,7 @@ public class Robot extends IterativeRobot {
     public static FlipSolenoid flipSolenoid = new FlipSolenoid();
     public static FeedSolenoid feedSolenoid = new FeedSolenoid();
     public static ShooterWheels shooterWheels = new ShooterWheels();
+    public static NetworkTable visionTable;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -47,6 +49,7 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         this.chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", this.chooser);
+        visionTable = NetworkTable.getTable("GRIP/testContoursReport");
     }
 
     /**
