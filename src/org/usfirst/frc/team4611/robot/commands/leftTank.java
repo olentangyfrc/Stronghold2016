@@ -6,7 +6,6 @@ import org.usfirst.frc.team4611.robot.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -48,11 +47,6 @@ public class leftTank extends Command {
         //double distance = (value * 0.49) / 100;
         //SmartDashboard.putNumber("Range Finder Average Voltage", value);
         //SmartDashboard.putNumber("Calculated Distance", distance);
-        double[] array = new double[2];
-        double[] data = Robot.visionTable.getNumberArray("centerX", array);
-        for (int i = 0; i < data.length; i++) {
-            SmartDashboard.putNumber("centerX #" + i, data[i]);
-        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
