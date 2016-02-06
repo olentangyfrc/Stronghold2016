@@ -47,13 +47,15 @@ public class OI {
     public Joystick leftJoy = new Joystick(1);
     public Joystick rightJoy = new Joystick(2);
     public Joystick shootJoy = new Joystick(3);
+    
+    
     //public Button feedingPneumatic = new JoystickButton(this.rightJoy, 5); // lowers the pneumatic
-    public Button loadWheelsandFeeding = new JoystickButton(this.leftJoy, 7); // puts the wheels on reverse
+    public Button loadWheelsandFeeding = new JoystickButton(this.leftJoy, 4); // puts the wheels on reverse
     public Button shootWheels = new JoystickButton(this.shootJoy, 1); // puts the wheels on full forward
     //public Button combineLoading = new JoystickButton(this.rightJoy, 6); // executing both wheels and pnuematics to load
     //public Button shootingPneumatic = new JoystickButton(this.rightJoy, 4);
     public Button feedBall = new JoystickButton(this.rightJoy, 1); //moves the small pneumatic pusher
-    public Button lowBar = new JoystickButton (this.leftJoy, 4);
+    public Button lowBar = new JoystickButton (this.leftJoy, 5);
     //public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation 
     
 
@@ -66,10 +68,13 @@ public class OI {
         this.loadWheelsandFeeding.whileHeld(
                 new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
         this.loadWheelsandFeeding.whileHeld(new FeedingPosition());
-        this.lowBar.whileHeld(new ShooterWheelsMove(.5*RobotMap.feedingWheelShooterSpeed));
+        
+        this.lowBar.whileHeld(new ShooterWheelsMove(0.0*RobotMap.feedingWheelShooterSpeed)); //doesn't spin wheels at all. Change coefficient as needed.
         this.lowBar.whileHeld(new FeedingPosition());
+        
         this.shootWheels.whileHeld(
                 new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
+        
         this.feedBall.whenPressed(new FeedPush());
         //this.reverse.whenPressed(new ToggleCommand());
         //this.combineLoading.whileHeld(
