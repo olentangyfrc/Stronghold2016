@@ -46,14 +46,14 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
     public Joystick leftJoy = new Joystick(1);
     public Joystick rightJoy = new Joystick(2);
-    public Button feedingPneumatic = new JoystickButton(this.rightJoy, 5); // lowers the pneumatic
-    public Button loadWheels = new JoystickButton(this.rightJoy, 2); // puts the wheels on reverse
-    public Button shootWheels = new JoystickButton(this.rightJoy, 1); // puts the wheels on full forward
+    //public Button feedingPneumatic = new JoystickButton(this.rightJoy, 5); // lowers the pneumatic
+    public Button loadWheelsandFeeding = new JoystickButton(this.leftJoy, 7); // puts the wheels on reverse
+    public Button shootWheels = new JoystickButton(this.rightJoy, 7); // puts the wheels on full forward
     //public Button combineLoading = new JoystickButton(this.rightJoy, 6); // executing both wheels and pnuematics to load
     //public Button shootingPneumatic = new JoystickButton(this.rightJoy, 4);
-    public Button feedBall = new JoystickButton(this.leftJoy, 1); //moves the small pneumatic pusher
-    public Button lowBar = new JoystickButton (this.rightJoy, 7);
-    public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation 
+    public Button feedBall = new JoystickButton(this.rightJoy, 1); //moves the small pneumatic pusher
+    public Button lowBar = new JoystickButton (this.leftJoy, 4);
+    //public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation 
     
 
     public OI() {
@@ -62,15 +62,15 @@ public class OI {
 
         //this.feedingPneumatic.whileHeld(new FeedingPosition());
         //this.shootingPneumatic.whenPressed(new ShootingPosition());
-        this.loadWheels.whileHeld(
+        this.loadWheelsandFeeding.whileHeld(
                 new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
-        this.loadWheels.whileHeld(new FeedingPosition());
+        this.loadWheelsandFeeding.whileHeld(new FeedingPosition());
         this.lowBar.whileHeld(new ShooterWheelsMove(.5*RobotMap.feedingWheelShooterSpeed));
         this.lowBar.whileHeld(new FeedingPosition());
         this.shootWheels.whileHeld(
                 new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
         this.feedBall.whenPressed(new FeedPush());
-        this.reverse.whenPressed(new ToggleCommand());
+        //this.reverse.whenPressed(new ToggleCommand());
         //this.combineLoading.whileHeld(
                 //new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
         //this.combineLoading.whenPressed(new FeedingPosition()); //not sure if this will work
@@ -83,7 +83,7 @@ public class OI {
         if (Math.abs(raw) < .15) {
             return 0;
         } else {
-            return 0.7 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw)) / 1.7;
+            return 1 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw)) / 1.7;
         }
     }
 
