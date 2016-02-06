@@ -7,10 +7,10 @@ package org.usfirst.frc.team4611.robot;
  * floating around.
  */
 public class RobotMap {
-    public static final int frontLeftWheel = 0;
-    public static final int backLeftWheel = 1;
-    public static final int frontRightWheel = 2;
-    public static final int backRightWheel = 3;
+    public static final int frontLeftWheel = 1;
+    public static final int backLeftWheel = 2;
+    public static final int frontRightWheel = 3;
+    public static final int backRightWheel = 4;
 
     // Joystick  ports
     public static final int leftJS = 1;
