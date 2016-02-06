@@ -1,9 +1,7 @@
 
 package org.usfirst.frc.team4611.robot;
 
-import org.usfirst.frc.team4611.robot.commands.DriveAuto;
 import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup;
-import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup2;
 import org.usfirst.frc.team4611.robot.subsystems.SolenoidSubsystem;
 //import org.usfirst.frc.team4611.robot.subsystems.WheelShooter;
 //import org.usfirst.frc.team4611.robot.commands.ExampleCommand;
@@ -16,6 +14,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -34,6 +33,7 @@ public class Robot extends IterativeRobot {
     public static rightSide rightS = new rightSide();
     Command autonomousCommand;
     SendableChooser chooser;
+    public static NetworkTable visionTable;
     //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
     public static SolenoidSubsystem solenoidSubsystem = new SolenoidSubsystem();
 
@@ -46,7 +46,8 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         this.chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", this.chooser);
-        autonomousCommand = new autonomousCommandGroup();
+        this.autonomousCommand = new autonomousCommandGroup();
+        visionTable.getTable("GRIP/myContoursReport");
     }
 
     /**
@@ -56,7 +57,6 @@ public class Robot extends IterativeRobot {
      */
     @Override
     public void disabledInit() {
-
     }
 
     @Override
