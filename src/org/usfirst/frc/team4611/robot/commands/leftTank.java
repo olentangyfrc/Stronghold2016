@@ -48,7 +48,7 @@ public class leftTank extends Command {
         double[] defaultValue = new double[0];
         for (String key : Robot.visionTable.getKeys()) {
             double[] data = Robot.visionTable.getNumberArray(key, defaultValue);
-            for (int i = 0; i < data.length; i++) {
+            for (int i = 1; i <= data.length; i++) {
                 SmartDashboard.putNumber(key + " #" + i, data[i]);
             }
         }
