@@ -46,9 +46,10 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
     public Joystick leftJoy = new Joystick(1);
     public Joystick rightJoy = new Joystick(2);
+    public Joystick shootJoy = new Joystick(3);
     //public Button feedingPneumatic = new JoystickButton(this.rightJoy, 5); // lowers the pneumatic
     public Button loadWheelsandFeeding = new JoystickButton(this.leftJoy, 7); // puts the wheels on reverse
-    public Button shootWheels = new JoystickButton(this.rightJoy, 7); // puts the wheels on full forward
+    public Button shootWheels = new JoystickButton(this.shootJoy, 1); // puts the wheels on full forward
     //public Button combineLoading = new JoystickButton(this.rightJoy, 6); // executing both wheels and pnuematics to load
     //public Button shootingPneumatic = new JoystickButton(this.rightJoy, 4);
     public Button feedBall = new JoystickButton(this.rightJoy, 1); //moves the small pneumatic pusher
