@@ -18,7 +18,7 @@ public class FeedPush extends Command {
     public FeedPush() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	this.requires(Robot.shooterWheels);
+    	this.requires(Robot.feedSolenoid);
     	this.timer = new Timer();
     }
 
