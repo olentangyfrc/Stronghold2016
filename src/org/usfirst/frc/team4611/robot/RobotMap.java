@@ -33,4 +33,6 @@ public class RobotMap {
     public static int dirFacing = -1;
 
     public static double centerXOfficial = 300;
+    
+    public static double autoSpeed = .5;
 }

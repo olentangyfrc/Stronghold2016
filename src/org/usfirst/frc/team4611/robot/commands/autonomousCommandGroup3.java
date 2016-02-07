@@ -22,7 +22,7 @@ public class autonomousCommandGroup3 extends CommandGroup {
     	addSequential (new DriveAuto(3));
     	addSequential (new TurnAuto(.1, 1)); //turns right
     	addSequential (new DriveAuto(1));
-    	addSequential (new SolenoidCommand());
+    	//addSequential (new SolenoidCommand());
     	
         // A command group will require all of the subsystems that each member
         // would require.

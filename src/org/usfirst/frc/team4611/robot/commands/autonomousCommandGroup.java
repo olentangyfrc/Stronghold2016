@@ -25,7 +25,7 @@ public class autonomousCommandGroup extends CommandGroup {
     	//addSequential (new DriveAuto(.2, 0.5));
     	//addSequential (new TurnAuto(.2, -1, 0.5)); //turns left, untested
     	//addSequential (new DriveAuto (.7, 0.5));
-    	addSequential (new SolenoidCommand()); //Untested
+    	//addSequential (new SolenoidCommand()); //Untested
     	
     	// A command group will require all of the subsystems that each member
         // would require.
