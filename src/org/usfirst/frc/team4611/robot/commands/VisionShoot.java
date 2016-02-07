@@ -26,12 +26,13 @@ public class VisionShoot extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double[] defaultValue = new double[0];
+    	///double 
+        /*double[] defaultValue = new double[0];
         double[] data = Robot.visionTable.getNumberArray("centerX",
                 defaultValue);
         if (data[0] > 50) {
             Robot.shooterWheels.shoot(this.speed);
-        }
+        }*/
     }
 
     // Make this return true when this Command no longer needs to run execute()

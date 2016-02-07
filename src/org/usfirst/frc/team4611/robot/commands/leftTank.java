@@ -33,7 +33,6 @@ public class leftTank extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-<<<<<<< HEAD
         //if(RobotMap.DirFaced)
         //{
         //joyVal = Robot.oi.filter(Robot.oi.RightJoy.getY()) * -1;
@@ -55,22 +54,6 @@ public class leftTank extends Command {
         //double distance = (value * 0.49) / 100;
         //SmartDashboard.putNumber("Range Finder Average Voltage", value);
         //SmartDashboard.putNumber("Calculated Distance", distance);
-=======
-    	//if (RobotMap.dirFacing == 1) {
-    		joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
-    		//RobotMap.frontLeftWheel = 2;
-    		//RobotMap.backLeftWheel = 7;
-    		//RobotMap.frontRightWheel = 8;
-    		//RobotMap.backRightWheel = 9;
-    	//} else if (RobotMap.dirFacing == -1) {
-    		//joyVal = Robot.oi.filter(Robot.oi.rightJoy.getY());
-    		//RobotMap.frontLeftWheel = 8;
-    		//RobotMap.backLeftWheel = 9;
-    		//RobotMap.frontRightWheel = 2;
-    		//RobotMap.backRightWheel = 7;
-    	//}
-    	Robot.leftS.move(joyVal);
->>>>>>> 736200bad486ca866d484dbf39fc0ae762fd25e9
     }
 
     // Make this return true when this Command no longer needs to run execute()
