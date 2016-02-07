@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4611.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-
+//Spy Bot Program
 /**
  *
  */
@@ -18,12 +18,13 @@ public class autonomousCommandGroup2 extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
+    	
 
-    	addSequential (new DriveAuto(2));
-    	addSequential (new TurnAuto(.2, -1)); //turns left
-    	addSequential (new DriveAuto(1));
-    	addSequential (new TurnAuto(.2, 1)); //turns right
     	addSequential (new SolenoidCommand());
+    	addSequential (new TurnAuto(0.0, -1,0.0 ));
+    	addSequential (new DriveAuto(0.0,0.0)); // DriveAuto's have different length parameters
+    	addSequential (new TurnAuto(0.0, -1, 0.0));
+    	addSequential (new DriveAuto(0.0,0.0));
     	
         // A command group will require all of the subsystems that each member
         // would require.
