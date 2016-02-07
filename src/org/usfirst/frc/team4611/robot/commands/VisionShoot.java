@@ -3,6 +3,7 @@ package org.usfirst.frc.team4611.robot.commands;
 import org.usfirst.frc.team4611.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -27,11 +28,23 @@ public class VisionShoot extends Command {
     @Override
     protected void execute() {
     	///double 
-        /*double[] defaultValue = new double[0];
-        double[] data = Robot.visionTable.getNumberArray("centerX",
-                defaultValue);
-        if (data[0] > 50) {
+    	double[] defaultValue = new double[0];
+    	double[] centerX = Robot.table.getNumberArray("centerX", defaultValue);
+    	double testingDouble = centerX[0];
+    	if (testingDouble > 50) {
+    		Robot.shooterWheels.shoot(this.speed);
+    	} else if (testingDouble <=50 && testingDouble > 0) {
+    		Robot.shooterWheels.shoot(-this.speed);
+    	} else {
+    		//Robot.shooterWheels.shoot(this.speed*.5);
+    		System.out.println("sumthing wong");
+    	}
+        /*double data = SmartDashboard.getNumber("centerX", -5.0);
+        String str = SmartDashboard.getString("centerX");
+        if (data > 50) {
             Robot.shooterWheels.shoot(this.speed);
+        } else if (str.length() > 0) {
+        	Robot.shooterWheels.shoot(-this.speed);
         }*/
     }
 

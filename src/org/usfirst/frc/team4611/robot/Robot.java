@@ -38,8 +38,7 @@ public class Robot extends IterativeRobot {
     public static FlipSolenoid flipSolenoid = new FlipSolenoid();
     public static FeedSolenoid feedSolenoid = new FeedSolenoid();
     public static ShooterWheels shooterWheels = new ShooterWheels();
-    public static NetworkTable visionTable;
-
+    public static NetworkTable table;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -49,9 +48,10 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         this.chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", this.chooser);
-        visionTable = NetworkTable.getTable("GRIP/testContoursReport");
+        table = NetworkTable.getTable("GRIP/data");
     }
 
+    
     /**
      * This function is called once each time the robot enters Disabled mode.
      * You can use it to reset any subsystem information you want to clear when
