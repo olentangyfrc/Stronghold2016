@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4611.robot.subsystems;
 
 import org.usfirst.frc.team4611.robot.RobotMap;
-import org.usfirst.frc.team4611.robot.commands.VisionShoot;
 
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -29,6 +28,6 @@ public class ShooterWheels extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        this.setDefaultCommand(new VisionShoot());
+        //this.setDefaultCommand(new VisionShoot());
     }
 }

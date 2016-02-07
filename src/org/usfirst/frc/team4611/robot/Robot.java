@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -46,7 +45,6 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         oi = new OI();
         this.chooser = new SendableChooser();
-        SmartDashboard.putData("Auto mode", this.chooser);
         this.autonomousCommand = new autonomousCommandGroup();
         table = NetworkTable.getTable("GRIP/data");
     }

@@ -6,6 +6,7 @@ import org.usfirst.frc.team4611.robot.commands.FeedingPosition;
 //import org.usfirst.frc.team4611.robot.commands.WheelShoot;
 //import org.usfirst.frc.team4611.robot.commands.WheelsFeed;
 import org.usfirst.frc.team4611.robot.commands.ShooterWheelsMove;
+import org.usfirst.frc.team4611.robot.commands.VisionShoot;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Joystick;
@@ -56,7 +57,8 @@ public class OI {
     //public Button shootingPneumatic = new JoystickButton(this.rightJoy, 4);
     public Button feedBall = new JoystickButton(this.rightJoy, 1); //moves the small pneumatic pusher
     public Button lowBar = new JoystickButton(this.leftJoy, 5);
-    //public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation 
+    public Button aimAuto = new JoystickButton(this.rightJoy, 10);
+    //public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation
 
     public OI() {
         //Button wheelShoot = new JoystickButton(this.leftJoy, 1);
@@ -76,6 +78,7 @@ public class OI {
                 new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
 
         this.feedBall.whenPressed(new FeedPush());
+        this.aimAuto.whileHeld(new VisionShoot());
         //this.reverse.whenPressed(new ToggleCommand());
         //this.combineLoading.whileHeld(
         //new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
