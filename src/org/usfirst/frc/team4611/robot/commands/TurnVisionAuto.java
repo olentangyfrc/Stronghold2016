@@ -8,13 +8,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class VisionShoot extends Command {
+public class TurnVisionAuto extends Command {
     double speed;
     double[] centerX;
     double[] defaultValue = { -5.0, -5.0 };
     double testingDouble;
 
-    public VisionShoot() {
+    public TurnVisionAuto() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         this.speed = 0.5;
