@@ -1,45 +1,40 @@
 package org.usfirst.frc.team4611.robot.commands;
 
 import org.usfirst.frc.team4611.robot.Robot;
+import org.usfirst.frc.team4611.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class leftTank extends Command {
+public class ShootingPosition extends Command {
 
-    double joyVal;
-    public Timer timer;
     public double initialTime;
-
-    public leftTank() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-        this.requires(Robot.leftS);
-        this.initialTime = this.timer.getFPGATimestamp();
+    public Timer timer;
+    
+    public ShootingPosition() {
+        this.requires(Robot.flipSolenoid);
+        this.timer = new Timer();
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        this.joyVal = 0;
+        this.initialTime = this.timer.getFPGATimestamp();
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        //if(RobotMap.DirFaced)
-        //{
-        //joyVal = Robot.oi.filter(Robot.oi.RightJoy.getY()) * -1;
-        //}
-        //else
-        //{
-        //joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
-        //}
-        this.joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
-        Robot.leftS.move(this.joyVal);
+        if (this.timer.getFPGATimestamp()
+                - this.initialTime < RobotMap.soleTime) {
+            Robot.flipSolenoid.flip(Value.kForward);
+        } else {
+            Robot.flipSolenoid.flip(Value.kOff);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -49,13 +44,14 @@ public class leftTank extends Command {
     }
 
     // Called once after isFinished returns true
-    @Override
-    protected void end() {
-    }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+    }
+
+    @Override
+    protected void end() {
     }
 }

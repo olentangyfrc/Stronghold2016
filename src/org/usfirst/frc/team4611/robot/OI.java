@@ -1,8 +1,11 @@
 package org.usfirst.frc.team4611.robot;
 
-import org.usfirst.frc.team4611.robot.commands.SolenoidCommand;
+import org.usfirst.frc.team4611.robot.commands.FeedPush;
+import org.usfirst.frc.team4611.robot.commands.FeedingPosition;
 ///import org.usfirst.frc.team4611.robot.commands.WheelReverse;
 //import org.usfirst.frc.team4611.robot.commands.WheelShoot;
+//import org.usfirst.frc.team4611.robot.commands.WheelsFeed;
+import org.usfirst.frc.team4611.robot.commands.ShooterWheelsMove;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Joystick;
@@ -44,12 +47,39 @@ public class OI {
     public Joystick rightJoy = new Joystick(2);
     public Button pneumatic = new JoystickButton(this.rightJoy, 5);
     public AnalogInput ai = new AnalogInput(0);
+    public Joystick shootJoy = new Joystick(3);
+
+    //public Button feedingPneumatic = new JoystickButton(this.rightJoy, 5); // lowers the pneumatic
+    public Button loadWheelsandFeeding = new JoystickButton(this.leftJoy, 4); // puts the wheels on reverse
+    public Button shootWheels = new JoystickButton(this.shootJoy, 1); // puts the wheels on full forward
+    //public Button combineLoading = new JoystickButton(this.rightJoy, 6); // executing both wheels and pnuematics to load
+    //public Button shootingPneumatic = new JoystickButton(this.rightJoy, 4);
+    public Button feedBall = new JoystickButton(this.rightJoy, 1); //moves the small pneumatic pusher
+    public Button lowBar = new JoystickButton(this.leftJoy, 5);
+    //public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation 
 
     public OI() {
         //Button wheelShoot = new JoystickButton(this.leftJoy, 1);
         //Button wheelReverse = new JoystickButton(this.leftJoy, 2);
 
-        this.pneumatic.whenPressed(new SolenoidCommand());
+        //this.feedingPneumatic.whileHeld(new FeedingPosition());
+        //this.shootingPneumatic.whenPressed(new ShootingPosition());
+        this.loadWheelsandFeeding.whileHeld(
+                new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
+        this.loadWheelsandFeeding.whileHeld(new FeedingPosition());
+
+        this.lowBar.whileHeld(
+                new ShooterWheelsMove(0.0 * RobotMap.feedingWheelShooterSpeed)); //doesn't spin wheels at all. Change coefficient as needed.
+        this.lowBar.whileHeld(new FeedingPosition());
+
+        this.shootWheels.whileHeld(
+                new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
+
+        this.feedBall.whenPressed(new FeedPush());
+        //this.reverse.whenPressed(new ToggleCommand());
+        //this.combineLoading.whileHeld(
+        //new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
+        //this.combineLoading.whenPressed(new FeedingPosition()); //not sure if this will work
         //wheelShoot.whenPressed(new WheelShoot());
         //wheelReverse.whileHeld(new WheelReverse());
     }
@@ -59,7 +89,7 @@ public class OI {
         if (Math.abs(raw) < .15) {
             return 0;
         } else {
-            return 0.7 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw)) / 1.7;
+            return 1 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw)) / 1.7;
         }
     }
 

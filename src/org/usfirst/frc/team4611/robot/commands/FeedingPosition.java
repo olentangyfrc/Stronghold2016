@@ -3,19 +3,20 @@ package org.usfirst.frc.team4611.robot.commands;
 import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class SolenoidCommand extends Command {
+public class FeedingPosition extends Command {
 
-    public Timer timer;
     public double initialTime;
+    public Timer timer;
 
-    public SolenoidCommand() {
-        this.requires(Robot.solenoidSubsystem);
+    public FeedingPosition() {
+        this.requires(Robot.flipSolenoid);
         this.timer = new Timer();
     }
 
@@ -28,14 +29,19 @@ public class SolenoidCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.solenoidSubsystem.extend(true);
+        if (this.timer.getFPGATimestamp()
+                - this.initialTime < RobotMap.soleTime) {
+            Robot.flipSolenoid.flip(Value.kReverse);
+        } else {
+            Robot.flipSolenoid.flip(Value.kOff);
+        }
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return this.timer.getFPGATimestamp()
-                - this.initialTime > RobotMap.soleTime;
+        return false;
     }
 
     // Called once after isFinished returns true
@@ -48,6 +54,5 @@ public class SolenoidCommand extends Command {
 
     @Override
     protected void end() {
-        // TODO Auto-generated method stub
     }
 }

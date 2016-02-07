@@ -1,22 +1,18 @@
 
 package org.usfirst.frc.team4611.robot;
 
-import org.usfirst.frc.team4611.robot.commands.DriveAuto;
 import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup;
-import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup2;
-import org.usfirst.frc.team4611.robot.subsystems.SolenoidSubsystem;
-//import org.usfirst.frc.team4611.robot.subsystems.WheelShooter;
-//import org.usfirst.frc.team4611.robot.commands.ExampleCommand;
-//import org.usfirst.frc.team4611.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4611.robot.subsystems.FeedSolenoid;
+import org.usfirst.frc.team4611.robot.subsystems.FlipSolenoid;
+import org.usfirst.frc.team4611.robot.subsystems.ShooterWheels;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
-//import org.usfirst.frc.team4611.robot.subsystems.pneumaticSubsystem;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -33,11 +29,14 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
-    
+
     Command autonomousCommand;
     SendableChooser chooser;
     //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
-    public static SolenoidSubsystem solenoidSubsystem = new SolenoidSubsystem();
+    public static FlipSolenoid flipSolenoid = new FlipSolenoid();
+    public static FeedSolenoid feedSolenoid = new FeedSolenoid();
+    public static ShooterWheels shooterWheels = new ShooterWheels();
+    public static NetworkTable table;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -48,7 +47,8 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         this.chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", this.chooser);
-        autonomousCommand = new autonomousCommandGroup();
+        this.autonomousCommand = new autonomousCommandGroup();
+        table = NetworkTable.getTable("GRIP/data");
     }
 
     /**
