@@ -31,4 +31,6 @@ public class RobotMap {
     public static final int PORT = 0;
     
     public static int dirFacing = -1;
+    
+    public static double centerXOfficial = 300;
 }

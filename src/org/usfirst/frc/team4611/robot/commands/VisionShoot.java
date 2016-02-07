@@ -10,12 +10,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class VisionShoot extends Command {
     double speed;
+    double[] defaultValue ;
+	double[] centerX ;
+	double testingDouble;
 
     public VisionShoot() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         this.speed = 0.5;
         this.requires(Robot.shooterWheels);
+        defaultValue = new double[0];
+        centerX = Robot.table.getNumberArray("centerX", defaultValue);
+        testingDouble = centerX[0];
     }
 
     // Called just before this Command runs the first time
@@ -28,7 +34,7 @@ public class VisionShoot extends Command {
     @Override
     protected void execute() {
     	///double 
-    	double[] defaultValue = new double[0];
+    	/*double[] defaultValue = new double[0];
     	double[] centerX = Robot.table.getNumberArray("centerX", defaultValue);
     	double testingDouble = centerX[0];
     	if (testingDouble > 50) {
@@ -38,7 +44,9 @@ public class VisionShoot extends Command {
     	} else {
     		//Robot.shooterWheels.shoot(this.speed*.5);
     		System.out.println("sumthing wong");
-    	}
+    	}*/
+    	centerX = Robot.table.getNumberArray("centerX", defaultValue);
+        testingDouble = centerX[0];
         /*double data = SmartDashboard.getNumber("centerX", -5.0);
         String str = SmartDashboard.getString("centerX");
         if (data > 50) {
