@@ -92,7 +92,7 @@ public class OI {
         if (Math.abs(raw) < .15) {
             return 0;
         } else {
-            return 1 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw)) / 1.7;
+            return .8 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw)) ;
         }
     }
 
