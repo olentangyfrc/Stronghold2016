@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TurnVisionAuto extends Command {
     double speed;
     double[] centerX;
-    double[] defaultValue = { -5.0, -5.0 };
+    double[] defaultValue = { -5.0, -5.0};
     double testingDouble;
 
     public TurnVisionAuto() {
@@ -23,8 +23,6 @@ public class TurnVisionAuto extends Command {
         this.requires(Robot.feedSolenoid);
         this.requires(Robot.flipSolenoid);
         this.requires(Robot.shooterWheels);
-        //this.centerX = Robot.table.getNumberArray("centerX", this.defaultValue);
-        //testingDouble = centerX[0];
     }
 
     // Called just before this Command runs the first time
@@ -48,14 +46,18 @@ public class TurnVisionAuto extends Command {
          */
         this.centerX = Robot.table.getNumberArray("centerX", this.defaultValue);
         this.testingDouble = this.centerX[0];
-        if (this.testingDouble > (RobotMap.centerXOfficial
-                + RobotMap.targetSpread)) {
+        if (Double.compare(this.testingDouble, this.defaultValue[0]) == 0) {
+        	System.out.println("There is no vision being inputted");
+        } else if (this.testingDouble > (RobotMap.centerXOfficial + RobotMap.targetSpread)) {
             Robot.leftS.move(-RobotMap.visionMotorSpeed);
             Robot.rightS.move(RobotMap.visionMotorSpeed);
-        } else if (this.testingDouble < (RobotMap.centerXOfficial
-                - RobotMap.targetSpread)) {
+            System.out.println("You should be turning left");
+        } else if ((this.testingDouble < (RobotMap.centerXOfficial - RobotMap.targetSpread) && this.testingDouble>0.0)) {
             Robot.leftS.move(RobotMap.visionMotorSpeed);
             Robot.rightS.move(-RobotMap.visionMotorSpeed);
+            System.out.println("You should be turning right");
+        } else {
+        	System.out.println("You should be doing nothing");
         }
         //if (centerX > RobotMap.centerXOfficial + RobotMap.s) {
 
