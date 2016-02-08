@@ -4,6 +4,7 @@ import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -48,14 +49,17 @@ public class TurnVisionAuto extends Command {
         this.testingDouble = this.centerX[0];
         if (Double.compare(this.testingDouble, this.defaultValue[0]) == 0) {
         	System.out.println("There is no vision being inputted");
+        	SmartDashboard.putString("Vision Auto Turn Status: ", "There is no vision being inputted");
         } else if (this.testingDouble > (RobotMap.centerXOfficial + RobotMap.targetSpread)) {
             Robot.leftS.move(-RobotMap.visionMotorSpeed);
             Robot.rightS.move(RobotMap.visionMotorSpeed);
             System.out.println("You should be turning left");
+            SmartDashboard.putString("Vision Auto Turn Status: ", "You should be turning left");
         } else if ((this.testingDouble < (RobotMap.centerXOfficial - RobotMap.targetSpread) && this.testingDouble>0.0)) {
             Robot.leftS.move(RobotMap.visionMotorSpeed);
             Robot.rightS.move(-RobotMap.visionMotorSpeed);
             System.out.println("You should be turning right");
+            SmartDashboard.putString("Vision Auto Turn Status: ", "You should be turning right");
         } else {
         	System.out.println("You should be doing nothing");
         }
