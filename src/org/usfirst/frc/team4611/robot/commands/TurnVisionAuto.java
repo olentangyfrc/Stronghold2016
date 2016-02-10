@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class TurnVisionAuto extends Command {
     double speed;
     double[] centerX;
-    double[] defaultValue = { -5.0, -5.0};
+    double[] defaultValue = { -5.0, -5.0 };
     double testingDouble;
     double initialTime;
     boolean isAiming = true;
-    
+
     public TurnVisionAuto() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -37,63 +37,50 @@ public class TurnVisionAuto extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	aim();
-        ///double
-        /*
-         * double[] defaultValue = new double[0]; double[] centerX =
-         * Robot.table.getNumberArray("centerX", defaultValue); double
-         * testingDouble = centerX[0]; if (testingDouble > 50) {
-         * Robot.shooterWheels.shoot(this.speed); } else if (testingDouble <=50
-         * && testingDouble > 0) { Robot.shooterWheels.shoot(-this.speed); }
-         * else { //Robot.shooterWheels.shoot(this.speed*.5);
-         * System.out.println("sumthing wong"); }
-         */
-    	
-    	
-	        //if (centerX > RobotMap.centerXOfficial + RobotMap.s) {
-	
-	        //} else if () {
-	
-	        //}
-	        /*
-	         * double data = SmartDashboard.getNumber("centerX", -5.0); String str =
-	         * SmartDashboard.getString("centerX"); if (data > 50) {
-	         * Robot.shooterWheels.shoot(this.speed); } else if (str.length() > 0) {
-	         * Robot.shooterWheels.shoot(-this.speed); }
-	         */
+        double currentTime = Timer.getFPGATimestamp();
+        double timeDifferenceMilli = (currentTime - this.initialTime) * 1000;
+        try {
+            if (timeDifferenceMilli % (RobotMap.aimTimeMilli
+                    + RobotMap.waitTimeMilli) < RobotMap.aimTimeMilli) {
+                this.centerX = Robot.table.getNumberArray("centerX",
+                        this.defaultValue);
+                this.testingDouble = this.centerX[0];
+                this.aim();
+            } else {
+                SmartDashboard.putString("Vision Auto Turn Status: ",
+                        "You should be waiting");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void aim() {
-    	double currentTime = Timer.getFPGATimestamp();
-    	double timeDifferenceMilli = (currentTime - initialTime) * 1000;
-    	try {
-    		if (timeDifferenceMilli % (RobotMap.aimTimeMilli + RobotMap.waitTimeMilli) < RobotMap.aimTimeMilli) {
-		        this.centerX = Robot.table.getNumberArray("centerX", this.defaultValue);
-		        this.testingDouble = this.centerX[0];
-		        if (Double.compare(this.testingDouble, this.defaultValue[0]) == 0) {
-		        	System.out.println("There is no vision being inputted");
-		        	SmartDashboard.putString("Vision Auto Turn Status: ", "There is no vision being inputted");
-		        } else if (this.testingDouble > (RobotMap.centerXOfficial + RobotMap.targetSpread)) {
-		            Robot.leftS.move(-RobotMap.visionMotorSpeed);
-		            Robot.rightS.move(RobotMap.visionMotorSpeed);
-		            System.out.println("You should be turning left");
-		            SmartDashboard.putString("Vision Auto Turn Status: ", "You should be turning left");
-		        } else if ((this.testingDouble < (RobotMap.centerXOfficial - RobotMap.targetSpread) && this.testingDouble>0.0)) {
-		            Robot.leftS.move(RobotMap.visionMotorSpeed);
-		            Robot.rightS.move(-RobotMap.visionMotorSpeed);
-		            System.out.println("You should be turning right");
-		            SmartDashboard.putString("Vision Auto Turn Status: ", "You should be turning right");
-		        } else {
-		        	System.out.println("You should be doing nothing");
-		        	SmartDashboard.putString("Vision Auto Turn Status: ", "You should be doing nothing");
-		        }
-    		} else {
-    			SmartDashboard.putString("Vision Auto Turn Status: ", "You should be waiting");
-    		}
-    	} catch (Exception e) {
-    		
-    	}
+        if (Double.compare(this.testingDouble, this.defaultValue[0]) == 0) {
+            System.out.println("There is no vision being inputted");
+            SmartDashboard.putString("Vision Auto Turn Status: ",
+                    "There is no vision being inputted");
+        } else if (this.testingDouble > (RobotMap.centerXOfficial
+                + RobotMap.targetSpread)) {
+            Robot.leftS.move(-RobotMap.visionMotorSpeed);
+            Robot.rightS.move(RobotMap.visionMotorSpeed);
+            System.out.println("You should be turning left");
+            SmartDashboard.putString("Vision Auto Turn Status: ",
+                    "You should be turning left");
+        } else if ((this.testingDouble < (RobotMap.centerXOfficial
+                - RobotMap.targetSpread) && this.testingDouble > 0.0)) {
+            Robot.leftS.move(RobotMap.visionMotorSpeed);
+            Robot.rightS.move(-RobotMap.visionMotorSpeed);
+            System.out.println("You should be turning right");
+            SmartDashboard.putString("Vision Auto Turn Status: ",
+                    "You should be turning right");
+        } else {
+            System.out.println("You should be doing nothing");
+            SmartDashboard.putString("Vision Auto Turn Status: ",
+                    "You should be doing nothing");
+        }
     }
+
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
