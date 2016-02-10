@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4611.robot;
 
+import edu.wpi.first.wpilibj.AnalogInput;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -29,4 +31,5 @@ public class RobotMap {
     public static final int PORT = 0;
     
     public static final double autoSpeed = .5;
+
 }
