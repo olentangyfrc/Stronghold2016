@@ -34,9 +34,8 @@ public class RobotMap {
 
     public static double centerXOfficial = 206;
     public static double targetSpread = 15;
-    public static double visionMotorSpeed = .3;
+    public static double visionMotorSpeed = .3; //not being used
 
     public static double autoSpeed = .5;
-    
 
 }
