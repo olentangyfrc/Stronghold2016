@@ -23,7 +23,7 @@ public class VisionAutoGroup extends CommandGroup {
         this.requires(Robot.feedSolenoid);
         this.requires(Robot.flipSolenoid);
         this.requires(Robot.shooterWheels);
-        while (true) {
+        /*while (true) {
         	double[] defaultValue = {-5.0, -5.0};
         	double timeDifferenceMilli = (Timer.getFPGATimestamp() - initialTime) * 1000;
         	if (timeDifferenceMilli % (RobotMap.aimTimeMilli + RobotMap.waitTimeMilli) < RobotMap.aimTimeMilli) {
@@ -50,7 +50,7 @@ public class VisionAutoGroup extends CommandGroup {
     			SmartDashboard.putString("Vision Auto Turn Status: ", "You should be waiting");
     		}
         	
-        }
+        }*/
     }
     
     public void initialize() {

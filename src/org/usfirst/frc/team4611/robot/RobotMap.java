@@ -37,7 +37,6 @@ public class RobotMap {
     public static double visionMotorSpeed = .3;
 
     public static double autoSpeed = .5;
-    public static double aimTimeMilli = 500;
-    public static double waitTimeMilli = 1000;
+    
 
 }

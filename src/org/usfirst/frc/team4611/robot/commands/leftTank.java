@@ -40,6 +40,7 @@ public class leftTank extends Command {
         //}
         this.joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
         Robot.leftS.move(this.joyVal);
+        System.out.println("This is a test located in lefttank command");
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -11,27 +11,34 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class TurnVisionAuto extends Command {
-    double speed;
+    
     double[] centerX;
     double[] defaultValue = { -5.0, -5.0 };
     double testingDouble;
     double initialTime;
-    boolean isAiming = true;
+    //boolean isAiming = true;
+    double aimTimeMilli; 
+    double waitTimeMilli;
+    double motorSpeed;
 
-    public TurnVisionAuto() {
+    public TurnVisionAuto(double aimTime, double waitTime, double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        this.speed = 0.5;
+        
         this.requires(Robot.leftS);
         this.requires(Robot.rightS);
         this.requires(Robot.feedSolenoid);
         this.requires(Robot.flipSolenoid);
         this.requires(Robot.shooterWheels);
+        aimTimeMilli = aimTime*1000;
+        waitTimeMilli = waitTime*1000;
+        motorSpeed = speed;
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() { //should stop already running wheels too
+    	initialTime = Timer.getFPGATimestamp();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -40,22 +47,38 @@ public class TurnVisionAuto extends Command {
         double currentTime = Timer.getFPGATimestamp();
         double timeDifferenceMilli = (currentTime - this.initialTime) * 1000;
         try {
-            if (timeDifferenceMilli % (RobotMap.aimTimeMilli
-                    + RobotMap.waitTimeMilli) < RobotMap.aimTimeMilli) {
-                this.centerX = Robot.table.getNumberArray("centerX",
-                        this.defaultValue);
-                this.testingDouble = this.centerX[0];
-                this.aim();
+            if (timeDifferenceMilli % (aimTimeMilli + waitTimeMilli) < aimTimeMilli) {
+            	int turning = dirTurning();
+            	Robot.leftS.move(-motorSpeed*turning);
+                Robot.rightS.move(motorSpeed*turning);
             } else {
-                SmartDashboard.putString("Vision Auto Turn Status: ",
-                        "You should be waiting");
+                SmartDashboard.putString("Vision Auto Turn Status: ", "Waiting");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void aim() {
+    public int dirTurning() {
+    	centerX = Robot.table.getNumberArray("centerX",this.defaultValue);
+    	testingDouble = this.centerX[0];
+    	if (testingDouble>(RobotMap.centerXOfficial+ RobotMap.targetSpread)) {
+    		SmartDashboard.putString("Vision Auto Turn Status: ", "Turning left");
+    		return 1;
+    	} else if (testingDouble<(RobotMap.centerXOfficial-RobotMap.targetSpread)) {
+    		SmartDashboard.putString("Vision Auto Turn Status: ", "Turning right");
+    		return -1;
+    	} else if ((testingDouble<=(RobotMap.centerXOfficial+ RobotMap.targetSpread)) &&
+    			(testingDouble>=(RobotMap.centerXOfficial-RobotMap.targetSpread))) {
+    		SmartDashboard.putString("Vision Auto Turn Status: ", "Found Target");
+    		return 0;
+    	} else {
+    		SmartDashboard.putString("Vision Auto Turn Status: ", "Something went wrong");
+    		return 0;
+    	}
+    	
+    }
+    /*public void aim() {
         if (Double.compare(this.testingDouble, this.defaultValue[0]) == 0) {
             System.out.println("There is no vision being inputted");
             SmartDashboard.putString("Vision Auto Turn Status: ",
@@ -79,7 +102,7 @@ public class TurnVisionAuto extends Command {
             SmartDashboard.putString("Vision Auto Turn Status: ",
                     "You should be doing nothing");
         }
-    }
+    }*/
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
@@ -94,7 +117,7 @@ public class TurnVisionAuto extends Command {
     }
 
     // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
+    // subsystems is scheduled to rxun
     @Override
     protected void interrupted() {
         this.end();
