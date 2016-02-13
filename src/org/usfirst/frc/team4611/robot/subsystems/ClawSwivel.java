@@ -17,8 +17,8 @@ public class ClawSwivel extends PIDSubsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public ClawSwivel(/* double p, double i, double d */) {
-        super("Claw", 2.0, 0.0, 0.0);
+    public ClawSwivel(double p, double i, double d) {
+        super("Claw", p, i, d);
         AnalogInput ai = new AnalogInput(1);
         pot = new AnalogPotentiometer(ai, .1, 0);
         clawMotor = new Victor(RobotMap.clawMotorPort);

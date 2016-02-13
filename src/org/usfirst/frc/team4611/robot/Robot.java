@@ -34,7 +34,7 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
-    public static ClawSwivel clawSwivel = new ClawSwivel(1, 0.1, 0);
+    public static ClawSwivel clawSwivel = new ClawSwivel(1.0, 0.1, 0.0);
     
     Command autonomousCommand;
     SendableChooser chooser;
