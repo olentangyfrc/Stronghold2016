@@ -60,11 +60,6 @@ public class Robot extends IterativeRobot {
         this.chooser = new SendableChooser();
         this.autonomousCommand = new autonomousCommandGroup();
         table = NetworkTable.getTable("GRIP/data");
-        prefs = Preferences.getInstance();
-		RobotMap.pvalue = prefs.getDouble("P Value", 1.0);
-		RobotMap.ivalue = prefs.getDouble("I Value", 0.1);
-		RobotMap.dvalue = prefs.getDouble("D Value", 0);
-		RobotMap.fvalue = prefs.getDouble("F Value: ", 10);
     }
 
     /**

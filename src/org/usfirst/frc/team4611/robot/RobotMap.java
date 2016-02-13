@@ -25,6 +25,9 @@ public class RobotMap {
     public static final int solePort2 = 2;
     public static final int solePort3 = 1;
     public static final int solePort4 = 0;
+    
+    public static final int potPort=1;
+    public static final int clawMotorPort=7;
 
     public static final double soleTime = 1.0;
 
@@ -37,10 +40,5 @@ public class RobotMap {
     public static double visionMotorSpeed = .3; //not being used
 
     public static double autoSpeed = .5;
-    
-    public static double pvalue;
-	public static double ivalue;
-	public static double dvalue;
-	public static double fvalue;
 
 }

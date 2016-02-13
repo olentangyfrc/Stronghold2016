@@ -8,6 +8,7 @@ import org.usfirst.frc.team4611.robot.commands.FeedingPosition;
 import org.usfirst.frc.team4611.robot.commands.ShooterWheelsMove;
 import org.usfirst.frc.team4611.robot.commands.TurnVisionAuto;
 import org.usfirst.frc.team4611.robot.commands.VisionPID;
+import org.usfirst.frc.team4611.robot.subsystems.ClawSwivel;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Joystick;
@@ -81,7 +82,7 @@ public class OI {
 
         this.feedBall.whenPressed(new FeedPush());
         this.aimAuto.whileHeld(new TurnVisionAuto(.2, .8, .4));
-        this.aimAuto2.whileHeld(new VisionPID(RobotMap.pvalue, RobotMap.ivalue,RobotMap.dvalue, RobotMap.fvalue));
+        this.aimAuto2.whileHeld(new VisionPID());
         //this.reverse.whenPressed(new ToggleCommand());
         //this.combineLoading.whileHeld(
         //new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
