@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class SolenoidSubsystem extends Subsystem {
+public class Catapult extends Subsystem {
     Solenoid s1;
-    
-    public SolenoidSubsystem() {
-        super("Solenoid Subsystem");
+
+    public Catapult() {
+        super("Catapult Subsystem");
         this.s1 = new Solenoid(RobotMap.solePort1);
     }
 

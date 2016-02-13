@@ -15,7 +15,7 @@ public class SolenoidCommand extends Command {
     public double initialTime;
 
     public SolenoidCommand() {
-        this.requires(Robot.solenoidSubsystem);
+        this.requires(Robot.catapult);
         this.timer = new Timer();
     }
 
@@ -28,7 +28,7 @@ public class SolenoidCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.solenoidSubsystem.extend(true);
+        Robot.catapult.extend(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()

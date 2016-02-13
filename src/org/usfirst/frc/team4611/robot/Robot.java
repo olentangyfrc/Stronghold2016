@@ -4,8 +4,8 @@ package org.usfirst.frc.team4611.robot;
 import org.usfirst.frc.team4611.robot.commands.DriveAuto;
 import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup;
 import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup2;
-import org.usfirst.frc.team4611.robot.subsystems.GrabberClaw;
-import org.usfirst.frc.team4611.robot.subsystems.SolenoidSubsystem;
+import org.usfirst.frc.team4611.robot.subsystems.ClawSwivel;
+import org.usfirst.frc.team4611.robot.subsystems.Catapult;
 //import org.usfirst.frc.team4611.robot.subsystems.WheelShooter;
 //import org.usfirst.frc.team4611.robot.commands.ExampleCommand;
 //import org.usfirst.frc.team4611.robot.subsystems.ExampleSubsystem;
@@ -34,12 +34,12 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
-    public static GrabberClaw grabberClaw = new GrabberClaw(1, 0.1, 0);
+    public static ClawSwivel clawSwivel = new ClawSwivel(1, 0.1, 0);
     
     Command autonomousCommand;
     SendableChooser chooser;
     //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
-    public static SolenoidSubsystem solenoidSubsystem = new SolenoidSubsystem();
+    public static Catapult catapult = new Catapult();
 
     /**
      * This function is run when the robot is first started up and should be

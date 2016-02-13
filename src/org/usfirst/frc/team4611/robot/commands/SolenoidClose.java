@@ -12,7 +12,7 @@ public class SolenoidClose extends Command {
     public SolenoidClose() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        this.requires(Robot.solenoidSubsystem);
+        this.requires(Robot.catapult);
     }
 
     // Called just before this Command runs the first time
@@ -23,7 +23,7 @@ public class SolenoidClose extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.solenoidSubsystem.extend(false);
+        Robot.catapult.extend(false);
     }
 
     // Make this return true when this Command no longer needs to run execute()
