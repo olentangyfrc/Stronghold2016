@@ -1,6 +1,8 @@
 
 package org.usfirst.frc.team4611.robot;
 
+import java.util.prefs.Preferences;
+
 import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup;
 import org.usfirst.frc.team4611.robot.subsystems.FeedSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.FlipSolenoid;
@@ -29,6 +31,8 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
+    
+    public static Preferences prefs;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -56,6 +60,11 @@ public class Robot extends IterativeRobot {
         this.chooser = new SendableChooser();
         this.autonomousCommand = new autonomousCommandGroup();
         table = NetworkTable.getTable("GRIP/data");
+        prefs = Preferences.getInstance();
+		RobotMap.pvalue = prefs.getDouble("P Value", 1.0);
+		RobotMap.ivalue = prefs.getDouble("I Value", 0.1);
+		RobotMap.dvalue = prefs.getDouble("D Value", 0);
+		RobotMap.fvalue = prefs.getDouble("F Value: ", 10);
     }
 
     /**
@@ -118,6 +127,8 @@ public class Robot extends IterativeRobot {
         if (this.autonomousCommand != null) {
             this.autonomousCommand.cancel();
         }
+        
+        
     }
 
     /**

@@ -37,5 +37,10 @@ public class RobotMap {
     public static double visionMotorSpeed = .3; //not being used
 
     public static double autoSpeed = .5;
+    
+    public static double pvalue;
+	public static double ivalue;
+	public static double dvalue;
+	public static double fvalue;
 
 }

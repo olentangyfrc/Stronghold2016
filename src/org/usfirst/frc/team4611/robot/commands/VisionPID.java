@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
  */
 public class VisionPID extends PIDCommand {
 
-    public VisionPID() {
+    public VisionPID(double P, double I, double D, double F) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        super("PID Vision Controller Command", 1, 0.1, 0);
+        super("PID Vision Controller Command", P, I, D, F);
         this.requires(Robot.leftS);
         this.requires(Robot.rightS);
     }
