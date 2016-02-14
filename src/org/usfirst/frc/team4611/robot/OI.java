@@ -60,7 +60,7 @@ public class OI {
     public Button feedBall = new JoystickButton(this.rightJoy, 1); //moves the small pneumatic pusher
     public Button lowBar = new JoystickButton(this.leftJoy, 5);
     public Button aimAuto = new JoystickButton(this.rightJoy, 10);
-    public Button aimAuto2 = new JoystickButton(this.rightJoy, 11);
+    public Button aimPID = new JoystickButton(this.rightJoy, 11);
     //public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation
 
     public OI() {
@@ -82,7 +82,7 @@ public class OI {
 
         this.feedBall.whenPressed(new FeedPush());
         this.aimAuto.whileHeld(new TurnVisionAuto(.2, .8, .4));
-        this.aimAuto2.whileHeld(new VisionPID());
+        this.aimPID.whileHeld(new VisionPID());
         //this.reverse.whenPressed(new ToggleCommand());
         //this.combineLoading.whileHeld(
         //new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
