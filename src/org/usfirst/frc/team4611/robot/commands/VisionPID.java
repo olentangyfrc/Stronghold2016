@@ -3,6 +3,7 @@ package org.usfirst.frc.team4611.robot.commands;
 import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 
 /**
@@ -65,5 +66,9 @@ public class VisionPID extends PIDCommand {
         // TODO Auto-generated method stub
         Robot.leftS.move(output);
         Robot.rightS.move(-output);
+    }
+
+    public PIDController getPIDControl() {
+        return this.getPIDController();
     }
 }
