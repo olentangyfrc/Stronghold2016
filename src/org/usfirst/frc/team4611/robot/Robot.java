@@ -62,6 +62,8 @@ public class Robot extends IterativeRobot {
         this.chooser = new SendableChooser();
         this.autonomousCommand = new autonomousCommandGroup();
         table = NetworkTable.getTable("GRIP/data");
+        LiveWindow.addActuator("VisionPID", "PID Vision Control",
+                vision.getPIDControl());
     }
 
     /**
@@ -133,6 +135,7 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        //LiveWindow.run();
     }
 
     /**
