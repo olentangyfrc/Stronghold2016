@@ -6,9 +6,7 @@ import org.usfirst.frc.team4611.robot.commands.FeedingPosition;
 //import org.usfirst.frc.team4611.robot.commands.WheelShoot;
 //import org.usfirst.frc.team4611.robot.commands.WheelsFeed;
 import org.usfirst.frc.team4611.robot.commands.ShooterWheelsMove;
-import org.usfirst.frc.team4611.robot.commands.TurnVisionAuto;
-import org.usfirst.frc.team4611.robot.commands.VisionPID;
-import org.usfirst.frc.team4611.robot.subsystems.ClawSwivel;
+import org.usfirst.frc.team4611.robot.commands.VisionPulse;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Joystick;
@@ -60,7 +58,7 @@ public class OI {
     public Button feedBall = new JoystickButton(this.rightJoy, 1); //moves the small pneumatic pusher
     public Button lowBar = new JoystickButton(this.leftJoy, 5);
     public Button aimAuto = new JoystickButton(this.rightJoy, 10);
-    public Button aimPID = new JoystickButton(this.rightJoy, 11);
+    public Button autoPulse = new JoystickButton(this.rightJoy, 11);
     //public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation
 
     public OI() {
@@ -82,7 +80,7 @@ public class OI {
 
         this.feedBall.whenPressed(new FeedPush());
         //this.aimAuto.whileHeld(new TurnVisionAuto(.2, .8, .4));
-        this.aimPID.whileHeld(new VisionPID());
+        this.autoPulse.whileHeld(new VisionPulse());
         //this.reverse.whenPressed(new ToggleCommand());
         //this.combineLoading.whileHeld(
         //new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
@@ -96,7 +94,7 @@ public class OI {
         if (Math.abs(raw) < .15) {
             return 0;
         } else {
-            return .8 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw)) ;
+            return .8 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw));
         }
     }
 

@@ -18,7 +18,7 @@ public class PIDRightTank extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-    	setSetpoint(RobotMap.centerXTarget);
+    	setSetpoint(RobotMap.targetX);
     	enable();
     }
     

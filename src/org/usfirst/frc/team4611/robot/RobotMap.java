@@ -35,7 +35,7 @@ public class RobotMap {
 
     public static int dirFacing = -1;
 
-    public static double centerXTarget = 296;
+    public static double targetX = 296;
     public static double targetSpread = 10;
     public static double visionMotorSpeed = .3; //not being used
 

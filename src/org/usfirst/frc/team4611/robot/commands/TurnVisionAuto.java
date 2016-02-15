@@ -59,14 +59,14 @@ public class TurnVisionAuto extends Command {
     public int dirTurning() {
     	centerX = Robot.table.getNumberArray("centerX",this.defaultValue);
     	testingDouble = this.centerX[0];
-    	if (testingDouble>(RobotMap.centerXTarget+ RobotMap.targetSpread)) {
+    	if (testingDouble>(RobotMap.targetX+ RobotMap.targetSpread)) {
     		SmartDashboard.putString("Vision Auto Turn Status: ", "Turning left");
     		return 1;
-    	} else if (testingDouble<(RobotMap.centerXTarget-RobotMap.targetSpread)) {
+    	} else if (testingDouble<(RobotMap.targetX-RobotMap.targetSpread)) {
     		SmartDashboard.putString("Vision Auto Turn Status: ", "Turning right");
     		return -1;
-    	} else if ((testingDouble<=(RobotMap.centerXTarget+ RobotMap.targetSpread)) &&
-    			(testingDouble>=(RobotMap.centerXTarget-RobotMap.targetSpread))) {
+    	} else if ((testingDouble<=(RobotMap.targetX+ RobotMap.targetSpread)) &&
+    			(testingDouble>=(RobotMap.targetX-RobotMap.targetSpread))) {
     		SmartDashboard.putString("Vision Auto Turn Status: ", "Found Target");
     		return 0;
     	} else {
