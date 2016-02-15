@@ -21,7 +21,7 @@ public class TurnVisionAuto extends Command {
     double waitTimeMilli;
     double motorSpeed;
 
-    public TurnVisionAuto(double aimTime, double waitTime, double speed) {
+    public TurnVisionAuto() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         
@@ -30,9 +30,6 @@ public class TurnVisionAuto extends Command {
         this.requires(Robot.feedSolenoid);
         this.requires(Robot.flipSolenoid);
         this.requires(Robot.shooterWheels);
-        aimTimeMilli = aimTime*1000;
-        waitTimeMilli = waitTime*1000;
-        motorSpeed = speed;
     }
 
     // Called just before this Command runs the first time

@@ -62,6 +62,7 @@ public class Robot extends IterativeRobot {
         this.chooser = new SendableChooser();
         this.autonomousCommand = new autonomousCommandGroup();
         table = NetworkTable.getTable("GRIP/data");
+        
     }
 
     /**
