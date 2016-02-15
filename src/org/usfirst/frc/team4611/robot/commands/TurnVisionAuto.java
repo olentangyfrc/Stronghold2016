@@ -30,6 +30,7 @@ public class TurnVisionAuto extends Command {
         this.requires(Robot.feedSolenoid);
         this.requires(Robot.flipSolenoid);
         this.requires(Robot.shooterWheels);
+        motorSpeed = 0.3;
     }
 
     // Called just before this Command runs the first time
@@ -41,19 +42,10 @@ public class TurnVisionAuto extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double currentTime = Timer.getFPGATimestamp();
-        double timeDifferenceMilli = (currentTime - this.initialTime) * 1000;
-        try {
-            if (timeDifferenceMilli % (aimTimeMilli + waitTimeMilli) < aimTimeMilli) {
-            	int turning = dirTurning();
-            	Robot.leftS.move(-motorSpeed*turning);
-                Robot.rightS.move(motorSpeed*turning);
-            } else {
-                SmartDashboard.putString("Vision Auto Turn Status: ", "Waiting");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        
+		int turning = dirTurning();
+		Robot.vTank.move(motorSpeed*turning);
+            
     }
 
     public int dirTurning() {
@@ -104,7 +96,13 @@ public class TurnVisionAuto extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return false;
+    	if ((testingDouble<=(RobotMap.centerXTarget+ RobotMap.targetSpread)) &&
+    			(testingDouble>=(RobotMap.centerXTarget-RobotMap.targetSpread))) {
+    		SmartDashboard.putString("Vision Auto Turn Status: ", "Found Target");
+    		return true;
+    	} else {
+    		return false;
+    	}
     }
 
     // Called once after isFinished returns true
@@ -117,6 +115,7 @@ public class TurnVisionAuto extends Command {
     // subsystems is scheduled to rxun
     @Override
     protected void interrupted() {
+    	
         this.end();
     }
 }

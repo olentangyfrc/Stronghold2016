@@ -81,8 +81,9 @@ public class OI {
                 new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
 
         this.feedBall.whenPressed(new FeedPush());
-        //this.aimAuto.whileHeld(new TurnVisionAuto(.2, .8, .4));
+        this.aimAuto.whileHeld(new TurnVisionAuto());
         this.aimPID.whileHeld(new VisionPID());
+        
         //this.reverse.whenPressed(new ToggleCommand());
         //this.combineLoading.whileHeld(
         //new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
