@@ -29,8 +29,9 @@ public class TurnVisionAuto extends Command {
         this.requires(Robot.rightS);
         this.requires(Robot.feedSolenoid);
         this.requires(Robot.flipSolenoid);
-        this.requires(Robot.shooterWheels);
-        motorSpeed = 0.3;
+        //this.requires(Robot.shooterWheels);
+        //this.requires(Robot.vTank);
+        //motorSpeed = 0.5;
     }
 
     // Called just before this Command runs the first time
@@ -42,30 +43,34 @@ public class TurnVisionAuto extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        
-		int turning = dirTurning();
-		Robot.vTank.move(motorSpeed*turning);
+    	int turning = dirTurning();
+        motorSpeed = (0.0014516129*Math.abs(testingDouble-RobotMap.centerXTarget) + .370);
+		Robot.leftS.moveSingle(motorSpeed*turning);
+		Robot.rightS.moveSingle(motorSpeed*turning);
             
     }
 
     public int dirTurning() {
-    	centerX = Robot.table.getNumberArray("centerX",this.defaultValue);
-    	testingDouble = this.centerX[0];
-    	if (testingDouble>(RobotMap.centerXTarget+ RobotMap.targetSpread)) {
-    		SmartDashboard.putString("Vision Auto Turn Status: ", "Turning left");
-    		return 1;
-    	} else if (testingDouble<(RobotMap.centerXTarget-RobotMap.targetSpread)) {
-    		SmartDashboard.putString("Vision Auto Turn Status: ", "Turning right");
-    		return -1;
-    	} else if ((testingDouble<=(RobotMap.centerXTarget+ RobotMap.targetSpread)) &&
-    			(testingDouble>=(RobotMap.centerXTarget-RobotMap.targetSpread))) {
-    		SmartDashboard.putString("Vision Auto Turn Status: ", "Found Target");
-    		return 0;
-    	} else {
-    		SmartDashboard.putString("Vision Auto Turn Status: ", "Something went wrong");
+    	try {
+	    	centerX = Robot.table.getNumberArray("centerX",this.defaultValue);
+	    	testingDouble = this.centerX[0];
+	    	if (testingDouble>(RobotMap.centerXTarget+ RobotMap.targetSpread)) {
+	    		SmartDashboard.putString("Vision Auto Turn Status: ", "Turning left");
+	    		return -1;
+	    	} else if (testingDouble<(RobotMap.centerXTarget-RobotMap.targetSpread)) {
+	    		SmartDashboard.putString("Vision Auto Turn Status: ", "Turning right");
+	    		return 1;
+	    	} else if ((testingDouble<=(RobotMap.centerXTarget+ RobotMap.targetSpread)) &&
+	    			(testingDouble>=(RobotMap.centerXTarget-RobotMap.targetSpread))) {
+	    		SmartDashboard.putString("Vision Auto Turn Status: ", "Found Target");
+	    		return 0;
+	    	} else {
+	    		SmartDashboard.putString("Vision Auto Turn Status: ", "Something went wrong");
+	    		return 0;
+	    	}
+    	} catch (Exception e) {
     		return 0;
     	}
-    	
     }
     /*public void aim() {
         if (Double.compare(this.testingDouble, this.defaultValue[0]) == 0) {

@@ -8,7 +8,7 @@ import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup;
 import org.usfirst.frc.team4611.robot.subsystems.FeedSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.FlipSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.ShooterWheels;
-import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
+//import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 
@@ -44,7 +44,7 @@ public class Robot extends IterativeRobot {
     public static ShooterWheels shooterWheels = new ShooterWheels();
     public static NetworkTable table;
     public static VisionPID vision = new VisionPID();
-    public static VisionTank vTank = new VisionTank();
+    //public static VisionTank vTank = new VisionTank();
 
     CameraServer server;
 

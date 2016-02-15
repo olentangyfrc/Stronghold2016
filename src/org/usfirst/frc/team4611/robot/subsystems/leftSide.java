@@ -27,12 +27,17 @@ public class leftSide extends Subsystem {
         this.frontL.set(speed*RobotMap.dirFacing);
         this.backL.set(speed*RobotMap.dirFacing);
     }
+    
+    public void moveSingle(double speed) {
+    	this.frontL.set(speed*RobotMap.dirFacing);
+    	this.backL.set(.5*speed*RobotMap.dirFacing);
+    }
 
     @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        this.setDefaultCommand(new VisionPID());
+        this.setDefaultCommand(new leftTank());
         
     }
 }
