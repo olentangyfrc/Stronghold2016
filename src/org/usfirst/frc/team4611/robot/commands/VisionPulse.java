@@ -18,9 +18,10 @@ public class VisionPulse extends Command {
     private double time;
 
     private double[] centerX;
-    private double[] lengths = { 25, 25, 50, 90, 120 };
-    private double[] speeds = { 0.3, 0.3, 0.4, 0.5, 0.8 };
-    private double[] times = { 0.5, 0.6, 0.7, 0.8, 0.9, 1 };
+    private double[] lengths = { 0, RobotMap.targetSpread, 25, 25, 50, 90,
+            110 };
+    private double[] speeds = { 0, 0.3, 0.3, 0.3, 0.4, 0.5, 0.8 };
+    private double[] times = { 0.1, 0.3, 0.5, 0.6, 0.7, 0.8, 1 };
     private double[] defaultValue = { -5.0, -5.0 };
 
     public VisionPulse() {
@@ -37,9 +38,9 @@ public class VisionPulse extends Command {
 
         this.centerX = Robot.table.getNumberArray("centerX", this.defaultValue);
         this.currentX = this.centerX[0];
-        this.absDiff = Math.abs(this.currentX - RobotMap.targetX);
+        this.absDiff = Math.abs(this.currentX - RobotMap.centerXTarget);
 
-        if (this.currentX > RobotMap.targetX) {
+        if (this.currentX > RobotMap.centerXTarget) {
             this.direction = -1;
         } else {
             this.direction = 1;

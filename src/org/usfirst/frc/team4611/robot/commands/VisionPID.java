@@ -26,7 +26,7 @@ public class VisionPID extends PIDCommand {
     protected void initialize() {
         this.getPIDController().enable();
         this.getPIDController().setAbsoluteTolerance(RobotMap.targetSpread);
-        super.setSetpoint(RobotMap.targetX);
+        super.setSetpoint(RobotMap.centerXTarget);
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -6,6 +6,7 @@ import org.usfirst.frc.team4611.robot.commands.FeedingPosition;
 //import org.usfirst.frc.team4611.robot.commands.WheelShoot;
 //import org.usfirst.frc.team4611.robot.commands.WheelsFeed;
 import org.usfirst.frc.team4611.robot.commands.ShooterWheelsMove;
+import org.usfirst.frc.team4611.robot.commands.TurnVisionAuto;
 import org.usfirst.frc.team4611.robot.commands.VisionPulse;
 
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -79,8 +80,9 @@ public class OI {
                 new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
 
         this.feedBall.whenPressed(new FeedPush());
-        //this.aimAuto.whileHeld(new TurnVisionAuto(.2, .8, .4));
+        this.aimAuto.whileHeld(new TurnVisionAuto());
         this.autoPulse.whileHeld(new VisionPulse());
+
         //this.reverse.whenPressed(new ToggleCommand());
         //this.combineLoading.whileHeld(
         //new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
