@@ -21,7 +21,7 @@ public class ClawSwivel extends PIDSubsystem {
         super("Claw", p, i, d);
         AnalogInput ai = new AnalogInput(1);
         pot = new AnalogPotentiometer(ai, .1, 0);
-        clawMotor = new Victor(RobotMap.clawMotorPort);
+        //clawMotor = new Victor(RobotMap.clawMotorPort);
         this.getPIDController().setPercentTolerance(15);
     }
 

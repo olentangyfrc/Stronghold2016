@@ -7,6 +7,7 @@ import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup;
 import org.usfirst.frc.team4611.robot.subsystems.FeedSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.FlipSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.ShooterWheels;
+//import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 
@@ -31,31 +32,30 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
-    
-    public static Preferences prefs;
-
-    Command autonomousCommand;
-    SendableChooser chooser;
-    //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
     public static FlipSolenoid flipSolenoid = new FlipSolenoid();
     public static FeedSolenoid feedSolenoid = new FeedSolenoid();
     public static ShooterWheels shooterWheels = new ShooterWheels();
+
+    public static Preferences prefs;
+    Command autonomousCommand;
+    SendableChooser chooser;
+
     public static NetworkTable table;
-    
+
     CameraServer server;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
- 
+
     @Override
     public void robotInit() {
-    	
-    	CameraServer server = CameraServer.getInstance();
-    	server.setQuality(50);
-    	server.startAutomaticCapture("cam0");
-  
+        //Initializes camera feed on driver station
+        CameraServer server = CameraServer.getInstance();
+        server.setQuality(50);
+        server.startAutomaticCapture("cam0");
+
         oi = new OI();
         this.chooser = new SendableChooser();
         this.autonomousCommand = new autonomousCommandGroup();
@@ -69,7 +69,6 @@ public class Robot extends IterativeRobot {
      */
     @Override
     public void disabledInit() {
-
     }
 
     @Override
@@ -122,8 +121,7 @@ public class Robot extends IterativeRobot {
         if (this.autonomousCommand != null) {
             this.autonomousCommand.cancel();
         }
-        
-        
+
     }
 
     /**
@@ -132,6 +130,7 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        //LiveWindow.run();
     }
 
     /**
