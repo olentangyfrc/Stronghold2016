@@ -15,13 +15,12 @@ public class DriveAuto extends Command {
 
     /**
      * Constructor with just time
-     * 
+     *
      * @param time
      *            Time Robot should move at with default speed
      */
     public DriveAuto(double time) { //now we can call how long we want it to run
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+
         this.requires(Robot.leftS);
         this.requires(Robot.rightS);
         this.actualTime = time;
@@ -30,7 +29,7 @@ public class DriveAuto extends Command {
 
     /**
      * Constructor using a time and motor speed
-     * 
+     *
      * @param time
      *            Time robot should move
      * @param speed
@@ -62,10 +61,6 @@ public class DriveAuto extends Command {
         //}
         Robot.leftS.move(-this.speed2);
         Robot.rightS.move(-this.speed2);
-        //double value = Robot.oi.ai.getAverageValue();
-        //double distance = (value * 0.49) / 100;
-        //SmartDashboard.putNumber("Range Finder Average Voltage", value);
-        //SmartDashboard.putNumber("Calculated Distance", distance);
 
     }
 
