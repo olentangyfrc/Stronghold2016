@@ -26,13 +26,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
+
+
+    Command autonomousCommand;
+    SendableChooser chooser;
+    
     //public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
-
-    Command autonomousCommand;
-    SendableChooser chooser;
     
     //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
     public static FlipSolenoid flipSolenoid = new FlipSolenoid();
@@ -54,8 +56,8 @@ public class Robot extends IterativeRobot {
         //chooser.addObject("Auto3", new autonomousCommandGroup3());
         SmartDashboard.putData("Auto Chooser", chooser);
         
-        this.autonomousCommand = new autonomousCommandGroup();
-        table = NetworkTable.getTable("GRIP/data");
+        //this.autonomousCommand = new autonomousCommandGroup();
+        //table = NetworkTable.getTable("GRIP/data");
     }
 
     /**
