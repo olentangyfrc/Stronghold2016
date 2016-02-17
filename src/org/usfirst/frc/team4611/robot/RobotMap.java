@@ -30,9 +30,14 @@ public class RobotMap {
 
     public static int dirFacing = -1;
 
-    //Vision acqusition ports
+    //Vision acqusition ports and speeds
     public static final double centerXTarget = 310;
     public static final double targetSpread = 3;
+    public static final double visionAutoSpeed = .5;
+
+    //autuonomous speeds
     public static final double autoSpeed = .5;
+
+    public static final int spikePort = 1;
 
 }

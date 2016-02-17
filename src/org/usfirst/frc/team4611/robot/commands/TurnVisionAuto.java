@@ -3,7 +3,7 @@ package org.usfirst.frc.team4611.robot.commands;
 import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Timer;
+//import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -30,7 +30,6 @@ public class TurnVisionAuto extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        this.initialTime = Timer.getFPGATimestamp();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -42,8 +41,7 @@ public class TurnVisionAuto extends Command {
                 * Math.abs(this.testingDouble - RobotMap.centerXTarget) + .370);
         //Turns only the front two motors
         Robot.leftS.moveSingle(this.motorSpeed * turning);
-        Robot.rightS.moveSingle(this.motorSpeed * turning);
-
+        Robot.rightS.moveSingle(-this.motorSpeed * turning);
     }
 
     //Outputs to SmartDashboard which way the bot is turning

@@ -1,7 +1,9 @@
 package org.usfirst.frc.team4611.robot.commands;
 
+import org.usfirst.frc.team4611.robot.OI;
 import org.usfirst.frc.team4611.robot.Robot;
 
+import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -21,6 +23,7 @@ public class ShooterWheelsMove extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() { //should stop already running wheels too
+        OI.spike.set(Value.kOn);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -39,6 +42,7 @@ public class ShooterWheelsMove extends Command {
     @Override
     protected void end() {
         Robot.shooterWheels.shoot(0);
+        OI.spike.set(Value.kOff);
     }
 
     // Called when another command which requires one or more of the same
