@@ -13,24 +13,21 @@ import edu.wpi.first.wpilibj.command.Command;
 public class FeedingPosition extends Command {
 
     public double initialTime;
-    public Timer timer;
 
     public FeedingPosition() {
         this.requires(Robot.flipSolenoid);
-        this.timer = new Timer();
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        this.initialTime = this.timer.getFPGATimestamp();
+        this.initialTime = Timer.getFPGATimestamp();
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        if (this.timer.getFPGATimestamp()
-                - this.initialTime < RobotMap.soleTime) {
+        if (Timer.getFPGATimestamp() - this.initialTime < RobotMap.soleTime) {
             Robot.flipSolenoid.flip(Value.kReverse);
         } else {
             Robot.flipSolenoid.flip(Value.kOff);
