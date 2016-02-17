@@ -4,6 +4,7 @@ package org.usfirst.frc.team4611.robot;
 import java.util.prefs.Preferences;
 
 import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup;
+import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup2;
 import org.usfirst.frc.team4611.robot.subsystems.FeedSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.FlipSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.ShooterWheels;
@@ -18,6 +19,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -32,6 +34,8 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
+    
+    //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
     public static FlipSolenoid flipSolenoid = new FlipSolenoid();
     public static FeedSolenoid feedSolenoid = new FeedSolenoid();
     public static ShooterWheels shooterWheels = new ShooterWheels();
@@ -57,9 +61,15 @@ public class Robot extends IterativeRobot {
         server.startAutomaticCapture("cam0");
 
         oi = new OI();
-        this.chooser = new SendableChooser();
-        this.autonomousCommand = new autonomousCommandGroup();
-        table = NetworkTable.getTable("GRIP/data");
+        
+        chooser = new SendableChooser();
+        chooser.addDefault("Default Program", new autonomousCommandGroup());
+        chooser.addObject("Auto2", new autonomousCommandGroup2());
+        //chooser.addObject("Auto3", new autonomousCommandGroup3());
+        SmartDashboard.putData("Auto Chooser", chooser);
+        
+        //this.autonomousCommand = new autonomousCommandGroup();
+        //table = NetworkTable.getTable("GRIP/data");
     }
 
     /**
@@ -99,9 +109,13 @@ public class Robot extends IterativeRobot {
          */
 
         // schedule the autonomous command (example)
-        if (this.autonomousCommand != null) {
-            this.autonomousCommand.start();
-        }
+        
+    	autonomousCommand = (Command) chooser.getSelected();
+    	autonomousCommand.start();
+    	
+    	//if (this.autonomousCommand != null) {
+        //    this.autonomousCommand.start();
+        //}
     }
 
     /**

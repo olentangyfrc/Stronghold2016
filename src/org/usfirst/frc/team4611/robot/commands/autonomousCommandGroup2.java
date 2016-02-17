@@ -21,10 +21,8 @@ public class autonomousCommandGroup2 extends CommandGroup {
     	
 
     	//addSequential (new SolenoidCommand());
-    	addSequential (new TurnAuto(0.0, -1,0.0 ));
-    	addSequential (new DriveAuto(0.0,0.0)); // DriveAuto's have different length parameters
-    	addSequential (new TurnAuto(0.0, -1, 0.0));
-    	addSequential (new DriveAuto(0.0,0.0));
+    	addSequential (new DriveAuto(0.5, 2)); // DriveAuto's have different length parameters
+
     	
         // A command group will require all of the subsystems that each member
         // would require.
