@@ -8,6 +8,7 @@ import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup2;
 import org.usfirst.frc.team4611.robot.subsystems.FeedSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.FlipSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.ShooterWheels;
+import org.usfirst.frc.team4611.robot.subsystems.SwivelArm;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
@@ -39,6 +40,7 @@ public class Robot extends IterativeRobot {
     public static FlipSolenoid flipSolenoid = new FlipSolenoid();
     public static FeedSolenoid feedSolenoid = new FeedSolenoid();
     public static ShooterWheels shooterWheels = new ShooterWheels();
+    public static SwivelArm swivelArm = new SwivelArm();
 
     public static Preferences prefs;
     Command autonomousCommand;

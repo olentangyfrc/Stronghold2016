@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4611.robot;
 
+import org.usfirst.frc.team4611.robot.commands.ArmAuto;
 import org.usfirst.frc.team4611.robot.commands.FeedPush;
 import org.usfirst.frc.team4611.robot.commands.FeedingPosition;
 ///import org.usfirst.frc.team4611.robot.commands.WheelReverse;
@@ -8,6 +9,7 @@ import org.usfirst.frc.team4611.robot.commands.FeedingPosition;
 import org.usfirst.frc.team4611.robot.commands.ShooterWheelsMove;
 import org.usfirst.frc.team4611.robot.commands.TurnVisionAuto;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -29,8 +31,12 @@ public class OI {
     public Button feedBall = new JoystickButton(this.rightJoy, 1); //moves the small pneumatic pusher
     public Button lowBar = new JoystickButton(this.leftJoy, 5);
     public Button aimAuto = new JoystickButton(this.rightJoy, 10);
+    public Button lowerArm = new JoystickButton(this.shootJoy, 3);
+    public Button raiseArm = new JoystickButton(this.shootJoy, 4);
     //public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation
-
+    public DigitalInput swivelTopLimit = new DigitalInput(0);
+    public DigitalInput swivelBottomLimit = new DigitalInput(0);
+    
     public OI() {
         //Runs the wheels backwards while the wheel shooter is down WHILEHELD
         this.loadWheelsandFeeding.whileHeld(
@@ -52,6 +58,8 @@ public class OI {
         //Auto-aim according the vision WHILEHELD
         this.aimAuto.whileHeld(new TurnVisionAuto());
 
+        this.lowerArm.whenPressed(new ArmAuto(false));
+        this.raiseArm.whenPressed(new ArmAuto(true));
         //this.reverse.whenPressed(new ToggleCommand());
         //new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
         //this.combineLoading.whenPressed(new FeedingPosition()); //not sure if this will work
