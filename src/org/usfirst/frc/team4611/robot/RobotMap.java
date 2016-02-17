@@ -37,6 +37,10 @@ public class RobotMap {
 
     //autuonomous speeds
     public static final double autoSpeed = .5;
+    
+    //swivel arm variables
+    public static final int swivelMotorPort = 6;
+    public static final double maxSwivelSpeed = 0.1;
 
     public static final int spikePort = 1;
 
