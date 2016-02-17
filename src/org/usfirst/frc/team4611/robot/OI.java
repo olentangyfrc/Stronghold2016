@@ -44,7 +44,7 @@ public class OI {
 
         //Spins up the wheels WHILEHELD
         this.shootWheels.whileHeld(
-                new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
+               new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
 
         //Fires solenoid to shoot the ball WHENPRESSED
         this.feedBall.whenPressed(new FeedPush());
