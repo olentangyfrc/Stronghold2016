@@ -35,7 +35,7 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
-    
+
     //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
     public static FlipSolenoid flipSolenoid = new FlipSolenoid();
     public static FeedSolenoid feedSolenoid = new FeedSolenoid();
@@ -63,15 +63,20 @@ public class Robot extends IterativeRobot {
         server.startAutomaticCapture("cam0");
 
         oi = new OI();
-        
-        chooser = new SendableChooser();
-        chooser.addDefault("Default Program", new autonomousCommandGroup());
-        chooser.addObject("Auto2", new autonomousCommandGroup2());
+
+        this.chooser = new SendableChooser();
+        this.chooser.addDefault("Default Program",
+                new autonomousCommandGroup());
+        this.chooser.addObject("Auto2", new autonomousCommandGroup2());
         //chooser.addObject("Auto3", new autonomousCommandGroup3());
-        SmartDashboard.putData("Auto Chooser", chooser);
-        
+        SmartDashboard.putData("Auto Chooser", this.chooser);
+
         //this.autonomousCommand = new autonomousCommandGroup();
         //table = NetworkTable.getTable("GRIP/data");
+    }
+
+    public enum Defense {
+        CHEVALDEFRISE, PORTCULLIS, DRIVE;
     }
 
     /**
@@ -111,11 +116,11 @@ public class Robot extends IterativeRobot {
          */
 
         // schedule the autonomous command (example)
-        
-    	autonomousCommand = (Command) chooser.getSelected();
-    	autonomousCommand.start();
-    	
-    	//if (this.autonomousCommand != null) {
+
+        this.autonomousCommand = (Command) this.chooser.getSelected();
+        this.autonomousCommand.start();
+
+        //if (this.autonomousCommand != null) {
         //    this.autonomousCommand.start();
         //}
     }

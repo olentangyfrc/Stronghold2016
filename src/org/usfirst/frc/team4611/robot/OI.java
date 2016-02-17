@@ -11,6 +11,8 @@ import org.usfirst.frc.team4611.robot.commands.TurnVisionAuto;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Relay.Direction;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -19,7 +21,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    //INSTANTIATING JOYSTICKS AND BUTTONS:
+    public static Relay spike = new Relay(RobotMap.spikePort,
+            Direction.kForward);
+            //INSTANTIATING JOYSTICKS AND BUTTONS:
 
     //Driver Station joysticks
     public Joystick leftJoy = new Joystick(1);
@@ -50,7 +54,7 @@ public class OI {
 
         //Spins up the wheels WHILEHELD
         this.shootWheels.whileHeld(
-               new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
+                new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
 
         //Fires solenoid to shoot the ball WHENPRESSED
         this.feedBall.whenPressed(new FeedPush());
