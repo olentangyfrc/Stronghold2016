@@ -3,8 +3,12 @@ package org.usfirst.frc.team4611.robot;
 
 import java.util.prefs.Preferences;
 
+import org.usfirst.frc.team4611.robot.commands.Lane2;
+import org.usfirst.frc.team4611.robot.commands.Lane3;
+import org.usfirst.frc.team4611.robot.commands.Lane4;
+import org.usfirst.frc.team4611.robot.commands.Lane5;
+import org.usfirst.frc.team4611.robot.commands.LowBar;
 import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup;
-import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup2;
 import org.usfirst.frc.team4611.robot.subsystems.FeedSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.FlipSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.ShooterWheels;
@@ -65,8 +69,32 @@ public class Robot extends IterativeRobot {
         this.chooser = new SendableChooser();
         this.chooser.addDefault("Default Program",
                 new autonomousCommandGroup());
-        this.chooser.addObject("Auto2", new autonomousCommandGroup2());
-        //chooser.addObject("Auto3", new autonomousCommandGroup3());
+        this.chooser.addObject("Lane 1: Low Bar", new LowBar());
+
+        this.chooser.addObject("Lane 2: Drive", new Lane2(Defense.DRIVE));
+        this.chooser.addObject("Lane 2: Cheval de Frise",
+                new Lane2(Defense.CHEVALDEFRISE));
+        this.chooser.addObject("Lane 2: Portcullis",
+                new Lane2(Defense.PORTCULLIS));
+
+        this.chooser.addObject("Lane 3: Drive", new Lane3(Defense.DRIVE));
+        this.chooser.addObject("Lane 3: Cheval de Frise",
+                new Lane3(Defense.CHEVALDEFRISE));
+        this.chooser.addObject("Lane 3: Portcullis",
+                new Lane3(Defense.PORTCULLIS));
+
+        this.chooser.addObject("Lane 4: Drive", new Lane4(Defense.DRIVE));
+        this.chooser.addObject("Lane 4: Cheval de Frise",
+                new Lane4(Defense.CHEVALDEFRISE));
+        this.chooser.addObject("Lane 4: Portcullis",
+                new Lane4(Defense.PORTCULLIS));
+
+        this.chooser.addObject("Lane 5: Drive", new Lane5(Defense.DRIVE));
+        this.chooser.addObject("Lane 5: Cheval de Frise",
+                new Lane5(Defense.CHEVALDEFRISE));
+        this.chooser.addObject("Lane 5: Portcullis",
+                new Lane5(Defense.PORTCULLIS));
+
         SmartDashboard.putData("Auto Chooser", this.chooser);
 
         //this.autonomousCommand = new autonomousCommandGroup();

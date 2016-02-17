@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class LowBar extends CommandGroup {
-    
-    public  LowBar() {
+
+    public LowBar() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,11 +24,12 @@ public class LowBar extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
-    	addSequential(new DriveAuto(0.0, 0.0));
-    	addSequential(new TurnAuto (0.0, 1 ,0.0)); //don't give negative speed values
-    	addSequential(new AutoShooterSpinUp(0.5,5));
-    	addParallel(new AutoShooterSol(1));
-    	
+        this.addSequential(new FeedingPosition());
+        this.addSequential(new DriveAuto(0.0, 0.0));
+        this.addSequential(new ShootingPosition());
+        this.addSequential(new TurnAuto(0.0, 1, 0.0)); //don't give negative speed values
+        this.addSequential(new AutoShooterSpinUp(0.5, 5));
+        this.addParallel(new AutoShooterSol(1));
+
     }
 }

@@ -1,13 +1,15 @@
 package org.usfirst.frc.team4611.robot.commands;
 
+import org.usfirst.frc.team4611.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
 public class Lane4 extends CommandGroup {
-    
-    public  Lane4() {
+
+    public Lane4(Robot.Defense def) {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,9 +26,17 @@ public class Lane4 extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveAuto(0.0, 0.0));
-    	addSequential(new TurnAuto (0.0, -1 ,0.0)); //don't give negative speed values
-    	addSequential(new AutoShooterSpinUp(0.5,5));
-    	addParallel(new AutoShooterSol(1));
+        switch (def) {
+            case PORTCULLIS:
+                break;
+            case CHEVALDEFRISE:
+                break;
+            case DRIVE:
+                this.addSequential(new DriveAuto(0.0, 0.0));
+                break;
+        }
+        this.addSequential(new TurnAuto(0.0, -1, 0.0)); //don't give negative speed values
+        this.addSequential(new AutoShooterSpinUp(0.5, 5));
+        this.addParallel(new AutoShooterSol(1));
     }
 }

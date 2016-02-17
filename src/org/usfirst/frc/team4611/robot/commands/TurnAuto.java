@@ -1,8 +1,10 @@
 package org.usfirst.frc.team4611.robot.commands;
 
+import org.usfirst.frc.team4611.robot.OI;
 import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -39,6 +41,7 @@ public class TurnAuto extends Command {
     @Override
     protected void initialize() {
         this.initialTime = Timer.getFPGATimestamp();
+        OI.spike.set(Value.kOn);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -59,7 +62,15 @@ public class TurnAuto extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return Timer.getFPGATimestamp() - this.initialTime > this.actualTime;
+        try {
+            double[] defaultValue = { -5.0, -5.0 };
+            double[] centerXs = Robot.table.getNumberArray("centerX",
+                    defaultValue);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Timer.getFPGATimestamp() - this.initialTime > this.actualTime
+                || centerXs.length >= 1;
     }
 
     // Called once after isFinished returns true
