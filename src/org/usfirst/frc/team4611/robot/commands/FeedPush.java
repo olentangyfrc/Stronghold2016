@@ -12,44 +12,42 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class FeedPush extends Command {
 
-	public double initialTime;
-    public Timer timer;
-    
+    public double initialTime;
+
     public FeedPush() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	this.requires(Robot.feedSolenoid);
-    	this.timer = new Timer();
+        this.requires(Robot.feedSolenoid);
     }
 
     // Called just before this Command runs the first time
+    @Override
     protected void initialize() {
-    	this.initialTime = this.timer.getFPGATimestamp();
+        this.initialTime = Timer.getFPGATimestamp();
     }
 
     // Called repeatedly when this Command is scheduled to run
+    @Override
     protected void execute() {
-    	if (this.timer.getFPGATimestamp()
-                - this.initialTime < RobotMap.soleTime) {
-            Robot.feedSolenoid.feed(Value.kForward);
-        } else {
-            Robot.feedSolenoid.feed(Value.kOff);
-        }
+        Robot.feedSolenoid.feed(Value.kForward);
     }
 
     // Make this return true when this Command no longer needs to run execute()
+    @Override
     protected boolean isFinished() {
-    	return this.timer.getFPGATimestamp()
-                - this.initialTime > RobotMap.soleTime;
+        return Timer.getFPGATimestamp() - this.initialTime > RobotMap.soleTime;
     }
 
     // Called once after isFinished returns true
+    @Override
     protected void end() {
-    	Robot.feedSolenoid.feed(Value.kOff);
+        Robot.feedSolenoid.feed(Value.kOff);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
+    @Override
     protected void interrupted() {
+        this.end();
     }
 }

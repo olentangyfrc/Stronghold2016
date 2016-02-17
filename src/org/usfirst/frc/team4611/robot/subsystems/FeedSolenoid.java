@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * Solenoid 1 will be the flipping the mechanism
+ * Solenoid 2 will be the feeding the ball into the wheels
  */
 public class FeedSolenoid extends Subsystem {
     DoubleSolenoid s2;
