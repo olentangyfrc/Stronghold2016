@@ -23,8 +23,8 @@ public class rightSide extends Subsystem {
     }
 
     public void moveSingle(double speed) {
-        this.frontR.set(speed * RobotMap.dirFacing);
-        this.backR.set(.5 * speed * RobotMap.dirFacing);
+        this.frontR.set(-speed * RobotMap.dirFacing);
+        this.backR.set(-.5 * speed * RobotMap.dirFacing);
     }
 
     @Override

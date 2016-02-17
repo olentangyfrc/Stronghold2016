@@ -3,7 +3,7 @@ package org.usfirst.frc.team4611.robot.commands;
 import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Timer;
+//import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -15,10 +15,10 @@ public class TurnVisionAuto extends Command {
     double[] centerX;
     double[] defaultValue = { -5.0, -5.0 };
     double testingDouble;
-    double initialTime;
+    //double initialTime;
     //boolean isAiming = true;
-    double aimTimeMilli;
-    double waitTimeMilli;
+    //double aimTimeMilli;
+    //double waitTimeMilli;
     double motorSpeed;
 
     public TurnVisionAuto() {
@@ -37,7 +37,7 @@ public class TurnVisionAuto extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() { //should stop already running wheels too
-        this.initialTime = Timer.getFPGATimestamp();
+        //this.initialTime = Timer.getFPGATimestamp();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -47,7 +47,7 @@ public class TurnVisionAuto extends Command {
         this.motorSpeed = (0.0014516129
                 * Math.abs(this.testingDouble - RobotMap.centerXTarget) + .370);
         Robot.leftS.moveSingle(this.motorSpeed * turning);
-        Robot.rightS.moveSingle(this.motorSpeed * turning);
+        Robot.rightS.moveSingle(-this.motorSpeed * turning);
 
     }
 
