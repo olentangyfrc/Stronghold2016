@@ -8,6 +8,7 @@ import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup2;
 import org.usfirst.frc.team4611.robot.subsystems.FeedSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.FlipSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.ShooterWheels;
+import org.usfirst.frc.team4611.robot.subsystems.SwivelArm;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
@@ -35,11 +36,12 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
-    
+
     //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
     public static FlipSolenoid flipSolenoid = new FlipSolenoid();
     public static FeedSolenoid feedSolenoid = new FeedSolenoid();
     public static ShooterWheels shooterWheels = new ShooterWheels();
+    public static SwivelArm swivelArm = new SwivelArm();
 
     public static Preferences prefs;
     Command autonomousCommand;
@@ -62,15 +64,20 @@ public class Robot extends IterativeRobot {
         server.startAutomaticCapture("cam0");
 
         oi = new OI();
-        
-        chooser = new SendableChooser();
-        chooser.addDefault("Default Program", new autonomousCommandGroup());
-        chooser.addObject("Auto2", new autonomousCommandGroup2());
+
+        this.chooser = new SendableChooser();
+        this.chooser.addDefault("Default Program",
+                new autonomousCommandGroup());
+        this.chooser.addObject("Auto2", new autonomousCommandGroup2());
         //chooser.addObject("Auto3", new autonomousCommandGroup3());
-        SmartDashboard.putData("Auto Chooser", chooser);
-        
+        SmartDashboard.putData("Auto Chooser", this.chooser);
+
         //this.autonomousCommand = new autonomousCommandGroup();
         //table = NetworkTable.getTable("GRIP/data");
+    }
+
+    public enum Defense {
+        CHEVALDEFRISE, PORTCULLIS, DRIVE;
     }
 
     /**
@@ -110,11 +117,11 @@ public class Robot extends IterativeRobot {
          */
 
         // schedule the autonomous command (example)
-        
-    	autonomousCommand = (Command) chooser.getSelected();
-    	autonomousCommand.start();
-    	
-    	//if (this.autonomousCommand != null) {
+
+        this.autonomousCommand = (Command) this.chooser.getSelected();
+        this.autonomousCommand.start();
+
+        //if (this.autonomousCommand != null) {
         //    this.autonomousCommand.start();
         //}
     }

@@ -1,54 +1,53 @@
 package org.usfirst.frc.team4611.robot.commands;
 
-import org.usfirst.frc.team4611.robot.OI;
 import org.usfirst.frc.team4611.robot.Robot;
+import org.usfirst.frc.team4611.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ShooterWheelsMove extends Command {
+public class ArmAuto extends Command {
 
-    double speed;
-
-    public ShooterWheelsMove(double inputSpeed) {
+	public boolean upOrDown; //true is up, false is down
+    public ArmAuto(boolean input) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        this.speed = inputSpeed;
-        this.requires(Robot.shooterWheels);
+    	requires(Robot.swivelArm);
+    	upOrDown = input;
     }
 
     // Called just before this Command runs the first time
-    @Override
-    protected void initialize() { //should stop already running wheels too
-        OI.spike.set(Value.kOn);
+    protected void initialize() {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    @Override
     protected void execute() {
-        Robot.shooterWheels.shoot(this.speed);
+    	if (!Robot.oi.swivelTopLimit.get()&&upOrDown) {
+    		Robot.swivelArm.move(RobotMap.maxSwivelSpeed);
+    	} else if (!Robot.oi.swivelBottomLimit.get()&&!upOrDown) {
+    		Robot.swivelArm.move(-RobotMap.maxSwivelSpeed);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    @Override
     protected boolean isFinished() {
-        return false;
+    	if (upOrDown) {
+    		return Robot.oi.swivelTopLimit.get();
+    	} else if (!upOrDown) {
+    		return Robot.oi.swivelBottomLimit.get();
+    	} else {
+    		return true;
+    	}
     }
 
     // Called once after isFinished returns true
-    @Override
     protected void end() {
-        Robot.shooterWheels.shoot(0);
-        OI.spike.set(Value.kOff);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    @Override
     protected void interrupted() {
-        this.end();
     }
 }
