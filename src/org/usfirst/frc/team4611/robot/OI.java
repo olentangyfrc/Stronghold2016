@@ -30,7 +30,8 @@ public class OI {
     public Joystick rightJoy = new Joystick(2);
     public Joystick shootJoy = new Joystick(3);
 
-    public Button loadWheelsandFeeding = new JoystickButton(this.leftJoy, 4); // puts the wheels on reverse
+    public Button loadWheelsandFeeding = new JoystickButton(this.leftJoy, 4);// puts the wheels on reverse
+    public Button loadWheelsandFeedingShootJoy = new JoystickButton(this.shootJoy, 4);
     public Button shootWheels = new JoystickButton(this.shootJoy, 1); // puts the wheels on full forward
     public Button feedBall = new JoystickButton(this.rightJoy, 1); //moves the small pneumatic pusher
     public Button lowBar = new JoystickButton(this.leftJoy, 5);
@@ -46,6 +47,10 @@ public class OI {
         this.loadWheelsandFeeding.whileHeld(
                 new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
         this.loadWheelsandFeeding.whileHeld(new FeedingPosition());
+        
+        this.loadWheelsandFeedingShootJoy.whileHeld(
+                new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
+        this.loadWheelsandFeedingShootJoy.whileHeld(new FeedingPosition());
 
         //Stops the wheels and lowers shooter while going under low bar WHILEHELD
         this.lowBar.whileHeld(
