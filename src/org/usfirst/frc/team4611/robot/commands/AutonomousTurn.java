@@ -18,6 +18,7 @@ public class AutonomousTurn extends Command {
     public double actualTime;
     public int turningOrientation;
     public double speed2;
+    private double[] centerXs;
 
     public AutonomousTurn(double time, int turning) { //now we can call how long we want it to turn, and in what direction
         // Use requires() here to declare subsystem dependencies
@@ -64,13 +65,12 @@ public class AutonomousTurn extends Command {
     protected boolean isFinished() {
         try {
             double[] defaultValue = { -5.0, -5.0 };
-            double[] centerXs = Robot.table.getNumberArray("centerX",
-                    defaultValue);
+            this.centerXs = Robot.table.getNumberArray("centerX", defaultValue);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return Timer.getFPGATimestamp() - this.initialTime > this.actualTime
-                || centerXs.length >= 1;
+                || this.centerXs.length > 0;
     }
 
     // Called once after isFinished returns true
