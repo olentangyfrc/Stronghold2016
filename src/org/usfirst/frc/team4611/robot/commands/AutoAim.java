@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class TurnVisionAuto extends Command {
+public class AutoAim extends Command {
 
     double[] centerX;
     double[] defaultValue = { -5.0, -5.0 };
@@ -20,7 +20,7 @@ public class TurnVisionAuto extends Command {
     double waitTimeMilli;
     double motorSpeed;
 
-    public TurnVisionAuto() {
+    public AutoAim() {
         this.requires(Robot.leftS);
         this.requires(Robot.rightS);
         this.requires(Robot.feedSolenoid);

@@ -27,7 +27,7 @@ public class LowBar extends CommandGroup {
         this.addSequential(new FeedingPosition());
         this.addSequential(new DriveAuto(0.0, 0.0));
         this.addSequential(new ShootingPosition());
-        this.addSequential(new TurnAuto(0.0, 1, 0.0)); //don't give negative speed values
+        this.addSequential(new AutonomousTurn(0.0, 1, 0.0)); //don't give negative speed values
         this.addSequential(new AutoShooterSpinUp(0.5, 5));
         this.addParallel(new AutoShooterSol(1));
 

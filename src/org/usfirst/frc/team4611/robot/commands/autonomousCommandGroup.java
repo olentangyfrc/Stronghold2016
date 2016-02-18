@@ -29,7 +29,7 @@ public class autonomousCommandGroup extends CommandGroup {
     		//Starts on neutral line facing enemy outerworks
     		addSequential (new DriveAuto(0.0, 0.0)); //1.2066 seconds for 10 ft. for Small Wheels
     		//Drives forward for an inputed speed and time
-        	addSequential (new TurnAuto(0.0, 1, 0.0));//Turns right for an inputted speed and time
+        	addSequential (new AutonomousTurn(0.0, 1, 0.0));//Turns right for an inputted speed and time
         	addSequential (new ShooterWheelsMove(0.5)); //input speed for how fast the wheels spin
         	addSequential (new AutoShooterSpinUp(0.5,5));// input speed and time for spinning the wheels up **at half power and 5 seconds
         	addParallel (new AutoShooterSol(1));// While wheels are spinning up, after an inputted speed the piston will fire **after 1 second
@@ -37,7 +37,7 @@ public class autonomousCommandGroup extends CommandGroup {
     	case 2:
     		lane=2; //right now assume the robot drives over everything
     		addSequential (new DriveAuto(0.0, 0.0)); //1.2066 seconds for 10 ft. for Small Wheels
-        	addSequential (new TurnAuto(0.0, 1, 0.0));
+        	addSequential (new AutonomousTurn(0.0, 1, 0.0));
         	addSequential (new ShooterWheelsMove(0.5));
         	addSequential (new AutoShooterSpinUp(0.5,5));
         	addParallel (new AutoShooterSol(1));
@@ -45,7 +45,7 @@ public class autonomousCommandGroup extends CommandGroup {
     	case 3:
     		lane=3;
     		addSequential (new DriveAuto(0.0, 0.0)); //1.2066 seconds for 10 ft. for Small Wheels
-        	addSequential (new TurnAuto(0.0, 1, 0.0));
+        	addSequential (new AutonomousTurn(0.0, 1, 0.0));
         	addSequential (new ShooterWheelsMove(0.5));
         	addSequential (new AutoShooterSpinUp(0.5,5));
         	addParallel (new AutoShooterSol(1));
@@ -53,7 +53,7 @@ public class autonomousCommandGroup extends CommandGroup {
     	case 4:
     		lane=4;
     		addSequential (new DriveAuto(0.0, 0.0)); //1.2066 seconds for 10 ft. for Small Wheels
-        	addSequential (new TurnAuto(0.0, -1, 0.0)); //turns left 
+        	addSequential (new AutonomousTurn(0.0, -1, 0.0)); //turns left 
         	addSequential (new ShooterWheelsMove(0.5));
         	addSequential (new AutoShooterSpinUp(0.5,5));
         	addParallel (new AutoShooterSol(1));
@@ -61,7 +61,7 @@ public class autonomousCommandGroup extends CommandGroup {
     	case 5:
     		lane=5;
     		addSequential (new DriveAuto(0.0, 0.0)); //1.2066 seconds for 10 ft. for Small Wheels
-        	addSequential (new TurnAuto(0.0, -1, 0.0));
+        	addSequential (new AutonomousTurn(0.0, -1, 0.0));
         	addSequential (new ShooterWheelsMove(0.5));
         	addSequential (new AutoShooterSpinUp(0.5,5));
         	addParallel (new AutoShooterSol(1));
@@ -71,7 +71,7 @@ public class autonomousCommandGroup extends CommandGroup {
     		addSequential (new ShooterWheelsMove(0.5));
         	addSequential (new AutoShooterSpinUp(0.5,5));
         	addParallel (new AutoShooterSol(1));//Shoots the ball
-    		addSequential (new TurnAuto(0.0, 1,0.0 ));
+    		addSequential (new AutonomousTurn(0.0, 1,0.0 ));
         	addSequential (new DriveAuto(0.0,0.0)); // DriveAuto's have different length parameters
     		break;
     	}

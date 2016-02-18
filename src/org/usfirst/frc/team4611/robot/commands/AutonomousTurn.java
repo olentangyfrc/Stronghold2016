@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class TurnAuto extends Command {
+public class AutonomousTurn extends Command {
 
     public Timer timer;
     public double initialTime;
@@ -19,7 +19,7 @@ public class TurnAuto extends Command {
     public int turningOrientation;
     public double speed2;
 
-    public TurnAuto(double time, int turning) { //now we can call how long we want it to turn, and in what direction
+    public AutonomousTurn(double time, int turning) { //now we can call how long we want it to turn, and in what direction
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         this.requires(Robot.leftS);
@@ -29,7 +29,7 @@ public class TurnAuto extends Command {
         this.speed2 = RobotMap.autoSpeed;
     }
 
-    public TurnAuto(double time, int turning, double speed) {
+    public AutonomousTurn(double time, int turning, double speed) {
         this.requires(Robot.leftS);
         this.requires(Robot.rightS);
         this.actualTime = time;
