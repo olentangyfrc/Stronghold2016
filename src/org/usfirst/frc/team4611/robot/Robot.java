@@ -35,7 +35,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-
     //public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static OI oi;
     public static leftSide leftS = new leftSide();
@@ -135,15 +134,6 @@ public class Robot extends IterativeRobot {
      */
     @Override
     public void autonomousInit() {
-        //this.autonomousCommand = (Command) this.chooser.getSelected(); --------------------------CHANGED
-
-        /*
-         * String autoSelected = SmartDashboard.getString("Auto Selector",
-         * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-         * = new MyAutoCommand(); break; case "Default Auto": default:
-         * autonomousCommand = new ExampleCommand(); break; }
-         */
-
         // schedule the autonomous command (example)
 
         this.autonomousCommand = (Command) this.chooser.getSelected();
