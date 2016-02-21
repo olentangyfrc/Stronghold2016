@@ -8,7 +8,6 @@ import org.usfirst.frc.team4611.robot.commands.Lane3;
 import org.usfirst.frc.team4611.robot.commands.Lane4;
 import org.usfirst.frc.team4611.robot.commands.Lane5;
 import org.usfirst.frc.team4611.robot.commands.LowBar;
-import org.usfirst.frc.team4611.robot.commands.autonomousCommandGroup;
 import org.usfirst.frc.team4611.robot.subsystems.FeedSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.FlipSolenoid;
 import org.usfirst.frc.team4611.robot.subsystems.ShooterWheels;
@@ -70,7 +69,7 @@ public class Robot extends IterativeRobot {
 
         this.chooser = new SendableChooser();
         this.chooser.addDefault("Default Program",
-                new autonomousCommandGroup());
+                null);
         this.chooser.addObject("Lane 1: Low Bar", new LowBar());
 
         this.chooser.addObject("Lane 2: Drive", new Lane2(Defense.DRIVE));
@@ -137,11 +136,9 @@ public class Robot extends IterativeRobot {
         // schedule the autonomous command (example)
 
         this.autonomousCommand = (Command) this.chooser.getSelected();
-        this.autonomousCommand.start();
-
-        //if (this.autonomousCommand != null) {
-        //    this.autonomousCommand.start();
-        //}
+        if (this.autonomousCommand != null) {
+            this.autonomousCommand.start();
+        }
     }
 
     /**
