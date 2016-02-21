@@ -21,8 +21,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    public static Relay spike = new Relay(RobotMap.spikePort,
-            Direction.kForward);
+    public static Relay spike = new Relay(RobotMap.spikePort,Direction.kForward);
             //INSTANTIATING JOYSTICKS AND BUTTONS:
 
     //Driver Station joysticks
@@ -40,7 +39,7 @@ public class OI {
     public Button raiseArm = new JoystickButton(this.shootJoy, 4);
     //public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation
     public DigitalInput swivelTopLimit = new DigitalInput(0);
-    public DigitalInput swivelBottomLimit = new DigitalInput(0);
+    public DigitalInput swivelBottomLimit = new DigitalInput(1);
     
     public OI() {
         //Runs the wheels backwards while the wheel shooter is down WHILEHELD
