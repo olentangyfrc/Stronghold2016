@@ -43,22 +43,15 @@ public class OI {
     
     public OI() {
         //Runs the wheels backwards while the wheel shooter is down WHILEHELD
-        if (this.shootWheels.get()) {
-    		this.loadWheelsandFeeding.whileHeld(
-                new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
-    		this.loadWheelsandFeedingShootJoy.whileHeld(
-                    new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
-        } else {
-        	this.loadWheelsandFeeding.whileHeld(
-                    new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
-        	this.loadWheelsandFeedingShootJoy.whileHeld(
-                    new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
-        }
+        
         this.loadWheelsandFeeding.whileHeld(new FeedingPosition());
+        this.loadWheelsandFeeding.whileHeld(
+                new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
         
         
         this.loadWheelsandFeedingShootJoy.whileHeld(new FeedingPosition());
-
+        this.loadWheelsandFeedingShootJoy.whileHeld(
+                new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
         //Stops the wheels and lowers shooter while going under low bar WHILEHELD
         this.lowBar.whileHeld(
                 new ShooterWheelsMove(0.0 * RobotMap.feedingWheelShooterSpeed)); //doesn't spin wheels at all. Change coefficient as needed.
