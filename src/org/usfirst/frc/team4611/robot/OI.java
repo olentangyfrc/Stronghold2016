@@ -38,17 +38,25 @@ public class OI {
     public Button lowerArm = new JoystickButton(this.shootJoy, 3);
     public Button raiseArm = new JoystickButton(this.shootJoy, 4);
     //public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation
-    public DigitalInput swivelTopLimit = new DigitalInput(0);
-    public DigitalInput swivelBottomLimit = new DigitalInput(1);
+    public DigitalInput swivelTopLimit = new DigitalInput(RobotMap.topLimit);
+    public DigitalInput swivelBottomLimit = new DigitalInput(RobotMap.bottomLimit);
     
     public OI() {
         //Runs the wheels backwards while the wheel shooter is down WHILEHELD
-        this.loadWheelsandFeeding.whileHeld(
-                new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
+        if (this.shootWheels.get()) {
+    		this.loadWheelsandFeeding.whileHeld(
+                new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
+    		this.loadWheelsandFeedingShootJoy.whileHeld(
+                    new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
+        } else {
+        	this.loadWheelsandFeeding.whileHeld(
+                    new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
+        	this.loadWheelsandFeedingShootJoy.whileHeld(
+                    new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
+        }
         this.loadWheelsandFeeding.whileHeld(new FeedingPosition());
         
-        this.loadWheelsandFeedingShootJoy.whileHeld(
-                new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
+        
         this.loadWheelsandFeedingShootJoy.whileHeld(new FeedingPosition());
 
         //Stops the wheels and lowers shooter while going under low bar WHILEHELD
@@ -56,6 +64,7 @@ public class OI {
                 new ShooterWheelsMove(0.0 * RobotMap.feedingWheelShooterSpeed)); //doesn't spin wheels at all. Change coefficient as needed.
         this.lowBar.whileHeld(new FeedingPosition());
 
+        
         //Spins up the wheels WHILEHELD
         this.shootWheels.whileHeld(
                 new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
