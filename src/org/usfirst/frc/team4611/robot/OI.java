@@ -37,6 +37,7 @@ public class OI {
     public Button aimAuto = new JoystickButton(this.rightJoy, 10);
     public Button lowerArm = new JoystickButton(this.shootJoy, 3);
     public Button raiseArm = new JoystickButton(this.shootJoy, 4);
+    public Button enableArm = new JoystickButton(this.shootJoy, 5);
     //public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation
     public DigitalInput swivelTopLimit = new DigitalInput(RobotMap.topLimit);
     public DigitalInput swivelBottomLimit = new DigitalInput(RobotMap.bottomLimit);
@@ -82,7 +83,7 @@ public class OI {
         if (Math.abs(raw) < .15) {
             return 0;
         } else {
-            return .8 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw));
+            return /*.8 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw))*/ raw;
         }
     }
 

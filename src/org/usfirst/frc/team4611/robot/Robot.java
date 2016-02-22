@@ -51,7 +51,7 @@ public class Robot extends IterativeRobot {
 
     public static NetworkTable table;
 
-    CameraServer server;
+    //CameraServer server;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -61,9 +61,9 @@ public class Robot extends IterativeRobot {
     @Override
     public void robotInit() {
         //Initializes camera feed on driver station
-        CameraServer server = CameraServer.getInstance();
-        server.setQuality(50);
-        server.startAutomaticCapture("cam0");
+        //CameraServer server = CameraServer.getInstance();
+        //server.setQuality(50);
+        //server.startAutomaticCapture("cam0");
 
         oi = new OI();
 

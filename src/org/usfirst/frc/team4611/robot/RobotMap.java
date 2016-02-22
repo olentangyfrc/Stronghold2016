@@ -40,7 +40,7 @@ public class RobotMap {
     
     //swivel arm variables
     public static final int swivelMotorPort = 6;
-    public static final double maxSwivelSpeed = 0.1;
+    public static final double maxSwivelSpeed = 0.5;
     
     public static final int topLimit = 0;
     public static final int bottomLimit = 1;
