@@ -46,9 +46,9 @@ public class AutoAimAngle extends Command {
     //Outputs to SmartDashboard which way the bot is turning
     public int dirTurning() {
         try {
-            this.centerY = Robot.table.getNumberArray("centerX",
+            this.centerX = Robot.table.getNumberArray("centerX",
                     this.defaultValue);
-            this.testingDouble = this.centerY[0];
+            this.testingDouble = this.centerX[0];
             if (this.testingDouble > (RobotMap.centerXTarget
                     + RobotMap.targetSpread)) {
                 SmartDashboard.putString("Vision Auto Turn Status: ",
