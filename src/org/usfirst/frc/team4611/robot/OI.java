@@ -7,7 +7,7 @@ import org.usfirst.frc.team4611.robot.commands.FeedingPosition;
 //import org.usfirst.frc.team4611.robot.commands.WheelShoot;
 //import org.usfirst.frc.team4611.robot.commands.WheelsFeed;
 import org.usfirst.frc.team4611.robot.commands.ShooterWheelsMove;
-import org.usfirst.frc.team4611.robot.commands.AutoAim;
+import org.usfirst.frc.team4611.robot.commands.AutoAimAngle;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
@@ -73,7 +73,7 @@ public class OI {
         this.shootBall.whenPressed(new FeedPush());
 
         //Auto-aim according the vision WHILEHELD
-        this.aimAuto.whileHeld(new AutoAim());
+        this.aimAuto.whileHeld(new AutoAimAngle());
 
         this.lowerArm.whenPressed(new ArmAuto(false));
         this.raiseArm.whenPressed(new ArmAuto(true));

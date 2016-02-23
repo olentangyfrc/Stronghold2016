@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class AutoAim extends Command {
+public class AutoAimAngle extends Command {
 
     double[] centerX;
     double[] defaultValue = { -5.0, -5.0 };
@@ -20,10 +20,9 @@ public class AutoAim extends Command {
     double waitTimeMilli;
     double motorSpeed;
 
-    public AutoAim() {
+    public AutoAimAngle() {
         this.requires(Robot.leftS);
         this.requires(Robot.rightS);
-        this.requires(Robot.feedSolenoid);
         this.requires(Robot.flipSolenoid);
     }
 
@@ -47,9 +46,9 @@ public class AutoAim extends Command {
     //Outputs to SmartDashboard which way the bot is turning
     public int dirTurning() {
         try {
-            this.centerX = Robot.table.getNumberArray("centerX",
+            this.centerY = Robot.table.getNumberArray("centerX",
                     this.defaultValue);
-            this.testingDouble = this.centerX[0];
+            this.testingDouble = this.centerY[0];
             if (this.testingDouble > (RobotMap.centerXTarget
                     + RobotMap.targetSpread)) {
                 SmartDashboard.putString("Vision Auto Turn Status: ",
@@ -73,6 +72,8 @@ public class AutoAim extends Command {
                 return 0;
             }
         } catch (Exception e) {
+            SmartDashboard.putString("Vision Auto Turn Status: ",
+                    "Target not available");
             return 0;
         }
     }
