@@ -26,4 +26,9 @@ public class ShooterWheels extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void interrupted() {
+    	this.left.set(0);
+    	this.right.set(0);	
+    }
 }
