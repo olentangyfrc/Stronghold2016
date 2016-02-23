@@ -46,9 +46,15 @@ public class OI {
         //Runs the wheels backwards while the wheel shooter is down WHILEHELD
         
         this.loadWheelsandFeeding.whileHeld(new FeedingPosition());
-        this.loadWheelsandFeeding.whileHeld(
-                new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
+        //this.loadWheelsandFeeding.whileHeld(
+                //new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
         
+        if (this.shootWheels.get()) {
+        	this.shootWheels.whileHeld(new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
+        } else {
+        	this.loadWheelsandFeeding.whileHeld(new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
+        	this.loadWheelsandFeedingShootJoy.whileHeld(new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
+        }
         
         this.loadWheelsandFeedingShootJoy.whileHeld(new FeedingPosition());
         this.loadWheelsandFeedingShootJoy.whileHeld(
@@ -60,8 +66,8 @@ public class OI {
 
         
         //Spins up the wheels WHILEHELD
-        this.shootWheels.whileHeld(
-                new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
+        //this.shootWheels.whileHeld(
+                //new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
 
         //Fires solenoid to shoot the ball WHENPRESSED
         this.shootBall.whenPressed(new FeedPush());
@@ -83,7 +89,7 @@ public class OI {
         if (Math.abs(raw) < .15) {
             return 0;
         } else {
-            return /*.8 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw))*/ raw*raw*raw;
+            return raw*raw*raw;
         }
     }
 
