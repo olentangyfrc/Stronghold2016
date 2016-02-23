@@ -21,15 +21,13 @@ public class ArmManual extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (Robot.oi.enableArm.get()) {
-	    	double joyVal = (Robot.oi.shootJoy.getY()*RobotMap.maxSwivelSpeed);
-	    	if ((joyVal > 0)&&Robot.oi.swivelTopLimit.get()) {
-	    		Robot.swivelArm.move(joyVal);
-	    	} else if ((joyVal < 0)&&Robot.oi.swivelBottomLimit.get()) {
-	    		Robot.swivelArm.move(joyVal);
-	    	} else {
-	    		
-	    	}
+    	double joyVal = (Robot.oi.shootJoy.getY()*RobotMap.maxSwivelSpeed);
+    	if ((joyVal > 0)&&Robot.oi.swivelTopLimit.get()) {
+    		Robot.swivelArm.move(joyVal);
+    	} else if ((joyVal < 0)&&Robot.oi.swivelBottomLimit.get()) {
+    		Robot.swivelArm.move(joyVal);
+    	} else {
+    		
     	}
     }
     
