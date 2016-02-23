@@ -32,12 +32,12 @@ public class OI {
     public Button loadWheelsandFeeding = new JoystickButton(this.leftJoy, 4);// puts the wheels on reverse
     public Button loadWheelsandFeedingShootJoy = new JoystickButton(this.shootJoy, 4);
     public Button shootWheels = new JoystickButton(this.shootJoy, 1); // puts the wheels on full forward
-    public Button feedBall = new JoystickButton(this.rightJoy, 1); //moves the small pneumatic pusher
+    public Button shootBall = new JoystickButton(this.rightJoy, 1); //moves the small pneumatic pusher
     public Button lowBar = new JoystickButton(this.leftJoy, 5);
     public Button aimAuto = new JoystickButton(this.rightJoy, 10);
     public Button lowerArm = new JoystickButton(this.shootJoy, 3);
     public Button raiseArm = new JoystickButton(this.shootJoy, 4);
-    public Button enableArm = new JoystickButton(this.shootJoy, 5);
+    public Button enableArm = new JoystickButton(this.shootJoy, 5); //used as a deadman for the swivel arm
     //public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation
     public DigitalInput swivelTopLimit = new DigitalInput(RobotMap.topLimit);
     public DigitalInput swivelBottomLimit = new DigitalInput(RobotMap.bottomLimit);
@@ -54,9 +54,9 @@ public class OI {
         this.loadWheelsandFeedingShootJoy.whileHeld(
                 new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));
         //Stops the wheels and lowers shooter while going under low bar WHILEHELD
-        this.lowBar.whileHeld(
-                new ShooterWheelsMove(0.0 * RobotMap.feedingWheelShooterSpeed)); //doesn't spin wheels at all. Change coefficient as needed.
-        this.lowBar.whileHeld(new FeedingPosition());
+        //this.lowBar.whileHeld(
+                //new ShooterWheelsMove(0.0 * RobotMap.feedingWheelShooterSpeed)); //doesn't spin wheels at all. Change coefficient as needed.
+        //this.lowBar.whileHeld(new FeedingPosition());
 
         
         //Spins up the wheels WHILEHELD
@@ -64,7 +64,7 @@ public class OI {
                 new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
 
         //Fires solenoid to shoot the ball WHENPRESSED
-        this.feedBall.whenPressed(new FeedPush());
+        this.shootBall.whenPressed(new FeedPush());
 
         //Auto-aim according the vision WHILEHELD
         this.aimAuto.whileHeld(new AutoAim());
@@ -83,7 +83,7 @@ public class OI {
         if (Math.abs(raw) < .15) {
             return 0;
         } else {
-            return /*.8 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw))*/ raw;
+            return /*.8 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw))*/ raw*raw*raw;
         }
     }
 
