@@ -21,13 +21,13 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    public static Relay spike = new Relay(RobotMap.spikePort,Direction.kForward);
             //INSTANTIATING JOYSTICKS AND BUTTONS:
 
     //Driver Station joysticks
     public Joystick leftJoy = new Joystick(1);
     public Joystick rightJoy = new Joystick(2);
     public Joystick shootJoy = new Joystick(3);
+    public static Relay spike = new Relay(RobotMap.spikePort,Direction.kForward);
 
     public Button loadWheelsandFeeding = new JoystickButton(this.leftJoy, 4);// puts the wheels on reverse
     public Button loadWheelsandFeedingShootJoy = new JoystickButton(this.shootJoy, 4);

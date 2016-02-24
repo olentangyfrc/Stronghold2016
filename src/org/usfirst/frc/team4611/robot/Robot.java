@@ -3,6 +3,7 @@ package org.usfirst.frc.team4611.robot;
 
 import java.util.prefs.Preferences;
 
+import org.usfirst.frc.team4611.robot.commands.AutoAim;
 import org.usfirst.frc.team4611.robot.commands.Lane2;
 import org.usfirst.frc.team4611.robot.commands.Lane3;
 import org.usfirst.frc.team4611.robot.commands.Lane4;
@@ -18,6 +19,9 @@ import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.NamedSendable;
+import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Relay.Direction;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -97,9 +101,17 @@ public class Robot extends IterativeRobot {
                 new Lane5(Defense.PORTCULLIS));
 
         SmartDashboard.putData("Auto Chooser", this.chooser);
-
+        SmartDashboard.putData(leftS);
+        SmartDashboard.putData(rightS);
+        if (oi.spike instanceof NamedSendable) {
+        	try {
+        		SmartDashboard.putData((NamedSendable) oi.spike);
+        	} catch (Exception e) {
+        		e.printStackTrace();
+        	}
+        }
         //this.autonomousCommand = new autonomousCommandGroup();
-        //table = NetworkTable.getTable("GRIP/data");
+        table = NetworkTable.getTable("GRIP/data");
     }
 
     public enum Defense {

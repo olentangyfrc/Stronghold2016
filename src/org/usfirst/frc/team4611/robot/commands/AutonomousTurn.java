@@ -42,7 +42,7 @@ public class AutonomousTurn extends Command {
     @Override
     protected void initialize() {
         this.initialTime = Timer.getFPGATimestamp();
-        OI.spike.set(Value.kOn);
+        Robot.oi.spike.set(Value.kOn);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -76,6 +76,7 @@ public class AutonomousTurn extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
+    	Robot.oi.spike.set(Value.kOff);
     }
 
     // Called when another command which requires one or more of the same

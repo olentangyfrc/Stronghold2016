@@ -18,8 +18,8 @@ public class RobotMap {
     public static final int rightShooterWheel = 5;
 
     //Wheel shooter speeds
-    public static final double feedingWheelShooterSpeed = -0.3;
-    public static final double launchingWheelShooterSpeed = .5;
+    public static final double feedingWheelShooterSpeed = -0.4;
+    public static final double launchingWheelShooterSpeed = .40;
 
     //Solenoid ports
     public static final int solePort1 = 3;
@@ -32,8 +32,8 @@ public class RobotMap {
 
     //Vision acqusition ports and speeds
     public static final double centerXTarget = 310;
-    public static final double targetSpread = 3;
-    public static final double visionAutoSpeed = .5;
+    public static final double targetSpread = 5;
+    public static final double visionAutoSpeed = .4;
 
     //autuonomous speeds
     public static final double autoSpeed = .5;

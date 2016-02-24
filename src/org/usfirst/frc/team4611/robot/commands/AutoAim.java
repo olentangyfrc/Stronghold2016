@@ -1,8 +1,10 @@
 package org.usfirst.frc.team4611.robot.commands;
 
+import org.usfirst.frc.team4611.robot.OI;
 import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Relay.Value;
 //import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -30,6 +32,8 @@ public class AutoAim extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+    	SmartDashboard.putString("Vision Auto Turn Status", "Auto Turn Initialized");
+    	Robot.oi.spike.set(Value.kOn);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -38,7 +42,7 @@ public class AutoAim extends Command {
         //Turns the motors based on a proportion of the distance left to turn
         int turning = this.dirTurning();
         this.motorSpeed = (0.0014516129
-                * Math.abs(this.testingDouble - RobotMap.centerXTarget) + .370);
+                * Math.abs(this.testingDouble - RobotMap.centerXTarget) + .35);
         //Turns only the front two motors
         Robot.leftS.moveSingle(this.motorSpeed * turning);
         Robot.rightS.moveSingle(-this.motorSpeed * turning);
@@ -91,6 +95,8 @@ public class AutoAim extends Command {
     protected void end() {
         //Robot.shooterWheels.shoot(0);
         SmartDashboard.putString("Vision Auto Turn Status: ", "On target");
+        Robot.oi.spike.set(Value.kOff);
+        
     }
 
     // Called when another command which requires one or more of the same
@@ -98,6 +104,7 @@ public class AutoAim extends Command {
     @Override
     protected void interrupted() {
         SmartDashboard.putString("Vision Auto Turn Status: ",
-                "Auto Turn interrupted");
+                "Auto Turn interrupted again....");
+        end();
     }
 }
