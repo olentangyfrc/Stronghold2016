@@ -1,10 +1,8 @@
 package org.usfirst.frc.team4611.robot.commands;
 
-import org.usfirst.frc.team4611.robot.OI;
 import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Relay.Value;
 //import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -32,8 +30,9 @@ public class AutoAim extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	SmartDashboard.putString("Vision Auto Turn Status", "Auto Turn Initialized");
-    	Robot.oi.spike.set(Value.kOn);
+        SmartDashboard.putString("Vision Auto Turn Status",
+                "Auto Turn Initialized");
+        //Robot.oi.spike.set(Value.kOn);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -57,12 +56,12 @@ public class AutoAim extends Command {
             if (this.testingDouble > (RobotMap.centerXTarget
                     + RobotMap.targetSpread)) {
                 SmartDashboard.putString("Vision Auto Turn Status: ",
-                        "Turning left");
+                        "Turning right");
                 return -1;
             } else if (this.testingDouble < (RobotMap.centerXTarget
                     - RobotMap.targetSpread)) {
                 SmartDashboard.putString("Vision Auto Turn Status: ",
-                        "Turning right");
+                        "Turning left");
                 return 1;
             } else if ((this.testingDouble <= (RobotMap.centerXTarget
                     + RobotMap.targetSpread))
@@ -95,8 +94,8 @@ public class AutoAim extends Command {
     protected void end() {
         //Robot.shooterWheels.shoot(0);
         SmartDashboard.putString("Vision Auto Turn Status: ", "On target");
-        Robot.oi.spike.set(Value.kOff);
-        
+        //Robot.oi.spike.set(Value.kOff);
+
     }
 
     // Called when another command which requires one or more of the same
@@ -105,6 +104,6 @@ public class AutoAim extends Command {
     protected void interrupted() {
         SmartDashboard.putString("Vision Auto Turn Status: ",
                 "Auto Turn interrupted again....");
-        end();
+        this.end();
     }
 }
