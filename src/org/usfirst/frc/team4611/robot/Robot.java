@@ -3,7 +3,6 @@ package org.usfirst.frc.team4611.robot;
 
 import java.util.prefs.Preferences;
 
-import org.usfirst.frc.team4611.robot.commands.AutoAim;
 import org.usfirst.frc.team4611.robot.commands.Lane2;
 import org.usfirst.frc.team4611.robot.commands.Lane3;
 import org.usfirst.frc.team4611.robot.commands.Lane4;
@@ -17,11 +16,8 @@ import org.usfirst.frc.team4611.robot.subsystems.SwivelArm;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.NamedSendable;
-import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.Relay.Direction;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -72,29 +68,48 @@ public class Robot extends IterativeRobot {
         oi = new OI();
 
         this.chooser = new SendableChooser();
-        this.chooser.addDefault("Default Program",
-                null);
+        this.chooser.addDefault("Default Program", null);
         this.chooser.addObject("Lane 1: Low Bar", new LowBar());
 
-        this.chooser.addObject("Lane 2: Drive", new Lane2(Defense.DRIVE));
+        this.chooser.addObject("Lane 2: Rock Wall",
+                new Lane2(Defense.ROCKWALL));
+        this.chooser.addObject("Lane 2: Moat", new Lane2(Defense.MOAT));
+        this.chooser.addObject("Lane 2: Rough Terrain",
+                new Lane2(Defense.ROUGHTERRAIN));
+        this.chooser.addObject("Lane 2: Ramparts", new Lane2(Defense.RAMPARTS));
         this.chooser.addObject("Lane 2: Cheval de Frise",
                 new Lane2(Defense.CHEVALDEFRISE));
         this.chooser.addObject("Lane 2: Portcullis",
                 new Lane2(Defense.PORTCULLIS));
 
-        this.chooser.addObject("Lane 3: Drive", new Lane3(Defense.DRIVE));
+        this.chooser.addObject("Lane 3: Rock Wall",
+                new Lane3(Defense.ROCKWALL));
+        this.chooser.addObject("Lane 3: Moat", new Lane3(Defense.MOAT));
+        this.chooser.addObject("Lane 3: Rough Terrain",
+                new Lane3(Defense.ROUGHTERRAIN));
+        this.chooser.addObject("Lane 3: Ramparts", new Lane3(Defense.RAMPARTS));
         this.chooser.addObject("Lane 3: Cheval de Frise",
                 new Lane3(Defense.CHEVALDEFRISE));
         this.chooser.addObject("Lane 3: Portcullis",
                 new Lane3(Defense.PORTCULLIS));
 
-        this.chooser.addObject("Lane 4: Drive", new Lane4(Defense.DRIVE));
+        this.chooser.addObject("Lane 4: Rock Wall",
+                new Lane4(Defense.ROCKWALL));
+        this.chooser.addObject("Lane 4: Moat", new Lane4(Defense.MOAT));
+        this.chooser.addObject("Lane 4: Rough Terrain",
+                new Lane4(Defense.ROUGHTERRAIN));
+        this.chooser.addObject("Lane 4: Ramparts", new Lane4(Defense.RAMPARTS));
         this.chooser.addObject("Lane 4: Cheval de Frise",
                 new Lane4(Defense.CHEVALDEFRISE));
         this.chooser.addObject("Lane 4: Portcullis",
                 new Lane4(Defense.PORTCULLIS));
 
-        this.chooser.addObject("Lane 5: Drive", new Lane5(Defense.DRIVE));
+        this.chooser.addObject("Lane 5: Rock Wall",
+                new Lane5(Defense.ROCKWALL));
+        this.chooser.addObject("Lane 5: Moat", new Lane5(Defense.MOAT));
+        this.chooser.addObject("Lane 5: Rough Terrain",
+                new Lane5(Defense.ROUGHTERRAIN));
+        this.chooser.addObject("Lane 5: Ramparts", new Lane5(Defense.RAMPARTS));
         this.chooser.addObject("Lane 5: Cheval de Frise",
                 new Lane5(Defense.CHEVALDEFRISE));
         this.chooser.addObject("Lane 5: Portcullis",
@@ -104,18 +119,18 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(leftS);
         SmartDashboard.putData(rightS);
         if (oi.spike instanceof NamedSendable) {
-        	try {
-        		SmartDashboard.putData((NamedSendable) oi.spike);
-        	} catch (Exception e) {
-        		e.printStackTrace();
-        	}
+            try {
+                SmartDashboard.putData((NamedSendable) oi.spike);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         //this.autonomousCommand = new autonomousCommandGroup();
         table = NetworkTable.getTable("GRIP/data");
     }
 
     public enum Defense {
-        CHEVALDEFRISE, PORTCULLIS, DRIVE;
+        CHEVALDEFRISE, PORTCULLIS, ROCKWALL, MOAT, ROUGHTERRAIN, RAMPARTS;
     }
 
     /**

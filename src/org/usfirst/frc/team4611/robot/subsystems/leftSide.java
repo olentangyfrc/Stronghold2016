@@ -22,13 +22,13 @@ public class leftSide extends Subsystem {
     // here. Call these from Commands.
     public void move(double speed) {
         //speed = Math.signum(speed) * (Math.abs(speed) - .1);
-        this.frontL.set(speed*RobotMap.dirFacing);
-        this.backL.set(speed*RobotMap.dirFacing);
+        this.frontL.set(speed * RobotMap.dirFacing);
+        this.backL.set(speed * RobotMap.dirFacing);
     }
-    
+
     public void moveSingle(double speed) {
-    	this.frontL.set(speed*RobotMap.dirFacing);
-    	this.backL.set(.5*speed*RobotMap.dirFacing);
+        this.frontL.set(speed * RobotMap.dirFacing);
+        this.backL.set(RobotMap.rearWheelRatio * speed * RobotMap.dirFacing);
     }
 
     @Override
@@ -36,6 +36,6 @@ public class leftSide extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
         this.setDefaultCommand(new leftTank());
-        
+
     }
 }

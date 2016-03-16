@@ -34,16 +34,20 @@ public class RobotMap {
     public static final double centerXTarget = 310;
     public static final double targetSpread = 5;
     public static final double visionAutoSpeed = .4;
+    public static final double rearWheelRatio = 0.5;
+    public static final double minTurnSpeed = 0.35;
 
     //autuonomous speeds
-    public static final double autoSpeed = .5;
-    
+    public static final double autoTurnSpeed = 0.5;
+    public static final double autoDriveSpeed = 0.6;
+    public static final double rockWallSpeed = 0.9, moatSpeed = 0.4,
+            rampartSpeed = 0.4, roughTerrainSpeed = 0.4;
+
     //swivel arm variables
     public static final int swivelMotorPort = 6;
     public static final double maxSwivelSpeed = 0.5;
-    
+
     public static final int topLimit = 0;
     public static final int bottomLimit = 1;
     public static final int spikePort = 2;
-
 }

@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4611.robot.commands;
 
 import org.usfirst.frc.team4611.robot.Robot;
-import org.usfirst.frc.team4611.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -10,13 +9,13 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ArmAuto extends Command {
 
-    public boolean upOrDown; //true is up, false is down
+    public double speed; //true is up, false is down
 
-    public ArmAuto(boolean input) {
+    public ArmAuto(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         this.requires(Robot.swivelArm);
-        this.upOrDown = input;
+        this.speed = speed;
     }
 
     // Called just before this Command runs the first time
@@ -27,23 +26,13 @@ public class ArmAuto extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        if (!Robot.oi.swivelTopLimit.get() && this.upOrDown) {
-            Robot.swivelArm.move(RobotMap.maxSwivelSpeed);
-        } else if (!Robot.oi.swivelBottomLimit.get() && !this.upOrDown) {
-            Robot.swivelArm.move(-RobotMap.maxSwivelSpeed);
-        }
+        Robot.swivelArm.move(this.speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        if (this.upOrDown) {
-            return Robot.oi.swivelTopLimit.get();
-        } else if (!this.upOrDown) {
-            return Robot.oi.swivelBottomLimit.get();
-        } else {
-            return true;
-        }
+        return false;
     }
 
     // Called once after isFinished returns true

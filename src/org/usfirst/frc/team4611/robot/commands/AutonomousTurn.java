@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4611.robot.commands;
 
-import org.usfirst.frc.team4611.robot.OI;
 import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 
@@ -20,6 +19,14 @@ public class AutonomousTurn extends Command {
     public double speed2;
     private double[] centerXs;
 
+    /**
+     * Constructor for turning at default speed
+     * 
+     * @param time
+     *            Amount of time turn will be executed
+     * @param turning
+     *            LEFT is -1 RIGHT is 1
+     */
     public AutonomousTurn(double time, int turning) { //now we can call how long we want it to turn, and in what direction
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -27,9 +34,19 @@ public class AutonomousTurn extends Command {
         this.requires(Robot.rightS);
         this.actualTime = time;
         this.turningOrientation = turning; //this should only be 1 or -1; if it's 0,  the robot won't move.
-        this.speed2 = RobotMap.autoSpeed;
+        this.speed2 = RobotMap.autoTurnSpeed;
     }
 
+    /**
+     * Constructor for turning during autonomous period
+     *
+     * @param time
+     *            Amount of time turn is executed
+     * @param turning
+     *            LEFT is -1 RIGHT is 1
+     * @param speed
+     *            Speed turn is executed
+     */
     public AutonomousTurn(double time, int turning, double speed) {
         this.requires(Robot.leftS);
         this.requires(Robot.rightS);
@@ -76,7 +93,7 @@ public class AutonomousTurn extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-    	Robot.oi.spike.set(Value.kOff);
+        Robot.oi.spike.set(Value.kOff);
     }
 
     // Called when another command which requires one or more of the same
