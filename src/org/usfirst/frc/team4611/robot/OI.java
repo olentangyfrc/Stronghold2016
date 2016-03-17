@@ -69,8 +69,8 @@ public class OI {
         //Auto-aim according the vision WHILEHELD
         this.aimAuto.whileHeld(new AutoAim());
 
-        this.lowerArm.whenPressed(new ArmAuto(false));
-        this.raiseArm.whenPressed(new ArmAuto(true));
+        //this.lowerArm.whenPressed(new ArmAuto(false));
+        //this.raiseArm.whenPressed(new ArmAuto(true));
         //this.reverse.whenPressed(new ToggleCommand());
         //new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
         //this.combineLoading.whenPressed(new FeedingPosition()); //not sure if this will work
