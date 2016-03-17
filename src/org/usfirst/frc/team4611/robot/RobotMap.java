@@ -32,6 +32,7 @@ public class RobotMap {
 
     //Vision acqusition ports and speeds
     public static final double centerXTarget = 310;
+    public static final double centerYLimit = 380;
     public static final double targetSpread = 5;
     public static final double visionAutoSpeed = .4;
     public static final double rearWheelRatio = 0.5;
@@ -42,6 +43,8 @@ public class RobotMap {
     public static final double autoDriveSpeed = 0.6;
     public static final double rockWallSpeed = 0.9, moatSpeed = 0.4,
             rampartSpeed = 0.4, roughTerrainSpeed = 0.4;
+    public static final double rockWallTime = 1, moatTime = 1, rampartTime = 1,
+            roughTerrainTime = 1;
 
     //swivel arm variables
     public static final int swivelMotorPort = 6;
