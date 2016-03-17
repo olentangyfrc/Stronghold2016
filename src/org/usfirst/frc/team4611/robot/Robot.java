@@ -1,8 +1,6 @@
 
 package org.usfirst.frc.team4611.robot;
 
-import java.util.prefs.Preferences;
-
 import org.usfirst.frc.team4611.robot.commands.Lane2;
 import org.usfirst.frc.team4611.robot.commands.Lane3;
 import org.usfirst.frc.team4611.robot.commands.Lane4;
@@ -18,6 +16,7 @@ import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.NamedSendable;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -66,7 +65,12 @@ public class Robot extends IterativeRobot {
         //server.startAutomaticCapture("cam0");
 
         oi = new OI();
-
+        
+        prefs = Preferences.getInstance();
+        RobotMap.centerXTarget = prefs.getInt("Center X Target", 427);
+        SmartDashboard.putNumber("Center X Target is set to ", RobotMap.centerXTarget);
+        SmartDashboard.putNumber("Upper Y Limit is set to ", RobotMap.centerYLimit);
+        
         this.chooser = new SendableChooser();
         this.chooser.addDefault("Default Program", null);
         this.chooser.addObject("Lane 1: Low Bar", new LowBar());
@@ -118,13 +122,9 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Auto Chooser", this.chooser);
         SmartDashboard.putData(leftS);
         SmartDashboard.putData(rightS);
-        if (oi.spike instanceof NamedSendable) {
-            try {
-                SmartDashboard.putData((NamedSendable) oi.spike);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        SmartDashboard.putData(shooterWheels);
+        SmartDashboard.putData(flipSolenoid);
+        
         //this.autonomousCommand = new autonomousCommandGroup();
         table = NetworkTable.getTable("GRIP/data");
     }
