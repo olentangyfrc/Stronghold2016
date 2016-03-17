@@ -45,6 +45,10 @@ public class RobotMap {
             rampartSpeed = 0.4, roughTerrainSpeed = 0.4;
     public static final double rockWallTime = 1, moatTime = 1, rampartTime = 1,
             roughTerrainTime = 1;
+    public static final double aimTime = 2;
+
+    //FREAKING DELAYS
+    public static final double VA_DELAY_1 = 0.5, SHOOTING_DELAY_2 = 2;
 
     //swivel arm variables
     public static final int swivelMotorPort = 6;

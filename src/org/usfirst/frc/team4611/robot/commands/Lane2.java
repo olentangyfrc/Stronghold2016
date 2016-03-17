@@ -50,11 +50,11 @@ public class Lane2 extends CommandGroup {
                         RobotMap.rampartTime);
                 break;
         }
-        this.addSequential(new AutonomousTurn(1), 0.2); //don't give negative speed values STEP 2
+        this.addSequential(new AutonomousTurn(1), 0.2); //Turn parameter is for TURNING STEP 2
         this.addParallel(new ShooterWheelsMove(0.5), 5); //STEP 3
         Timer.delay(0.5); //Number based on how long wheels take to spin up
-        this.addParallel(new AutoAim(), 2);
-        Timer.delay(2);
+        this.addParallel(new AutoAim(), RobotMap.aimTime);
+        Timer.delay(1.5);
         double initialTime = Timer.getFPGATimestamp();
         ArrayList<Double> values = new ArrayList<Double>();
         double[] defaultValue = { 0.0, 0.0 };

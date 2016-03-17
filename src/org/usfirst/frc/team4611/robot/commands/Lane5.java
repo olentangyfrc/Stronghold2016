@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4611.robot.commands;
 
+import java.util.ArrayList;
+
 import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 
@@ -32,24 +34,52 @@ public class Lane5 extends CommandGroup {
                 this.addSequential(new DriveAuto(1), 0.5);
                 break;
             case ROCKWALL:
-                this.addSequential(new DriveAuto(RobotMap.rockWallSpeed), 1);
+                this.addSequential(new DriveAuto(RobotMap.rockWallSpeed),
+                        RobotMap.rockWallTime);
                 break;
             case MOAT:
-                this.addSequential(new DriveAuto(RobotMap.moatSpeed), 1);
+                this.addSequential(new DriveAuto(RobotMap.moatSpeed),
+                        RobotMap.moatTime);
                 break;
             case ROUGHTERRAIN:
                 this.addSequential(new DriveAuto(RobotMap.roughTerrainSpeed),
-                        0.75);
+                        RobotMap.roughTerrainTime);
                 break;
             case RAMPARTS:
-                this.addSequential(new DriveAuto(RobotMap.rampartSpeed), 0.75);
+                this.addSequential(new DriveAuto(RobotMap.rampartSpeed),
+                        RobotMap.rampartTime);
                 break;
         }
-        this.addSequential(new AutonomousTurn(0.1, 1)); //don't give negative speed values STEP 2
+        this.addSequential(new AutonomousTurn(-1), 0.2); //Turn parameter is for TURNING STEP 2
         this.addParallel(new ShooterWheelsMove(0.5), 5); //STEP 3
         Timer.delay(0.5); //Number based on how long wheels take to spin up
-        this.addParallel(new AutoAim(), 2);
-        Timer.delay(2);
-        this.addSequential(new FeedPush());
+        this.addParallel(new AutoAim(), RobotMap.aimTime);
+        Timer.delay(1.5);
+        double initialTime = Timer.getFPGATimestamp();
+        ArrayList<Double> values = new ArrayList<Double>();
+        double[] defaultValue = { 0.0, 0.0 };
+        double[] centerY;
+        int counter = 0;
+        while (Timer.getFPGATimestamp() - initialTime > 0.5) {
+            Timer.delay(0.02);
+            try {
+                centerY = Robot.table.getNumberArray("centerY", defaultValue);
+                values.add(centerY[0]);
+                counter++;
+            } catch (Exception e) {
+                counter--;
+            }
+        }
+        if (counter > 5) {
+            double sum = 0;
+            for (int x = 0; x < values.size(); x++) {
+                sum += values.get(x);
+            }
+            sum /= values.size();
+            if (sum < RobotMap.centerYLimit) {
+                this.addSequential(new FeedPush());
+            }
+        }
+
     }
 }
