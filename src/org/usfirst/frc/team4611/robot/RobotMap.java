@@ -31,12 +31,13 @@ public class RobotMap {
     public static int dirFacing = -1;
 
     //Vision acqusition ports and speeds
-    public static double centerXTarget = 457; //added 30, used to be 427
-    public static final double centerYLimit = 320;
+    public static double centerXTarget = 325; //added 30, used to be 427
+    //public static final double centerYLimit = 320;
     public static final double targetSpread = 5;
     public static final double visionAutoSpeed = .55;
     public static final double rearWheelRatio = 1;
-    public static final double minTurnSpeed = 0.40;
+    public static final double minTurnSpeed = 0.75;
+    public static final double maxTurnSpeed = 1;
 
     //autuonomous speeds
     public static final double autoTurnSpeed = 1;

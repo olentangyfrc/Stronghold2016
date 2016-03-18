@@ -70,7 +70,7 @@ public class Robot extends IterativeRobot {
         prefs = Preferences.getInstance();
         RobotMap.centerXTarget = prefs.getInt("Center X Target", 427);
         SmartDashboard.putNumber("Center X Target is set to ", RobotMap.centerXTarget);
-        SmartDashboard.putNumber("Upper Y Limit is set to ", RobotMap.centerYLimit);
+        //SmartDashboard.putNumber("Upper Y Limit is set to ", RobotMap.centerYLimit);
         
         this.chooser = new SendableChooser();
         this.chooser.addDefault("Default Program", null);
