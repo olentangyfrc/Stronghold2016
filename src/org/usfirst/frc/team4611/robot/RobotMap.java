@@ -31,20 +31,20 @@ public class RobotMap {
     public static int dirFacing = -1;
 
     //Vision acqusition ports and speeds
-    public static double centerXTarget = 427;
-    public static final double centerYLimit = 380;
+    public static double centerXTarget = 457; //added 30, used to be 427
+    public static final double centerYLimit = 320;
     public static final double targetSpread = 5;
-    public static final double visionAutoSpeed = .4;
-    public static final double rearWheelRatio = 0.5;
-    public static final double minTurnSpeed = 0.35;
+    public static final double visionAutoSpeed = .55;
+    public static final double rearWheelRatio = 1;
+    public static final double minTurnSpeed = 0.40;
 
     //autuonomous speeds
-    public static final double autoTurnSpeed = 0.5;
+    public static final double autoTurnSpeed = 1;
     public static final double autoDriveSpeed = 0.6;
-    public static final double rockWallSpeed = 0.9, moatSpeed = 0.4,
-            rampartSpeed = 0.4, roughTerrainSpeed = 0.4;
-    public static final double rockWallTime = 1, moatTime = 1, rampartTime = 1,
-            roughTerrainTime = 1;
+    public static final double rockWallSpeed = 1, moatSpeed = 1,
+            rampartSpeed = 1, roughTerrainSpeed = 1;
+    public static final double rockWallTime = 2.5, moatTime = 2.5, rampartTime = 2.5,
+            roughTerrainTime = 2.5;
     public static final double aimTime = 2;
 
     //FREAKING DELAYS

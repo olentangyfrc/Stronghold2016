@@ -18,18 +18,18 @@ public class Lane4 extends CommandGroup {
             case PORTCULLIS:
                 this.addParallel(new FeedingPosition(), 7);
                 this.addParallel(new ArmAuto(0.75), 1.25);
-                Timer.delay(3);
+                delay(3);
                 this.addParallel(new DriveAuto(0.3), 0.25);
-                Timer.delay(.3);
+                delay(.3);
                 this.addParallel(new ArmAuto(-1), 1);
                 this.addSequential(new DriveAuto(1), 0.5);
                 break;
             case CHEVALDEFRISE:
                 this.addSequential(new DriveAuto(0.3), 0.25);
                 this.addParallel(new ArmAuto(0.75), 1.25);
-                Timer.delay(3);
+                delay(3);
                 this.addParallel(new DriveAuto(0.3), 0.25);
-                Timer.delay(.3);
+                delay(.3);
                 this.addParallel(new ArmAuto(-1), 1);
                 this.addSequential(new DriveAuto(1), 0.5);
                 break;
@@ -50,17 +50,17 @@ public class Lane4 extends CommandGroup {
                         RobotMap.rampartTime);
                 break;
         }
-        this.addParallel(new ShooterWheelsMove(0.5), 5); //STEP 3
-        Timer.delay(0.5); //Number based on how long wheels take to spin up
+        this.addParallel(new ShooterWheelsMove(0.5), 6); //STEP 3
+        delay(0.5); //Number based on how long wheels take to spin up
         this.addParallel(new AutoAim(), RobotMap.aimTime);
-        Timer.delay(1.5);
-        double initialTime = Timer.getFPGATimestamp();
+        delay(1.5);
+        /*double initialTime = Timer.getFPGATimestamp();
         ArrayList<Double> values = new ArrayList<Double>();
         double[] defaultValue = { 0.0, 0.0 };
         double[] centerY;
         int counter = 0;
         while (Timer.getFPGATimestamp() - initialTime > 0.5) {
-            Timer.delay(0.02);
+            delay(0.02);
             try {
                 centerY = Robot.table.getNumberArray("centerY", defaultValue);
                 values.add(centerY[0]);
@@ -78,7 +78,12 @@ public class Lane4 extends CommandGroup {
             if (sum < RobotMap.centerYLimit) {
                 this.addSequential(new FeedPush());
             }
-        }
-
+        }*/
+        this.addSequential(new FeedPush());
+    }
+    public void delay(double seconds) {
+    	double initial = Timer.getFPGATimestamp();
+    	while (Timer.getFPGATimestamp() - initial > seconds) {}
+    	return;
     }
 }

@@ -23,9 +23,9 @@ public class ArmManual extends Command {
     protected void execute() {
     	if (Robot.oi.enableArm.get()) {
 	    	double joyVal = (Robot.oi.shootJoy.getY()*RobotMap.maxSwivelSpeed);
-	    	if ((joyVal > 0)&&Robot.oi.swivelTopLimit.get()) {
+	    	if ((joyVal > 0)&&Robot.oi.enableArm.get()) {
 	    		Robot.swivelArm.move(joyVal);
-	    	} else if ((joyVal < 0)&&Robot.oi.swivelBottomLimit.get()) {
+	    	} else if ((joyVal < 0)&&Robot.oi.enableArm.get()) {
 	    		Robot.swivelArm.move(joyVal);
 	    	} else {
 	    		
@@ -37,15 +37,17 @@ public class ArmManual extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return !Robot.oi.enableArm.get();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.swivelArm.move(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

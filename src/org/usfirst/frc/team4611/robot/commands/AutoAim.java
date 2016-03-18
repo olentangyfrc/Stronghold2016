@@ -40,7 +40,7 @@ public class AutoAim extends Command {
     protected void execute() {
         //Turns the motors based on a proportion of the distance left to turn
         int turning = this.dirTurning();
-        this.motorSpeed = (0.0014516129
+        this.motorSpeed = (((.9-RobotMap.minTurnSpeed)/(320))
                 * Math.abs(this.testingDouble - RobotMap.centerXTarget)
                 + RobotMap.minTurnSpeed);
         //Turns only the front two motors and the back at half speed
