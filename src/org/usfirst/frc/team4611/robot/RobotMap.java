@@ -18,8 +18,8 @@ public class RobotMap {
     public static final int rightShooterWheel = 5;
 
     //Wheel shooter speeds
-    public static final double feedingWheelShooterSpeed = -0.4;
-    public static final double launchingWheelShooterSpeed = .40;
+    public static final double feedingWheelShooterSpeed = -0.5;
+    public static final double launchingWheelShooterSpeed = .7; //was .40
 
     //Solenoid ports
     public static final int solePort1 = 3;
@@ -31,25 +31,27 @@ public class RobotMap {
     public static int dirFacing = -1;
 
     //Vision acqusition ports and speeds
-    public static double centerXTarget = 325; //added 30, used to be 427
+    public static double centerXTarget = 317; //added 30, used to be 427
     //public static final double centerYLimit = 320;
-    public static final double targetSpread = 5;
+    public static final double targetSpread = 10; // was 5
     public static final double visionAutoSpeed = .55;
-    public static final double rearWheelRatio = 1;
-    public static final double minTurnSpeed = 0.75;
-    public static final double maxTurnSpeed = 1;
+    public static final double rearWheelRatio = .5;
+    public static final double minTurnSpeed = 0.555;//wss .4
+    public static final double maxTurnSpeed = .6;
 
     //autuonomous speeds
     public static final double autoTurnSpeed = 1;
     public static final double autoDriveSpeed = 0.6;
     public static final double rockWallSpeed = 1, moatSpeed = 1,
             rampartSpeed = 1, roughTerrainSpeed = 1;
-    public static final double rockWallTime = 2.5, moatTime = 2.5, rampartTime = 2.5,
-            roughTerrainTime = 2.5;
+    public static final double rockWallTime = 2.3, moatTime = 2.3, rampartTime = 1.5,
+            roughTerrainTime = 1.5;
     public static final double aimTime = 2;
 
     //FREAKING DELAYS
-    public static final double VA_DELAY_1 = 0.5, SHOOTING_DELAY_2 = 2;
+    public static final double VA_DELAY_1 = 0.5, 
+    		SHOOTING_DELAY = 3;
+    
 
     //swivel arm variables
     public static final int swivelMotorPort = 6;

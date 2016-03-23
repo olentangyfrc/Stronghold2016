@@ -3,12 +3,13 @@ package org.usfirst.frc.team4611.robot.commands;
 import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveAuto extends Command {
 
     public double speed2;
-
+    public double delay=0;
     /**
      * Constructor with just time
      *
@@ -35,7 +36,13 @@ public class DriveAuto extends Command {
         this.requires(Robot.rightS);
         this.speed2 = speed;
     }
-
+    
+    public DriveAuto(double speed, double delay) {
+    	this.requires(Robot.leftS);
+    	this.requires(Robot.rightS);
+    	this.speed2 = speed;
+    	this.delay = delay;
+    }
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
@@ -52,9 +59,10 @@ public class DriveAuto extends Command {
         //{
         //joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());
         //}
-        Robot.leftS.move(-this.speed2);
-        Robot.rightS.move(-this.speed2);
-
+    	if (Timer.getFPGATimestamp() - delay > 0) {
+    		Robot.leftS.move(-this.speed2);
+        	Robot.rightS.move(-this.speed2);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

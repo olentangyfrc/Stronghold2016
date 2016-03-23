@@ -52,10 +52,10 @@ public class Lane5 extends CommandGroup {
         }
         this.addSequential(new AutonomousTurn(-1), 0.2); //Turn parameter is for TURNING STEP 2
         this.addParallel(new ShooterWheelsMove(0.5), 5); //STEP 3
-        delay(0.5); //Number based on how long wheels take to spin up
-        /*this.addParallel(new AutoAim(), RobotMap.aimTime);
-        delay(1.5);
-        double initialTime = Timer.getFPGATimestamp();
+        //delay(0.5); //Number based on how long wheels take to spin up
+        this.addSequential(new AutoAim(), RobotMap.aimTime);
+        //delay(1.5);
+        /*double initialTime = Timer.getFPGATimestamp();
         ArrayList<Double> values = new ArrayList<Double>();
         double[] defaultValue = { 0.0, 0.0 };
         double[] centerY;
@@ -80,7 +80,7 @@ public class Lane5 extends CommandGroup {
                 this.addSequential(new FeedPush());
             }
         }*/
-        this.addSequential(new FeedPush());
+        //this.addSequential(new FeedPush(RobotMap.SHOOTING_DELAY));
     }
     public void delay(double seconds) {
     	double initial = Timer.getFPGATimestamp();

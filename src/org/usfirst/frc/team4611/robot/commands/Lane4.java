@@ -51,9 +51,9 @@ public class Lane4 extends CommandGroup {
                 break;
         }
         this.addParallel(new ShooterWheelsMove(0.5), 6); //STEP 3
-        delay(0.5); //Number based on how long wheels take to spin up
-        this.addParallel(new AutoAim(), RobotMap.aimTime);
-        delay(1.5);
+        //delay(0.5); //Number based on how long wheels take to spin up
+        this.addSequential(new AutoAim(), RobotMap.aimTime);
+        //delay(1.5);
         /*double initialTime = Timer.getFPGATimestamp();
         ArrayList<Double> values = new ArrayList<Double>();
         double[] defaultValue = { 0.0, 0.0 };
@@ -79,7 +79,7 @@ public class Lane4 extends CommandGroup {
                 this.addSequential(new FeedPush());
             }
         }*/
-        this.addSequential(new FeedPush());
+        //this.addSequential(new FeedPush(RobotMap.SHOOTING_DELAY));
     }
     public void delay(double seconds) {
     	double initial = Timer.getFPGATimestamp();

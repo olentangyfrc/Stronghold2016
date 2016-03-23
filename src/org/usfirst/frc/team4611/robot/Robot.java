@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4611.robot;
 
+import org.usfirst.frc.team4611.robot.commands.AutonomousTest;
 import org.usfirst.frc.team4611.robot.commands.Lane2;
 import org.usfirst.frc.team4611.robot.commands.Lane3;
 import org.usfirst.frc.team4611.robot.commands.Lane4;
@@ -61,7 +62,7 @@ public class Robot extends IterativeRobot {
     @Override
     public void robotInit() {
         //Initializes camera feed on driver station
-        CameraServer server = CameraServer.getInstance();
+        server = CameraServer.getInstance();
         server.setQuality(50);
         server.startAutomaticCapture("cam0");
 
@@ -120,6 +121,7 @@ public class Robot extends IterativeRobot {
         this.chooser.addObject("Lane 5: Portcullis",
                 new Lane5(Defense.PORTCULLIS));
 
+        this.chooser.addObject("AUTONOMOUS TESTING", new AutonomousTest());
         SmartDashboard.putData("Auto Chooser", this.chooser);
         SmartDashboard.putData(leftS);
         SmartDashboard.putData(rightS);

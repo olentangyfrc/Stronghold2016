@@ -13,11 +13,17 @@ import edu.wpi.first.wpilibj.command.Command;
 public class FeedPush extends Command {
 
     public double initialTime;
+    public double delay = 0;
 
     public FeedPush() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         this.requires(Robot.feedSolenoid);
+    }
+    
+    public FeedPush(double delay) {
+    	this.delay=delay;
+    	this.requires(Robot.feedSolenoid);
     }
 
     // Called just before this Command runs the first time
@@ -29,13 +35,15 @@ public class FeedPush extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        Robot.feedSolenoid.feed(Value.kForward);
+        if (Timer.getFPGATimestamp() - this.initialTime > delay) {
+    		Robot.feedSolenoid.feed(Value.kForward);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return Timer.getFPGATimestamp() - this.initialTime > RobotMap.soleTime;
+        return Timer.getFPGATimestamp() - this.initialTime > (RobotMap.soleTime+this.delay);
     }
 
     // Called once after isFinished returns true

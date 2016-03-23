@@ -23,7 +23,6 @@ public class AutoAim extends Command {
     public AutoAim() {
         this.requires(Robot.leftS);
         this.requires(Robot.rightS);
-        this.requires(Robot.feedSolenoid);
         this.requires(Robot.flipSolenoid);
     }
 
@@ -40,6 +39,7 @@ public class AutoAim extends Command {
     protected void execute() {
         //Turns the motors based on a proportion of the distance left to turn
         int turning = this.dirTurning();
+        SmartDashboard.putNumber("Target location: ", testingDouble);
         this.motorSpeed = (((RobotMap.maxTurnSpeed-RobotMap.minTurnSpeed)/(320))
                 * Math.abs(this.testingDouble - RobotMap.centerXTarget)
                 + RobotMap.minTurnSpeed);
