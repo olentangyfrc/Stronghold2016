@@ -16,11 +16,11 @@ public class LowBar extends CommandGroup {
     public LowBar() {
         this.addParallel(new FeedingPosition(), 6);
         this.addSequential(new DriveAuto(1, 3.5), 2.5);
-        this.addSequential(new AutonomousTurn(1), 0.3); //don't give negative speed values
+        //this.addSequential(new AutonomousTurn(1), 0.3); //don't give negative speed values
 
-        this.addParallel(new ShooterWheelsMove(0.5), 5); //STEP 3
+        //this.addParallel(new ShooterWheelsMove(0.5), 5); //STEP 3
         //delay(0.5); //Number based on how long wheels take to spin up
-        this.addSequential(new AutoAim(), RobotMap.aimTime);
+        //this.addSequential(new AutoAim(), RobotMap.aimTime);
         //delay(1.5);
         /*double initialTime = Timer.getFPGATimestamp();
         ArrayList<Double> values = new ArrayList<Double>();

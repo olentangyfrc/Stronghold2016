@@ -50,9 +50,9 @@ public class Lane3 extends CommandGroup {
                         RobotMap.rampartTime);
                 break;
         }
-        this.addParallel(new ShooterWheelsMove(0.5), 6); //STEP 3
+        //this.addParallel(new ShooterWheelsMove(0.5), 6); //STEP 3
         //delay(0.5); //Number based on how long wheels take to spin up
-        this.addSequential(new AutoAim(), RobotMap.aimTime);
+        //this.addSequential(new AutoAim(), RobotMap.aimTime);
         
         //delay(1.5);
         /*double initialTime = Timer.getFPGATimestamp();

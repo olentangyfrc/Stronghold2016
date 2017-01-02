@@ -19,7 +19,7 @@ public class RobotMap {
 
     //Wheel shooter speeds
     public static final double feedingWheelShooterSpeed = -0.5;
-    public static final double launchingWheelShooterSpeed = .7; //was .40
+    public static final double launchingWheelShooterSpeed = .65; //was .40
 
     //Solenoid ports
     public static final int solePort1 = 3;
@@ -42,8 +42,8 @@ public class RobotMap {
     //autuonomous speeds
     public static final double autoTurnSpeed = 1;
     public static final double autoDriveSpeed = 0.6;
-    public static final double rockWallSpeed = 1, moatSpeed = 1,
-            rampartSpeed = 1, roughTerrainSpeed = 1;
+    public static final double rockWallSpeed = 0.8, moatSpeed = 0.8,
+            rampartSpeed = 0.8, roughTerrainSpeed = 0.8;
     public static final double rockWallTime = 2.3, moatTime = 2.3, rampartTime = 1.5,
             roughTerrainTime = 1.5;
     public static final double aimTime = 2;
