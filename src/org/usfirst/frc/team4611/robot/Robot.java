@@ -37,12 +37,12 @@ public class Robot extends IterativeRobot {
 
     //public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static OI oi;
-    public static leftSide leftS = new leftSide();
-    public static rightSide rightS = new rightSide();
+    public static leftSide leftS = new leftSide(); //Making a left side Subsystem
+    public static rightSide rightS = new rightSide(); //Making a right side Subsystem
 
     //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
     public static FlipSolenoid flipSolenoid = new FlipSolenoid();
-    public static FeedSolenoid feedSolenoid = new FeedSolenoid();
+    public static FeedSolenoid feedSolenoid = new FeedSolenoid(); //pneumatics
     public static ShooterWheels shooterWheels = new ShooterWheels();
     public static SwivelArm swivelArm = new SwivelArm();
 
@@ -52,7 +52,7 @@ public class Robot extends IterativeRobot {
 
     public static NetworkTable table;
 
-    CameraServer server;
+    CameraServer server; //See Intermediate Vision
 
     /**
      * This function is run when the robot is first started up and should be
@@ -69,10 +69,10 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         
         prefs = Preferences.getInstance();
-        RobotMap.centerXTarget = prefs.getInt("Center X Target", 427);
+        RobotMap.centerXTarget = prefs.getInt("Center X Target", 427); //Vision/GRIPP
         SmartDashboard.putNumber("Center X Target is set to ", RobotMap.centerXTarget);
         //SmartDashboard.putNumber("Upper Y Limit is set to ", RobotMap.centerYLimit);
-        
+        //Initialization of Autonomous
         this.chooser = new SendableChooser();
         this.chooser.addDefault("Default Program", null);
         this.chooser.addObject("Lane 1: Low Bar", new LowBar());

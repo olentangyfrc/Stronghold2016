@@ -16,7 +16,8 @@ public class ArmManual extends Command {
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
+    protected void initialize() { 
+    	//If anything needs to be initialized, call them here!
     }
 
     // Called repeatedly when this Command is scheduled to run

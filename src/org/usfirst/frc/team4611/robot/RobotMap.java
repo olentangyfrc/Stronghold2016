@@ -32,7 +32,7 @@ public class RobotMap {
 
     //Vision acqusition ports and speeds
     public static double centerXTarget = 317; //added 30, used to be 427
-    //public static final double centerYLimit = 320;
+    //public static final double centerYLimit = 320; //Vision/GRIPP
     public static final double targetSpread = 10; // was 5
     public static final double visionAutoSpeed = .55;
     public static final double rearWheelRatio = .5;

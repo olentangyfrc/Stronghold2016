@@ -25,7 +25,7 @@ public class ArmAuto extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     @Override
-    protected void execute() {
+    protected void execute() { //the section that is executed when the robot runs
         Robot.swivelArm.move(this.speed);
     }
 

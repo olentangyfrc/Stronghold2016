@@ -14,10 +14,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LowBar extends CommandGroup {
 
     public LowBar() {
-        this.addParallel(new FeedingPosition(), 6);
-        this.addSequential(new DriveAuto(1, 3.5), 2.5);
+        this.addParallel(new FeedingPosition(), 6); //Set feeding position (GET A BALL)
+        this.addSequential(new DriveAuto(1, 3.5), 2.5); //Move forward
+        //Set feeding position while driving forward
+        /*
+         * This code is an attempt to use Vision in Auton. May be useful later?
+         */
         //this.addSequential(new AutonomousTurn(1), 0.3); //don't give negative speed values
-
         //this.addParallel(new ShooterWheelsMove(0.5), 5); //STEP 3
         //delay(0.5); //Number based on how long wheels take to spin up
         //this.addSequential(new AutoAim(), RobotMap.aimTime);

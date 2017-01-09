@@ -24,23 +24,23 @@ public class OI {
             //INSTANTIATING JOYSTICKS AND BUTTONS:
 
     //Driver Station joysticks
-    public Joystick leftJoy = new Joystick(1);
+    public Joystick leftJoy = new Joystick(1);// Joystick(port)
     public Joystick rightJoy = new Joystick(2);
     public Joystick shootJoy = new Joystick(3);
-    public static Relay spike = new Relay(RobotMap.spikePort,Direction.kForward);
+    public static Relay spike = new Relay(RobotMap.spikePort,Direction.kForward); //Relay(int channel, Relay.Direction direction)
 
     public Button loadWheelsandFeeding = new JoystickButton(this.leftJoy, 4);// puts the wheels on reverse
     public Button loadWheelsandFeedingShootJoy = new JoystickButton(this.shootJoy, 4);
     public Button shootWheels = new JoystickButton(this.shootJoy, 1); // puts the wheels on full forward
     public Button feedBall = new JoystickButton(this.rightJoy, 1); //moves the small pneumatic pusher
-    public Button lowBar = new JoystickButton(this.leftJoy, 5);
+    public Button lowBar = new JoystickButton(this.leftJoy, 5);//JoystickButton(GenericHID joystick, int buttonNumber)
     public Button aimAuto = new JoystickButton(this.rightJoy, 10);
     public Button lowerArm = new JoystickButton(this.shootJoy, 3);
     public Button raiseArm = new JoystickButton(this.shootJoy, 4);
     public Button enableArm = new JoystickButton(this.shootJoy, 5);
     //public Button reverse = new JoystickButton (this.rightJoy, 8);//changes the orientation
-    public DigitalInput swivelTopLimit = new DigitalInput(RobotMap.topLimit);
-    public DigitalInput swivelBottomLimit = new DigitalInput(RobotMap.bottomLimit);
+    public DigitalInput swivelTopLimit = new DigitalInput(RobotMap.topLimit);//DigitalInput(int channel)
+    public DigitalInput swivelBottomLimit = new DigitalInput(RobotMap.bottomLimit);//Read Digital Input and return current value on channel
     
     public OI() {
         //Runs the wheels backwards while the wheel shooter is down WHILEHELD
@@ -68,14 +68,6 @@ public class OI {
 
         //Auto-aim according the vision WHILEHELD
         this.aimAuto.whileHeld(new AutoAim());
-
-        //this.lowerArm.whenPressed(new ArmAuto(false));
-        //this.raiseArm.whenPressed(new ArmAuto(true));
-        //this.reverse.whenPressed(new ToggleCommand());
-        //new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
-        //this.combineLoading.whenPressed(new FeedingPosition()); //not sure if this will work
-        //wheelShoot.whenPressed(new WheelShoot());
-        //wheelReverse.whileHeld(new WheelReverse());
     }
 
     public double filter(double raw) //used to cut interference
@@ -83,7 +75,7 @@ public class OI {
         if (Math.abs(raw) < .15) {
             return 0;
         } else {
-            return /*.8 * (0.5 * Math.pow(raw, 3) + ((1 - .5) * raw))*/ raw;
+            return raw;
         }
     }
 

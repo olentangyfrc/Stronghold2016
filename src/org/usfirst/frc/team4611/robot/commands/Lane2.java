@@ -50,37 +50,6 @@ public class Lane2 extends CommandGroup {
                         RobotMap.rampartTime);
                 break;
         }
-        //this.addSequential(new AutonomousTurn(1), 0.2); //Turn parameter is for TURNING STEP 2
-        //this.addParallel(new ShooterWheelsMove(0.5), 6); //STEP 3
-        //delay(0.5); //Number based on how long wheels take to spin up
-        //this.addSequential(new AutoAim(), RobotMap.aimTime);
-        //delay(1.5);
-        /*double initialTime = Timer.getFPGATimestamp();
-        ArrayList<Double> values = new ArrayList<Double>();
-        double[] defaultValue = { 0.0, 0.0 };
-        double[] centerY;
-        int counter = 0;
-        while (Timer.getFPGATimestamp() - initialTime > 0.5) {
-            delay(0.02);
-            try {
-                centerY = Robot.table.getNumberArray("centerY", defaultValue);
-                values.add(centerY[0]);
-                counter++;
-            } catch (Exception e) {
-                counter--;
-            }
-        }
-        if (counter > 5) {
-            double sum = 0;
-            for (int x = 0; x < values.size(); x++) {
-                sum += values.get(x);
-            }
-            sum /= values.size();
-            if (sum < RobotMap.centerYLimit) {
-                this.addSequential(new FeedPush());
-            }
-        }*/
-        //this.addSequential(new FeedPush(RobotMap.SHOOTING_DELAY));
     }
     public void delay(double seconds) {
     	double initial = Timer.getFPGATimestamp();
