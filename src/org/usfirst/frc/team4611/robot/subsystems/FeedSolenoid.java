@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Solenoid 2 will be the feeding the ball into the wheels
  */
-public class FeedSolenoid extends Subsystem {
+public class FeedSolenoid extends Subsystem { //Actual piston
     DoubleSolenoid s2;
 
     public FeedSolenoid() {

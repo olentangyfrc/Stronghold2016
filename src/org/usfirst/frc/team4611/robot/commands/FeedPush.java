@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class FeedPush extends Command {
+public class FeedPush extends Command { //pushes ball into wheels
 
     public double initialTime;
     public double delay = 0;

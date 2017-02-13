@@ -26,7 +26,7 @@ public class AutonomousTest extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new DriveAuto(0.3), 2);
-    	delay(3);
+    	delay(3);//alec was here 
     	addSequential(new DriveAuto(1), 0.5);
     }
     public void delay(double seconds) {

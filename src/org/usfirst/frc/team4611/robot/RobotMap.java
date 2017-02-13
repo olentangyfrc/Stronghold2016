@@ -18,7 +18,7 @@ public class RobotMap {
     public static final int rightShooterWheel = 5;
 
     //Wheel shooter speeds
-    public static final double feedingWheelShooterSpeed = -0.5;
+    public static final double feedingWheelShooterSpeed = -0.5; 
     public static final double launchingWheelShooterSpeed = .65; //was .40
 
     //Solenoid ports

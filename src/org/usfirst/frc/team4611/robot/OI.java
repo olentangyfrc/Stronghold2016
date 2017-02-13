@@ -63,7 +63,7 @@ public class OI {
         this.shootWheels.whileHeld(
                 new ShooterWheelsMove(RobotMap.launchingWheelShooterSpeed));
 
-        //Fires solenoid to shoot the ball WHENPRESSED
+        //Fires solenoid to shoot the ball WHENPRESSED //piston
         this.feedBall.whenPressed(new FeedPush());
 
         //Auto-aim according the vision WHILEHELD

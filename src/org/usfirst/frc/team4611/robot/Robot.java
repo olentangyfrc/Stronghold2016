@@ -43,6 +43,7 @@ public class Robot extends IterativeRobot {
     //public static pneumaticSubsystem shooter = new pneumaticSubsystem();
     public static FlipSolenoid flipSolenoid = new FlipSolenoid();
     public static FeedSolenoid feedSolenoid = new FeedSolenoid(); //pneumatics
+    
     public static ShooterWheels shooterWheels = new ShooterWheels();
     public static SwivelArm swivelArm = new SwivelArm();
 
@@ -63,8 +64,8 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         //Initializes camera feed on driver station
         server = CameraServer.getInstance();
-        server.setQuality(50);
-        server.startAutomaticCapture("cam0");
+        //server.setQuality(50);
+        //server.startAutomaticCapture("cam0");
 
         oi = new OI();
         
